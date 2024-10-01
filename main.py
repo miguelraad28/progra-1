@@ -15,7 +15,11 @@ def generarDatosIniciales():
     - clases: Lista de clases generada por `clasesMateriasModule.generarClases()`.
   """
   alumnos = alumnosModule.generarAlumnos()
-  clases = clasesMateriasModule.generarClases(clasesMateriasModule.materias, 100)
+  clases = clasesMateriasModule.generarClases(clasesMateriasModule.materias, 20)
+  print("* *  * **alumnos")
+  print(alumnos)
+  print("* * ** * *clases")
+  # print(clases)
 
   return [alumnos, clases]
 
@@ -58,14 +62,7 @@ def menuGestionAlumnos(alumnos):
       # menuGestionFacturas()
       ...
     elif opcion == "4":   # Opción buscar alumno por legajo
-      legajo = int(input("Ingrese el legajo del alumno: "))
-      for alumno in alumnos:
-        if alumno["LU"] == legajo:
-          print(f"L.U: {alumno["LU"]} - {alumno["nombre"]} {alumno["apellido"]}")
-          print("Está inscripto en : .... // TODO")
-          break
-      else:
-        print("No se encontró un alumno con el legajo ingresado.")
+      alumnosModule.encontrarPorLegajo()
 
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")

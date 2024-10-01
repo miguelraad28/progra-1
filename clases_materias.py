@@ -12,16 +12,6 @@ materias = [{"id": 1, "nombre": "Matemática Discreta"},
   {"id": 8, "nombre": "Física I"},
   {"id": 9, "nombre": "Química"},
   {"id": 10, "nombre": "Inglés Técnico I"},
-  {"id": 11, "nombre": "Matemática II"},
-  {"id": 12, "nombre": "Probabilidad y Estadística"},
-  {"id": 13, "nombre": "Programación Orientada a Objetos"},
-  {"id": 14, "nombre": "Bases de Datos"},
-  {"id": 15, "nombre": "Redes de Computadoras"},
-  {"id": 16, "nombre": "Ingeniería de Software I"},
-  {"id": 17, "nombre": "Sistemas Operativos"},
-  {"id": 18, "nombre": "Ética y Deontología Profesional"},
-  {"id": 19, "nombre": "Economía"},
-  {"id": 20, "nombre": "Gestión de Proyectos"}
 ]
 
 def generarClases(materias, cantidad):
