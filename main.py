@@ -1,4 +1,3 @@
-import random
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
 

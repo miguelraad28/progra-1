@@ -85,6 +85,20 @@ def encontrarPorLegajo():
   else:
     print("No se encontró un alumno con el legajo ingresado.")
 
+def encontrarPorDni():
+  dni = int(input("Ingrese el dni del alumno: "))
+  
+  for alumno in alumnos:
+    if alumno["DNI"] == dni:
+      print(f"Nombre: {alumno["nombre"]}")
+      print(f"Apellido: {alumno["apellido"]}")
+      print(f"D.N.I: {alumno["DNI"]:,}")
+      print(f"L.U: {alumno["LU"]:,}")
+      print("_________________________")
+      print("")
+  else:
+    print("No se encontró un alumno con el legajo ingresado.")
+
 if __name__ == "__main__":
   print(len(alumnos))
   print(nuevoAlumno("Juan", "Pérez", 45222555, alumnos))
