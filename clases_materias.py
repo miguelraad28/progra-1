@@ -15,6 +15,9 @@ materias = [{"id": 1, "nombre": "Matemática Discreta"},
 ]
 
 def generarClases(materias, cantidad):
+  '''
+  Genera una lista de clases basado en las materias que tenemos al inicio del modulo de manera aleatoria para inicializar el programa con datos en memoria.
+  '''
   clases = []
   for _ in range(cantidad):
     clase = {

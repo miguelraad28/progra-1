@@ -2,27 +2,6 @@ import random
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
 
-
-def generarDatosIniciales():
-  """
-  Genera los datos iniciales para el sistema.
-  Esta función llama a dos módulos para generar una lista de alumnos y una lista de clases.
-  Utiliza las funciones `generarAlumnos` del módulo `alumnosModule` y `generarClases` del 
-  módulo `clasesMateriasModule` con un parámetro de 100 clases.
-  Returns:
-    list: Una lista que contiene dos elementos:
-    - alumnos: Lista de alumnos generada por `alumnosModule.generarAlumnos()`.
-    - clases: Lista de clases generada por `clasesMateriasModule.generarClases()`.
-  """
-  alumnos = alumnosModule.generarAlumnos(500)
-  clases = clasesMateriasModule.generarClases(clasesMateriasModule.materias, 20)
-  print("* *  * **alumnos")
-  print(alumnos)
-  print("* * ** * *clases")
-  # print(clases)
-
-  return [alumnos, clases]
-
 def menuGestionAlumnos(alumnos):
   while True:
     opciones = 5
@@ -31,10 +10,11 @@ def menuGestionAlumnos(alumnos):
       print("---------------------------")
       print("GESTIÓN DE ALUMNOS        ")
       print("---------------------------")
-      print("[1] Nuevo alumno")
-      print("[2] Modificar alumno")
-      print("[3] Eliminar alumno")
-      print("[4] Buscar alumno por legajo")
+      print("[1] Listar alumnos")
+      print("[2] Nuevo alumno")
+      print("[3] Modificar alumno")
+      print("[4] Eliminar alumno")
+      print("[5] Buscar alumno por legajo")
       print("---------------------------")
       print("[0] Volver al menú principal")
       print()
@@ -50,24 +30,28 @@ def menuGestionAlumnos(alumnos):
       break
 
     elif opcion == "1":   # Opción nuevo alumno
+      alumnosModule.listarAlumnos(alumnos)
+      ...
+    elif opcion == "2":   # Opción nuevo alumno
       nombre = input("Ingrese el nombre del alumno: ")
       apellido = input("Ingrese el apellido del alumno: ")
-      alumnosModule.nuevoAlumno(nombre, apellido, alumnos)
+      dni = input("Ingrese el DNI del alumno: ")
+      alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
       print(alumnos[-1])
       ...
-    elif opcion == "2":   # Opción modificar alumno
+    elif opcion == "3":   # Opción modificar alumno
       # menuGestionClasesMaterias()
       ...
-    elif opcion == "3":   # Opción eliminar alumno
+    elif opcion == "4":   # Opción eliminar alumno
       # menuGestionFacturas()
       ...
-    elif opcion == "4":   # Opción buscar alumno por legajo
+    elif opcion == "5":   # Opción buscar alumno por legajo
       alumnosModule.encontrarPorLegajo()
 
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")
 
-def mostrarMenu(alumnos):
+def mostrarMenu(alumnos, clases, facturas):
   while True:
     opciones = 4
     while True:
@@ -106,9 +90,11 @@ def mostrarMenu(alumnos):
     print("\n\n")
 
 def main():
-  [alumnos, clases] = generarDatosIniciales()
-  alumnosModule.nuevoAlumno("Juan", "Pérez", alumnos)
-  mostrarMenu(alumnos)
+  alumnos = alumnosModule.generarAlumnos(125)
+  clases = clasesMateriasModule.generarClases(clasesMateriasModule.materias, 20)
+  facturas = []
+  
+  mostrarMenu(alumnos, clases, facturas)
 
 if __name__ == "__main__":
   main()
