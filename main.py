@@ -56,7 +56,7 @@ def menuGestionAlumnos(alumnos):
       
       while True:
         campo = input("Ingrese el campo a modificar (nombre, apellido): ")
-        if campo in ["nombre", "apellido"]
+        if campo in ["nombre", "apellido"]:
           break
         
       alumnosModule.modificarAlumnoPorLU(legajo, campo, alumnos)
