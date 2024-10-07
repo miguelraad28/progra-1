@@ -14,7 +14,7 @@ def generarDatosIniciales():
     - alumnos: Lista de alumnos generada por `alumnosModule.generarAlumnos()`.
     - clases: Lista de clases generada por `clasesMateriasModule.generarClases()`.
   """
-  alumnos = alumnosModule.generarAlumnos()
+  alumnos = alumnosModule.generarAlumnos(500)
   clases = clasesMateriasModule.generarClases(clasesMateriasModule.materias, 20)
   print("* *  * **alumnos")
   print(alumnos)
