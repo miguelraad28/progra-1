@@ -34,11 +34,33 @@ def menuGestionAlumnos(alumnos):
     elif opcion == "2":   # Opción nuevo alumno
       nombre = input("Ingrese el nombre del alumno: ")
       apellido = input("Ingrese el apellido del alumno: ")
-      dni = input("Ingrese el DNI del alumno: ")
-      alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
-      print(alumnos[-1])
+      dni = int(input("Ingrese el DNI del alumno: "))
+
+      alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos[:])
+      alumnoCreado = alumnos[-1]
+      
+      print("")
+      print(f"Nombre: {alumnoCreado["nombre"]}")
+      print(f"Apellido: {alumnoCreado["apellido"]}")
+      print(f"D.N.I: {alumnoCreado["DNI"]:,}")
+      print(f"L.U: {alumnoCreado["LU"]:,}")
+      print("_________________________")
+      print("")
       ...
     elif opcion == "3":   # Opción modificar alumno
+      while True:
+        legajo = int(input("Ingrese el legajo del alumno a modificar: "))
+        [encontrado, alumno] = alumnosModule.encontrarPorLegajo(legajo, alumnos)
+        if encontrado:
+          break
+      
+      while True:
+        campo = input("Ingrese el campo a modificar (nombre, apellido): ")
+        if campo in ["nombre", "apellido"]
+          break
+        
+      alumnosModule.modificarAlumnoPorLU(legajo, campo, alumnos)
+      
       # menuGestionClasesMaterias()
       ...
     elif opcion == "4":   # Opción eliminar alumno

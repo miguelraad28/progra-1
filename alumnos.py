@@ -77,13 +77,17 @@ def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
 def encontrarPorLegajo():
   legajo = int(input("Ingrese el legajo del alumno: "))
   
+  encontrado = False
+  alumnoEncontrado = {}
+  
   for alumno in alumnos:
     if alumno["LU"] == legajo:
-      print("*** alumno encontrado")
-      print(alumno)
-      return  alumno
+      encontrado = True
+      alumnoEncontrado = alumno
   else:
     print("No se encontró un alumno con el legajo ingresado.")
+    
+  return [encontrado, alumnoEncontrado]
 
 def encontrarPorDni():
   dni = int(input("Ingrese el dni del alumno: "))
@@ -96,8 +100,10 @@ def encontrarPorDni():
       print(f"L.U: {alumno["LU"]:,}")
       print("_________________________")
       print("")
+      break
   else:
     print("No se encontró un alumno con el legajo ingresado.")
+  return
 
 if __name__ == "__main__":
   print(len(alumnos))
