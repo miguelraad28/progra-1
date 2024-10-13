@@ -99,6 +99,10 @@ def menuGestionAlumnos(alumnos):
     print("\n\n")
 
 def menuGestionClases(clases):
+  '''
+  Menú de gestión de clases
+  ARGS: clases - Lista de clases
+  '''
   while True:
     opciones = 6
     while True:
@@ -175,7 +179,7 @@ def mostrarMenu(alumnos, clases, facturas):
       menuGestionAlumnos(alumnos)
       ...
     elif opcion == "2":   # Opción 2
-      # menuGestionClasesMaterias()
+      menuGestionClases(clases)
       ...
     elif opcion == "3":   # Opción 3
       # menuGestionFacturas()
@@ -189,7 +193,7 @@ def main():
   # Inicialización de variables
   #----------------------------------------------------------------------------------------------
   alumnos = alumnosModule.generarAlumnos(125)
-  clases = clasesMateriasModule.generarClases(clasesMateriasModule.materias, 20)
+  clases = clasesMateriasModule.generarClases(20)
   facturas = []
   #-------------------------------------------------
   # Bloque de menú

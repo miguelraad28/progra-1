@@ -15,7 +15,7 @@ materias = [
   {"id": 10, "nombre": "Inglés Técnico I"},
 ]
 
-def generarClases(materias, cantidad):
+def generarClases(cantidad):
   '''
   Genera una lista de clases basado en las materias que tenemos al inicio del modulo de manera aleatoria para inicializar el programa con datos en memoria.
   '''
@@ -32,7 +32,7 @@ def generarClases(materias, cantidad):
     clases.append(clase)
   return clases
 
-def crearClase(clases, materias):
+def crearClase(clases):
   '''
   Crea una nueva clase y la agrega a la lista de clases.
   ARGS:
@@ -141,7 +141,7 @@ def desasignarClase(LU, clase, alumnos):
   return alumnos
 
 if __name__ == "__main__":
-  clases = generarClases(materias, 5)
+  clases = generarClases(5)
   print(clases)
   print(asignarNuevaClase(800000, clases[0], [{"LU": 800000}]))
   print(desasignarClase(800000, clases[0], [{"LU": 800000, "clases": [clases[0]]}]))
