@@ -89,11 +89,20 @@ def listarAlumnosInactivos(alumnos):
   return
 
 def nuevoAlumno(nombre, apellido, dni, alumnos):
+  '''
+  Crea un nuevo alumno y lo agrega a la lista de alumnos.
+  ARGS:
+    nombre: str - Nombre del alumno.
+    apellido: str - Apellido del alumno.
+    dni: int - DNI del alumno.
+    alumnos: list - Lista de alumnos a la que se le agregará el nuevo alumno.
+  '''
   legajoGenerado = random.randint(800000, 1200000)
     
   while legajoGenerado in [alumno["LU"] for alumno in alumnos]:
     legajoGenerado = random.randint(800000, 1200000)
-    email = generarMail(nombre, apellido, legajoGenerado)
+  email = generarEmail(nombre, apellido, legajoGenerado)
+
   alumno = {
     "nombre": nombre,
     "apellido": apellido,
@@ -108,11 +117,15 @@ def nuevoAlumno(nombre, apellido, dni, alumnos):
   
   return alumnos
 
-def generarMail(nombre, apellido, legajo):
-    nombreSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', nombre).lower()
-    apellidoSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', apellido).lower()
-    mail = f"{nombreSinEspaciosYLimpio[0]}{apellidoSinEspaciosYLimpio}.{legajo}@edau.edu.ar"
-    return mail
+def generarEmail(nombre, apellido, legajo):
+  '''
+  Genera un email a partir del nombre, apellido y legajo del alumno utilizando expresiones regulares para evitar caracteres especiales.
+  '''
+  nombreSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', nombre).lower()
+  apellidoSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', apellido).lower()
+  mail = f"{nombreSinEspaciosYLimpio[0]}{apellidoSinEspaciosYLimpio}.{legajo}@edau.edu.ar"
+  
+  return mail
 
 def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
   if propiedad not in ["nombre", "apellido"]:
