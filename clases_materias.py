@@ -36,8 +36,8 @@ def crearClase(clases, materias):
   '''
   Crea una nueva clase y la agrega a la lista de clases.
   ARGS:
-    clases: List[Dict] - Lista de clases a la que se le agregará la nueva clase.
-    materias: List[Dict] - Lista de materias disponibles para seleccionar la materia de la clase.
+    clases: lista - Lista de clases a la que se le agregará la nueva clase.
+    materias: list - Lista de materias disponibles para seleccionar la materia de la clase.
   '''
   if len(clases) > 0:
       nuevoId = clases[-1]["id"] + 1 
@@ -74,8 +74,8 @@ def crearClase(clases, materias):
     "dia": dia, 
     "turno": turno,
     "anio": "2024",
-    "cuatrimestre": 1,
-    "materia_id": id,
+    "cuatrimestre": 1, # Por defecto, siempre se crea en el 2do cuatrimestre (n° 1).
+    "materiaId": id,
   }
   
   clases.append(claseNueva)
