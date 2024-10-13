@@ -79,57 +79,56 @@ def crearClase(clases, materias):
   }
   
   clases.append(claseNueva)
-  print("Clase creada con éxito:", claseNueva)
+  
+  return claseNueva
 
 def buscarClasePorId(clases, id):
-    for clase in clases:
-        if clase["id"] == id:
-            return clase
-    return None
+  for clase in clases:
+    if clase["id"] == id:
+      return clase
+  return None
 
 def modificarClase(clases):
-    id = int(input("Ingrese el ID de la clase que desea modificar: "))
-    claseEncontrada = buscarClasePorId(clases, id)
-    if claseEncontrada:
-      print(f"Clase encontrada: {claseEncontrada}") 
-      while True:
-          nuevoDia = int(input("Ingrese el nuevo día de la clase (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): "))
-          if 0 <= nuevoDia <= 4:
-              claseEncontrada["dia"] = nuevoDia
-              break
-          else:
-              print("Opción inválida. Ingrese un día válido (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes).")
-      while True:
-          nuevoTurno = int(input("Ingrese el nuevo turno de la clase (0: Mañana, 1: Tarde, 2: Noche): "))
-          if 0 <= nuevoTurno <= 2:
-              claseEncontrada["turno"] = nuevoTurno
-              break
-          else:
-              print("Opción inválida. Ingrese un turno válido (0: Mañana, 1: Tarde, 2: Noche).")
-      print(f"Clase actualizada: {claseEncontrada}")
-    else:
-      print("No se encontró una clase con el ID ingresado.")
+  id = int(input("Ingrese el ID de la clase que desea modificar: "))
+  claseEncontrada = buscarClasePorId(clases, id)
+  if claseEncontrada:
+    print(f"Clase encontrada: {claseEncontrada}") 
+    while True:
+        nuevoDia = int(input("Ingrese el nuevo día de la clase (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): "))
+        if 0 <= nuevoDia <= 4:
+            claseEncontrada["dia"] = nuevoDia
+            break
+        else:
+            print("Opción inválida. Ingrese un día válido (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes).")
+    while True:
+        nuevoTurno = int(input("Ingrese el nuevo turno de la clase (0: Mañana, 1: Tarde, 2: Noche): "))
+        if 0 <= nuevoTurno <= 2:
+            claseEncontrada["turno"] = nuevoTurno
+            break
+        else:
+            print("Opción inválida. Ingrese un turno válido (0: Mañana, 1: Tarde, 2: Noche).")
+    print(f"Clase actualizada: {claseEncontrada}")
+  else:
+    print("No se encontró una clase con el ID ingresado.")
 
 def eliminarClase(clases):
-    id = int(input("Ingrese el ID de la clase que desea eliminar: "))
-    for clase in clases:
-        if clase["id"] == id:
-            if clase["Estado"] == "Activa":
-                clase["Estado"] = "Inactiva"
-                print(f"Clase eliminada: {clase}")
-            else:
-                print("La clase ya está eliminada.")
-                print(f"{clase}")
-            return
-    print("No se encontró una clase con el ID ingresado.")
-  
-def asignarNuevaClase(LU, clase, alumnos):
+  id = int(input("Ingrese el ID de la clase que desea eliminar: "))
+  for clase in clases:
+    if clase["id"] == id:
+        if clase["Estado"] == "Activa":
+            clase["Estado"] = "Inactiva"
+            print(f"Clase eliminada: {clase}")
+        else:
+            print("La clase ya está eliminada.")
+        return
+    else:
+      print("No se encontró una clase con el ID ingresado.")
+  return
+
+def asignarNuevaClase(LU, claseId, alumnos):
   for alumno in alumnos:
     if alumno["LU"] == LU:
-      if "clases" not in alumno:
-        alumno["clases"] = []
-      alumno["clases"].append(clase)
-      return alumnos
+      alumno["clases"].append(claseId)
   return alumnos
 
 

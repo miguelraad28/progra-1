@@ -33,18 +33,17 @@ def generarAlumnos(cantidad):
     
     mail_generado = str(f"{nombre[0].lower()}{apellido.lower()}.{legajo_generado}@edau.edu.ar")
 
-    while mail_generado in [alumno["Mail"] for alumno in alumnos]:
+    while mail_generado in [alumno["email"] for alumno in alumnos]:
       mail_generado = str(f"{nombre[0].lower()}{apellido.lower()}.{legajo_generado}@edau.edu.ar")
-
-    estado = 'Activo'
     
     alumno = {
       "nombre": nombre,
       "apellido": apellido,
       "DNI": dni_generado,
       "LU": legajo_generado,
-      "Mail": mail_generado,
-      "Estado": estado
+      "email": mail_generado,
+      "clases": [],
+      "estado": 'Activo',
     }
     alumnos.append(alumno)
 
@@ -58,24 +57,24 @@ def listarAlumnos(alumnos):
     print(f"Apellido: {alumno["apellido"]}")
     print(f"D.N.I: {alumno["DNI"]:,}")
     print(f"L.U: {alumno["LU"]:,}")
-    print(f"Mail: {alumno["Mail"]}")
+    print(f"Email: {alumno["email"]}")
     print("_________________________")
     print("")
 
-    print(f"Alumnos activos totales: {sum(1 for alumno in alumnos if alumno['Estado'] == 'Activo')}")
+    print(f"Alumnos activos totales: {sum(1 for alumno in alumnos if alumno['estado'] == 'Activo')}")
   return
 
 def listarAlumnosInactivos(alumnos):
   for alumno in alumnos:
-    if alumno['Estado'] == 'Inactivo':
+    if alumno['estado'] == 'Inactivo':
       print(f"Nombre: {alumno["nombre"]}")
       print(f"Apellido: {alumno["apellido"]}")
       print(f"D.N.I: {alumno["DNI"]:,}")
       print(f"L.U: {alumno["LU"]:,}")
-      print(f"Mail: {alumno["Mail"]}")
+      print(f"Email: {alumno["email"]}")
       print("_")
       print("")
-  print(f"Alumnos inactivos totales: {sum(1 for alumno in alumnos if alumno['Estado'] == 'Inactivo')}")
+  print(f"Alumnos inactivos totales: {sum(1 for alumno in alumnos if alumno['estado'] == 'Inactivo')}")
   return
 
 def nuevoAlumno(nombre, apellido, dni, alumnos):
@@ -85,20 +84,20 @@ def nuevoAlumno(nombre, apellido, dni, alumnos):
     "apellido": apellido,
     "DNI": dni,
     "LU": legajoU,
-    "Mail": generarMail(nombre, apellido, legajoU),
-    "Estado": 'Activo'
+    "email": generarEmail(nombre, apellido, legajoU),
+    "estado": 'Activo'
   }
   
   alumnos.append(alumno)
   
   return alumnos
 
-def generarMail(nombre, apellido, legajo):
+def generarEmail(nombre, apellido, legajo):
   '''
-  Genera un mail teniendo en cuenta la primera letra del nombre, el apellido y el legajo
+  Genera un email teniendo en cuenta la primera letra del nombre, el apellido y el legajo
   '''
-  mail = str(f"{nombre[0].lower()}{apellido.lower()}.{legajo}@edau.edu.ar")
-  return mail
+  email = str(f"{nombre[0].lower()}{apellido.lower()}.{legajo}@edau.edu.ar")
+  return email
 
 def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
   for alumno in alumnos:
@@ -134,7 +133,7 @@ def encontrarPorDni():
       print(f"Apellido: {alumno["apellido"]}")
       print(f"D.N.I: {alumno["DNI"]:,}")
       print(f"L.U: {alumno["LU"]:,}")
-      print(f"Mail: {alumno["Mail"]:,}")
+      print(f"Email: {alumno["email"]:,}")
       print("_________________________")
       print("")
       break
@@ -145,7 +144,7 @@ def encontrarPorDni():
 def borrarAlumnoLogico(LU, alumnos):
     for alumno in alumnos:
         if alumno["LU"] == LU:
-            alumno["Estado"] = "Inactivo"
+            alumno["estado"] = "Inactivo"
             print(f"El alumno con LU {LU} ha sido marcado como Inactivo.")
             return alumnos
     print(f"No se encontró un alumno con el LU {LU}.")
