@@ -1,6 +1,24 @@
+"""
+-----------------------------------------------------------------------------------------------
+Título: TPO
+Fecha: 14/10/2024
+Autor: Miguel Raad, Roberto Saavedra, Felipe Di Liscia, Daniel Bilikin
+
+Descripción: Proyecto de gestión de alumnos, clases y facturación de una universidad, EDAU.
+
+Pendientes: ...
+-----------------------------------------------------------------------------------------------
+"""
+
+#----------------------------------------------------------------------------------------------
+# MÓDULOS
+#----------------------------------------------------------------------------------------------
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
 
+#----------------------------------------------------------------------------------------------
+# FUNCIONES
+#----------------------------------------------------------------------------------------------
 def menuGestionAlumnos(alumnos):
   while True:
     opciones = 8
@@ -125,6 +143,9 @@ def menuGestionClases(clases):
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")
 
+#----------------------------------------------------------------------------------------------
+# CUERPO PRINCIPAL
+#----------------------------------------------------------------------------------------------
 def mostrarMenu(alumnos, clases, facturas):
   while True:
     opciones = 4
@@ -164,10 +185,15 @@ def mostrarMenu(alumnos, clases, facturas):
     print("\n\n")
 
 def main():
+  #-------------------------------------------------
+  # Inicialización de variables
+  #----------------------------------------------------------------------------------------------
   alumnos = alumnosModule.generarAlumnos(125)
   clases = clasesMateriasModule.generarClases(clasesMateriasModule.materias, 20)
   facturas = []
-  
+  #-------------------------------------------------
+  # Bloque de menú
+  #----------------------------------------------------------------------------------------------
   mostrarMenu(alumnos, clases, facturas)
 
 if __name__ == "__main__":
