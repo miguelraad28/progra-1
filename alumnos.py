@@ -1,4 +1,5 @@
 import random
+import re
 
 # Alumnos
 
@@ -86,12 +87,14 @@ def listarAlumnosInactivos(alumnos):
   print(f"Alumnos inactivos totales: {sum(1 for alumno in alumnos if alumno['estado'] == 'Inactivo')}")
   return
 
-def nuevoAlumno(nombre, apellido, email, dni, alumnos):
+def nuevoAlumno(nombre, apellido, dni, alumnos):
   legajoGenerado = random.randint(800000, 1200000)
     
   while legajoGenerado in [alumno["LU"] for alumno in alumnos]:
     legajoGenerado = random.randint(800000, 1200000)
-  
+
+  email = generarMail
+
   alumno = {
     "nombre": nombre,
     "apellido": apellido,
@@ -105,6 +108,13 @@ def nuevoAlumno(nombre, apellido, email, dni, alumnos):
   alumnos.append(alumno)
   
   return alumnos
+
+def generarMail(nombre, apellido, legajo):
+    nombreSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', nombre).lower()
+    apellidoSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', apellido).lower()
+    mail = f"{nombreSinEspaciosYLimpio[0]}{apellidoSinEspaciosYLimpio}.{legajo}@edau.edu.ar"
+    
+    return mail
 
 def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
   for alumno in alumnos:
@@ -120,7 +130,7 @@ def encontrarPorLegajo(alumnos):
   alumnoEncontrado = {}
   
   for alumno in alumnos:
-    if alumno["LU"] == legajo:
+    if alumno["LU"] == legajo and alumno['estado'] == 'Activo':
       encontrado = True
       alumnoEncontrado = alumno
     
@@ -132,7 +142,7 @@ def encontrarPorDni(dni):
   '''
   alumnoEncontrado = None
   for alumno in alumnos:
-    if alumno["DNI"] == dni:
+    if alumno["DNI"] == dni and alumno['estado'] == 'Activo':
       alumnoEncontrado = alumno
   return alumnoEncontrado
 
