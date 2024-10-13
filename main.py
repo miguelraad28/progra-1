@@ -66,7 +66,7 @@ def menuGestionAlumnos(alumnos):
 
       dni = alumnosModule.pedirDniNuevoAlumno()
 
-      alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos[:])
+      alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
       alumnoCreado = alumnos[-1]
       
       print("")
@@ -74,7 +74,7 @@ def menuGestionAlumnos(alumnos):
       print(f"Apellido: {alumnoCreado["apellido"]}")
       print(f"D.N.I: {alumnoCreado["DNI"]:,}")
       print(f"L.U: {alumnoCreado["LU"]:,}")
-      print(f"Mail: {alumnoCreado["Mail"]}")
+      print(f"Email: {alumnoCreado["email"]}")
       print("_________________________")
       print("")
       
