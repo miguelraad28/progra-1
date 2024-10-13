@@ -61,6 +61,7 @@ def crearClase(clases):
   while True:
       print("")
       print("Listado materias: ")
+      print("_____________________")
       for materia in materias:
           print(f"{materia['id']}: {materia['nombre']}")
       id = int(input("Ingrese el ID de la materia de la clase a crear: "))

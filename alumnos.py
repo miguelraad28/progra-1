@@ -23,25 +23,23 @@ def generarAlumnos(cantidad):
     
     dni_generado = random.randint(30000000, 45000000)
     
-    while dni_generado in [alumno["DNI"] for alumno in alumnos]:
-      dni_generado = random.randint(30000, 45000000)
+    while dniGenerado in [alumno["DNI"] for alumno in alumnos]:
+      dniGenerado = random.randint(30000, 45000000)
       
-    legajo_generado = random.randint(800000, 1200000)
+    legajoGenerado = random.randint(800000, 1200000)
     
-    while legajo_generado in [alumno["LU"] for alumno in alumnos]:
-      legajo_generado = random.randint(800000, 1200000)
+    while legajoGenerado in [alumno["LU"] for alumno in alumnos]:
+      legajoGenerado = random.randint(800000, 1200000)
     
-    mail_generado = str(f"{nombre[0].lower()}{apellido.lower()}.{legajo_generado}@edau.edu.ar")
+    # Ya el legajo es único asi que por lo tanto el email también.
+    mailGenerado = str(f"{nombre[0].lower()}{apellido.lower()}.{legajoGenerado}@edau.edu.ar")
 
-    while mail_generado in [alumno["email"] for alumno in alumnos]:
-      mail_generado = str(f"{nombre[0].lower()}{apellido.lower()}.{legajo_generado}@edau.edu.ar")
-    
     alumno = {
       "nombre": nombre,
       "apellido": apellido,
       "DNI": dni_generado,
-      "LU": legajo_generado,
-      "email": mail_generado,
+      "LU": legajoGenerado,
+      "email": mailGenerado,
       "clases": [],
       "estado": 'Activo',
     }
@@ -60,7 +58,7 @@ def listarAlumnos(alumnos):
     print(f"Email: {alumno["email"]}")
     print("_________________________")
     print("")
-
+    
     print(f"Alumnos activos totales: {sum(1 for alumno in alumnos if alumno['estado'] == 'Activo')}")
   return
 
@@ -77,27 +75,24 @@ def listarAlumnosInactivos(alumnos):
   print(f"Alumnos inactivos totales: {sum(1 for alumno in alumnos if alumno['estado'] == 'Inactivo')}")
   return
 
-def nuevoAlumno(nombre, apellido, dni, alumnos):
-  legajoU = random.randint(800000, 1200000)
+def nuevoAlumno(nombre, apellido, email, dni, alumnos):
+  legajoGenerado = random.randint(800000, 1200000)
+    
+  while legajoGenerado in [alumno["LU"] for alumno in alumnos]:
+    legajoGenerado = random.randint(800000, 1200000)
+  
   alumno = {
     "nombre": nombre,
     "apellido": apellido,
     "DNI": dni,
-    "LU": legajoU,
-    "email": generarEmail(nombre, apellido, legajoU),
+    "LU": legajoGenerado,
+    "email": email,
     "estado": 'Activo'
   }
   
   alumnos.append(alumno)
   
   return alumnos
-
-def generarEmail(nombre, apellido, legajo):
-  '''
-  Genera un email teniendo en cuenta la primera letra del nombre, el apellido y el legajo
-  '''
-  email = str(f"{nombre[0].lower()}{apellido.lower()}.{legajo}@edau.edu.ar")
-  return email
 
 def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
   for alumno in alumnos:
