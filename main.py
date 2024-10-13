@@ -3,7 +3,7 @@ import clases_materias as clasesMateriasModule
 
 def menuGestionAlumnos(alumnos):
   while True:
-    opciones = 5
+    opciones = 8
     while True:
       print()
       print("---------------------------")
@@ -12,8 +12,10 @@ def menuGestionAlumnos(alumnos):
       print("[1] Listar alumnos")
       print("[2] Nuevo alumno")
       print("[3] Modificar alumno")
-      print("[4] Eliminar alumno")
+      print("[4] Eliminar alumno por legajo")
       print("[5] Buscar alumno por legajo")
+      print("[6] Buscar alumno por DNI")
+      print("[7] Listar alumnos inactivos")
       print("---------------------------")
       print("[0] Volver al menú principal")
       print()
@@ -30,11 +32,11 @@ def menuGestionAlumnos(alumnos):
 
     elif opcion == "1":   # Opción nuevo alumno
       alumnosModule.listarAlumnos(alumnos)
-      ...
+      
     elif opcion == "2":   # Opción nuevo alumno
-      nombre = input("Ingrese el nombre del alumno: ")
-      apellido = input("Ingrese el apellido del alumno: ")
-      dni = int(input("Ingrese el DNI del alumno: "))
+      nombre = input("Ingrese el nombre del alumno: ").capitalize()
+      apellido = input("Ingrese el apellido del alumno: ").capitalize()
+      dni = alumnosModule.pideDNI(alumnos)
 
       alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos[:])
       alumnoCreado = alumnos[-1]
@@ -44,9 +46,10 @@ def menuGestionAlumnos(alumnos):
       print(f"Apellido: {alumnoCreado["apellido"]}")
       print(f"D.N.I: {alumnoCreado["DNI"]:,}")
       print(f"L.U: {alumnoCreado["LU"]:,}")
+      print(f"Mail: {alumnoCreado["Mail"]}")
       print("_________________________")
       print("")
-      ...
+      
     elif opcion == "3":   # Opción modificar alumno
       while True:
         legajo = int(input("Ingrese el legajo del alumno a modificar: "))
@@ -61,13 +64,63 @@ def menuGestionAlumnos(alumnos):
         
       alumnosModule.modificarAlumnoPorLU(legajo, campo, alumnos)
       
-      # menuGestionClasesMaterias()
-      ...
     elif opcion == "4":   # Opción eliminar alumno
-      # menuGestionFacturas()
-      ...
+      LU = int(input("Ingrese el Legajo a eliminar: "))
+      alumnosModule.borrarAlumnoLogico(LU, alumnos)
+      
     elif opcion == "5":   # Opción buscar alumno por legajo
       alumnosModule.encontrarPorLegajo()
+
+    elif opcion == "6":   # Opción buscar alumno por DNI
+      alumnosModule.encontrarPorDni()
+
+    elif opcion == "7":   # Opcion mostrar alumnos inactivos
+      alumnosModule.listarAlumnosInactivos(alumnos)
+
+    input("\nPresione ENTER para volver al menú de gestión de alumnos.")
+    print("\n\n")
+
+def menuGestionClases(clases):
+  while True:
+    opciones = 6
+    while True:
+      print()
+      print("---------------------------")
+      print("GESTIÓN DE CLASES        ")
+      print("---------------------------")
+      print("[1] Crear nueva Clase")
+      print("[2] Modificar Clases")
+      print("[3] Eliminar Clases")
+      print("[4] Asignar Alumno a Clase")
+      print("[5] Dar de baja un algumno de una Clase")
+      print("---------------------------")
+      print("[0] Volver al menú principal")
+      print()
+      
+      opcion = input("Seleccione una opción: ")
+      if opcion in [str(i) for i in range(0, opciones)]: # Sólo continua si se elije una opcion de menú válida
+        break
+      else:
+        input("Opción inválida. Presione ENTER para volver a seleccionar.")
+    print()
+
+    if opcion == "0": # Opción volver al menú principal
+      break
+
+    elif opcion == "1":   # Opción nueva clase
+      clasesMateriasModule.crearClase(clases)
+      
+    elif opcion == "2":   # Opción modificar clase
+      clasesMateriasModule.modificarClase(clases)
+      
+    elif opcion == "3":   # Opción eliminar clase
+      clasesMateriasModule.eliminarClase(clases)
+
+    elif opcion == "4":   # Opción asignar alumno a clase
+      ...    
+
+    elif opcion == "5":   # Opción Dar de baja un algumno de una clase
+      ...  
 
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")
