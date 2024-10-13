@@ -24,23 +24,25 @@ def generarAlumnos(cantidad):
     
     dni_generado = random.randint(30000000, 45000000)
     
-    while dni_generado in [alumno["DNI"] for alumno in alumnos]:
-      dni_generado = random.randint(30000000, 45000000)
+    while dniGenerado in [alumno["DNI"] for alumno in alumnos]:
+      dniGenerado = random.randint(300000, 45000000)
       
-    legajo_generado = random.randint(800000, 1200000)
+    legajoGenerado = random.randint(800000, 1200000)
     
-    while legajo_generado in [alumno["LU"] for alumno in alumnos]:
-      legajo_generado = random.randint(800000, 1200000)
+    while legajoGenerado in [alumno["LU"] for alumno in alumnos]:
+      legajoGenerado = random.randint(800000, 1200000)
     
-    mail_generado = str(f"{nombre[0].lower()}{apellido.lower()}.{legajo_generado}@edau.edu.ar")
-    
+    # Ya el legajo es único asi que por lo tanto el email también.
+    mailGenerado = str(f"{nombre[0].lower()}{apellido.lower()}.{legajoGenerado}@edau.edu.ar")
+
     alumno = {
       "nombre": nombre,
       "apellido": apellido,
       "DNI": dni_generado,
-      "LU": legajo_generado,
-      "mail": mail_generado,
-      "estado": "Activo"
+      "LU": legajoGenerado,
+      "email": mailGenerado,
+      "clases": [],
+      "estado": 'Activo',
     }
     alumnos.append(alumno)
 
@@ -54,62 +56,63 @@ def listarAlumnos(alumnos):
     print(f"Apellido: {alumno["apellido"]}")
     print(f"D.N.I: {alumno["DNI"]:,}")
     print(f"L.U: {alumno["LU"]:,}")
-    print(f"Mail: {alumno["Mail"]}")
+    print(f"Email: {alumno["email"]}")
     print("_________________________")
     print("")
-  print(f"Alumnos activos totales: {sum(1 for alumno in alumnos if alumno['Estado'] == 'Activo')}")
+    
+    print(f"Alumnos activos totales: {sum(1 for alumno in alumnos if alumno['estado'] == 'Activo')}")
   return
 
 def listarAlumnosInactivos(alumnos):
   for alumno in alumnos:
-    if alumno['Estado'] == 'Inactivo':
+    if alumno['estado'] == 'Inactivo':
       print(f"Nombre: {alumno["nombre"]}")
       print(f"Apellido: {alumno["apellido"]}")
       print(f"D.N.I: {alumno["DNI"]:,}")
       print(f"L.U: {alumno["LU"]:,}")
-      print(f"Mail: {alumno["Mail"]}")
+      print(f"Email: {alumno["email"]}")
       print("_")
       print("")
-  print(f"Alumnos inactivos totales: {sum(1 for alumno in alumnos if alumno['Estado'] == 'Inactivo')}")
+  print(f"Alumnos inactivos totales: {sum(1 for alumno in alumnos if alumno['estado'] == 'Inactivo')}")
   return
 
-def nuevoAlumno(nombre, apellido, dni, alumnos):
-  legajoU = random.randint(800000, 1200000)
-  while legajoU in [alumno["LU"] for alumno in alumnos]:
-      legajoU = random.randint(800000, 1200000)
-  generarMail(nombre, apellido)
-
+def nuevoAlumno(nombre, apellido, email, dni, alumnos):
+  legajoGenerado = random.randint(800000, 1200000)
+    
+  while legajoGenerado in [alumno["LU"] for alumno in alumnos]:
+    legajoGenerado = random.randint(800000, 1200000)
+  
+  email = generarMail(nombre, apellido, legajoGenerado)
+  
   alumno = {
     "nombre": nombre,
     "apellido": apellido,
     "DNI": dni,
-    "LU": legajoU,
-    "mail": generarMail(nombre, apellido, legajoU),
+    "LU": legajoGenerado,
+    "email": email,
     "estado": 'Activo'
   }
-  
+
   alumnos.append(alumno)
   
   return alumnos
 
 def generarMail(nombre, apellido, legajo):
-  '''
-  Permite el ingreso de informacion como nombre y apellido para crear el un mail teniendo en cuenta la primera letra del nombre, el apellido y el legajo
-  '''
-  nombreSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', nombre)
-  apellidoSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', apellido)
-  mail = str(f"{nombreSinEspaciosYLimpio.lower()}{apellido.lower()}.{legajo}@edau.edu.ar")
-  return mail
+    nombreSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', nombre).lower()
+    apellidoSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', apellido).lower()
+    mail = f"{nombreSinEspaciosYLimpio[0]}{apellidoSinEspaciosYLimpio}.{legajo}@edau.edu.ar"
+    return mail
 
 def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
   if propiedad not in ["nombre", "apellido"]:
-    print("Solo se puede modificar nombre o apellido.")
+    print("Solo se permite modificar el nombre o apellido.")
     return alumnos
   
   for alumno in alumnos:
     if alumno["LU"] == LU:
       alumno[propiedad] = nuevoValor
       return alumnos
+  print("No se encontró un alumno con el LU ingresado.")
   return alumnos
 
 def encontrarPorLegajo():
@@ -133,26 +136,24 @@ def encontrarPorDni():
   '''
   dni = int(input("Ingrese el dni del alumno: "))
   
-     
-
   for alumno in alumnos:
     if alumno["DNI"] == dni:
       print(f"Nombre: {alumno["nombre"]}")
       print(f"Apellido: {alumno["apellido"]}")
       print(f"D.N.I: {alumno["DNI"]:,}")
       print(f"L.U: {alumno["LU"]:,}")
-      print(f"Mail: {alumno["mail"]:,}")
+      print(f"Email: {alumno["email"]:,}")
       print("_________________________")
       print("")
       break
   else:
-    print("No se encontró un alumno con el DNI ingresado.")
+    print("No se encontró un alumno con el DNI ingresado o lo ingresado no fue valido.")
   return
 
 def borrarAlumnoLogico(LU, alumnos):
     for alumno in alumnos:
         if alumno["LU"] == LU:
-            alumno["Estado"] = "Inactivo"
+            alumno["estado"] = "Inactivo"
             print(f"El alumno con LU {LU} ha sido marcado como Inactivo.")
             return alumnos
     print(f"No se encontró un alumno con el LU {LU}.")

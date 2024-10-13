@@ -1,6 +1,24 @@
+"""
+-----------------------------------------------------------------------------------------------
+Título: TPO
+Fecha: 14/10/2024
+Autor: Miguel Raad, Roberto Saavedra, Felipe Di Liscia, Daniel Bilikin
+
+Descripción: Proyecto de gestión de alumnos, clases y facturación de una universidad, EDAU.
+
+Pendientes: ...
+-----------------------------------------------------------------------------------------------
+"""
+
+#----------------------------------------------------------------------------------------------
+# MÓDULOS
+#----------------------------------------------------------------------------------------------
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
 
+#----------------------------------------------------------------------------------------------
+# FUNCIONES
+#----------------------------------------------------------------------------------------------
 def menuGestionAlumnos(alumnos):
   while True:
     opciones = 8
@@ -81,6 +99,10 @@ def menuGestionAlumnos(alumnos):
     print("\n\n")
 
 def menuGestionClases(clases):
+  '''
+  Menú de gestión de clases
+  ARGS: clases - Lista de clases
+  '''
   while True:
     opciones = 6
     while True:
@@ -119,12 +141,15 @@ def menuGestionClases(clases):
     elif opcion == "4":   # Opción asignar alumno a clase
       ...    
 
-    elif opcion == "5":   # Opción dar de baja un algumno de una clase
+    elif opcion == "5":   # Opción Dar de baja un algumno de una clase
       ...  
 
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")
 
+#----------------------------------------------------------------------------------------------
+# CUERPO PRINCIPAL
+#----------------------------------------------------------------------------------------------
 def mostrarMenu(alumnos, clases, facturas):
   while True:
     opciones = 4
@@ -164,10 +189,15 @@ def mostrarMenu(alumnos, clases, facturas):
     print("\n\n")
 
 def main():
+  #-------------------------------------------------
+  # Inicialización de variables
+  #----------------------------------------------------------------------------------------------
   alumnos = alumnosModule.generarAlumnos(125)
-  clases = clasesMateriasModule.generarClases(clasesMateriasModule.materias, 20)
+  clases = clasesMateriasModule.generarClases(20)
   facturas = []
-  
+  #-------------------------------------------------
+  # Bloque de menú
+  #----------------------------------------------------------------------------------------------
   mostrarMenu(alumnos, clases, facturas)
 
 if __name__ == "__main__":
