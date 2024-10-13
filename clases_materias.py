@@ -33,46 +33,53 @@ def generarClases(materias, cantidad):
   return clases
 
 def crearClase(clases, materias):
-    if len(clases) > 0:
-        nuevoId = clases[-1]["id"] + 1 
-    else:
-        nuevoId = 1000 
+  '''
+  Crea una nueva clase y la agrega a la lista de clases.
+  ARGS:
+    clases: List[Dict] - Lista de clases a la que se le agregará la nueva clase.
+    materias: List[Dict] - Lista de materias disponibles para seleccionar la materia de la clase.
+  '''
+  if len(clases) > 0:
+      nuevoId = clases[-1]["id"] + 1 
+  else:
+      nuevoId = 1000 
 
-    while True:
-        dia = int(input("Ingrese el dia de la clase (0: Lunes, 1: Martes, 2: Miercoles, 3: Jueves, 4: Viernes): "))
-        if 0 <= dia <= 4:
-            break
-        else:
-            print("Opcion invalida, por favor ingrese una opcion correcta (0: Lunes, 1: Martes, 2: Miercoles, 3: Jueves, 4: Viernes)")
-    
-    while True:
-        turno = int(input("Ingrese el turno de la clase (0: Mañana, 1: Tarde, 2: Noche): "))
-        if 0 <= turno <= 2:
-            break
-        else:
-            print("Opcion invalida, por favor ingrese una opcion correcta (0: Mañana, 1: Tarde, 2: Noche)")
-    
-    while True:
-        print("Listado materias: ")
-        for materia in materias:
-            print(f"{materia['id']}: {materia['nombre']}")
-        id = int(input("Ingrese el ID de la materia de la clase: "))
-        if 1 <= id <= 10:
-            break
-        else:
-            print("ID invalido, por favor ingrese un ID correcto (entre 1 y 10)")
+  while True:
+      dia = int(input("Ingrese el dia de dictado de la clase (0: Lunes, 1: Martes, 2: Miercoles, 3: Jueves, 4: Viernes): "))
+      if 0 <= dia <= 4:
+          break
+      else:
+          print("Opcion invalida, por favor ingrese una opcion correcta (0: Lunes, 1: Martes, 2: Miercoles, 3: Jueves, 4: Viernes)")
+  
+  while True:
+      turno = int(input("Ingrese el turno de la clase (0: Mañana, 1: Tarde, 2: Noche): "))
+      if 0 <= turno <= 2:
+          break
+      else:
+          print("Opcion invalida, por favor ingrese una opcion correcta (0: Mañana, 1: Tarde, 2: Noche)")
+  
+  while True:
+      print("")
+      print("Listado materias: ")
+      for materia in materias:
+          print(f"{materia['id']}: {materia['nombre']}")
+      id = int(input("Ingrese el ID de la materia de la clase a crear: "))
+      if 1 <= id <= 10: # Acá forzamos un poco la validación del id de la materia basada en las que tenemos preescritas en el código.
+          break
+      else:
+          print("ID invalido, por favor ingrese un ID correcto (entre 1 y 10)")
 
-    claseNueva = {
-      "id": nuevoId,
-      "dia": dia, 
-      "turno": turno,
-      "anio": "2024",
-      "cuatrimestre": 1,
-      "materia_id": id,
-    }
-    
-    clases.append(claseNueva)
-    print("Clase creada con éxito:", claseNueva)
+  claseNueva = {
+    "id": nuevoId,
+    "dia": dia, 
+    "turno": turno,
+    "anio": "2024",
+    "cuatrimestre": 1,
+    "materia_id": id,
+  }
+  
+  clases.append(claseNueva)
+  print("Clase creada con éxito:", claseNueva)
 
 def buscarClasePorId(clases, id):
     for clase in clases:
