@@ -26,10 +26,10 @@ def generarClases(materias, cantidad):
       "id": i+1000,
       "dia": random.randint(0, 4),
       "turno": random.randint(0, 2),
-      "anio": datetime.datetime.now().year,
+      "anio": 2024,
       "cuatrimestre": random.randint(0, 1),
       "materiaId": random.choice(materias)["id"],
-      "Estado": "Activa"
+      "estado": "Activa"
     }
     clases.append(clase)
   return clases
@@ -64,17 +64,14 @@ def crearClase(clases, materias):
         else:
             print("ID invalido, por favor ingrese un ID correcto (entre 1 y 10)")
 
-    CualCuatrimestre = datetime.datetime.now().month
-    cuatrimestreActual = 0 if CualCuatrimestre < 7 else 1
-
     claseNueva = {
        "id": nuevoId,
        "dia": dia, 
        "turno": turno,
-       "anio": datetime.datetime.now().year,
-       "cuatrimestre": cuatrimestreActual,
+       "anio": 2024,
+       "cuatrimestre": 1,
        "materia_id": id,
-       "Estado": "Activa"
+       "estado": "Activa"
        }
     
     clases.append(claseNueva)

@@ -119,7 +119,7 @@ def menuGestionClases(clases):
     elif opcion == "4":   # Opción asignar alumno a clase
       ...    
 
-    elif opcion == "5":   # Opción Dar de baja un algumno de una clase
+    elif opcion == "5":   # Opción dar de baja un algumno de una clase
       ...  
 
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
@@ -154,7 +154,7 @@ def mostrarMenu(alumnos, clases, facturas):
       menuGestionAlumnos(alumnos)
       ...
     elif opcion == "2":   # Opción 2
-      # menuGestionClasesMaterias()
+      menuGestionClases(clases)
       ...
     elif opcion == "3":   # Opción 3
       # menuGestionFacturas()
