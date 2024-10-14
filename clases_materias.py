@@ -118,12 +118,13 @@ def buscarClasePorId(clases, id):
   return None
 
 def numeroValido(entrada, rango):
-    # Verifica si la entrada es un número dentro del rango especificado
-    return re.match(r'^\d+$', entrada) and (0 <= int(entrada) <= rango)
+  # Verifica si la entrada es un número dentro del rango especificado
+  return re.match(r'^[0-9]+$', entrada) and (0 <= int(entrada) <= rango)
 
 def modificarClase(clases):
   id = int(input("Ingrese el ID de la clase que desea modificar: "))
   claseEncontrada = buscarClasePorId(clases, id)
+
   if claseEncontrada:
     nombreMateria = "Desconocida"
     for materia in materias:
@@ -131,24 +132,26 @@ def modificarClase(clases):
         nombreMateria = materia['nombre']
         break
     print(f"Clase encontrada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestre[claseEncontrada['cuatrimestre']]}") 
+
     while True:
-        nuevoDia = input("Ingrese el nuevo día de la clase (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): ")
-        if nuevoDia == "":  # Si se presiona Enter, no se cambia el día
-                break
-        if numeroValido(nuevoDia, 4):
-                claseEncontrada["dia"] = int(nuevoDia)
-                break
-        else:
-            print("Opción inválida. Ingrese un día válido (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): ")
+      nuevoDia = input("Ingrese el nuevo día de la clase (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): ")
+      if nuevoDia == "":  # Si se presiona Enter, no se cambia el día
+        break
+      if numeroValido(nuevoDia, 4):
+        claseEncontrada["dia"] = int(nuevoDia)
+        break
+      else:
+        print("Opción inválida. Ingrese un día válido (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): ")
+
     while True:
-        nuevoTurno = input("Ingrese el nuevo turno de la clase (0: Mañana, 1: Tarde, 2: Noche): ")
-        if nuevoTurno == "":  # Si se presiona Enter, no se cambia el día
-                break
-        if numeroValido(nuevoTurno,2):
-            claseEncontrada["turno"] = int(nuevoTurno)
-            break
-        else:
-            print("Opción inválida. Ingrese un turno válido (0: Mañana, 1: Tarde, 2: Noche).")
+      nuevoTurno = input("Ingrese el nuevo turno de la clase (0: Mañana, 1: Tarde, 2: Noche): ")
+      if nuevoTurno == "":  # Si se presiona Enter, no se cambia el día
+        break
+      if numeroValido(nuevoTurno,2):
+        claseEncontrada["turno"] = int(nuevoTurno)
+        break
+      else:
+        print("Opción inválida. Ingrese un turno válido (0: Mañana, 1: Tarde, 2: Noche).")
     print(f"Clase actualizada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestre[claseEncontrada['cuatrimestre']]}")
   else:
     print("No se encontró una clase con el ID ingresado.")
@@ -224,8 +227,8 @@ def listarClasesDisponibles(alumno, clases):
           print(f"{clase['id']} - {nombreMateria} - Día: {dia} - Turno: {turno} - Año: {clase['anio']} - Cuatrimestre: {cuatrimestre}")
           print("")
   else:
-      print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando más de 5 materias y no se pueden listar más clases.")
-      print("")
+    print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando más de 5 materias y no se pueden listar más clases.")
+    print("")
 
   return clasesDisponibles
 
