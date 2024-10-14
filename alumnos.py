@@ -15,13 +15,14 @@ apellidos = [
 
 alumnos = [{
       "nombre": "Miguel",
-      "apellido": "apellido",
+      "apellido": "Raad",
       "DNI": 95656210,
       "LU": 1200447,
       "email": "miguelraad2020@gmail.com",
       "clases": [],
       "estado": 'Activo',
     }]
+
 def generarAlumnos(cantidad):
   '''
   Genera una lista de alumnos con nombres, apellidos, DNI y legajos aleatorios para inicializar el programa con datos en memoria.
@@ -76,6 +77,7 @@ def listarAlumnos(alumnos):
   return
 
 def listarAlumnosInactivos(alumnos):
+  encontradosInactivos = 0
   for alumno in alumnos:
     if alumno['estado'] == 'Inactivo':
       print(f"Nombre: {alumno["nombre"]}")
@@ -85,7 +87,8 @@ def listarAlumnosInactivos(alumnos):
       print(f"Email: {alumno["email"]}")
       print("_")
       print("")
-  print(f"Alumnos inactivos totales: {sum(1 for alumno in alumnos if alumno['estado'] == 'Inactivo')}")
+      encontradosInactivos += 1
+  print(f"Alumnos inactivos totales: {encontradosInactivos}")
   return
 
 def nuevoAlumno(nombre, apellido, dni, alumnos):
@@ -124,7 +127,7 @@ def generarEmail(nombre, apellido, legajo):
   nombreSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', nombre).lower()
   apellidoSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', apellido).lower()
   mail = f"{nombreSinEspaciosYLimpio[0]}{apellidoSinEspaciosYLimpio}.{legajo}@edau.edu.ar"
-  
+
   return mail
 
 def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
