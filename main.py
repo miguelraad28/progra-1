@@ -159,13 +159,13 @@ def menuGestionAlumnos(alumnos):
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")
 
-def menuGestionClases(clases):
+def menuGestionClases(clases, alumnos):
   '''
   Menú de gestión de clases
   ARGS: clases - Lista de clases
   '''
   while True:
-    opciones = 6
+    opciones = 7
     while True:
       print()
       print("---------------------------")
@@ -175,7 +175,8 @@ def menuGestionClases(clases):
       print("[2] Modificar Clases")
       print("[3] Eliminar Clases")
       print("[4] Asignar Alumno a Clase")
-      print("[5] Dar de baja un algumno de una Clase")
+      print("[5] Dar de baja un alumno de una Clase")
+      print("[6] Listar Clases de Alumno")
       print("---------------------------")
       print("[0] Volver al menú principal")
       print()
@@ -200,10 +201,30 @@ def menuGestionClases(clases):
       clasesMateriasModule.eliminarClase(clases)
 
     elif opcion == "4":   # Opción asignar alumno a clase
-      ...    
+      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
+      clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontrado, clases)
+      while True:
+        claseElegida = int(input("Ingrese la clase a la que deseas inscribir al alumno: "))
+        if claseElegida not in clasesDisponibles:
+            print("La clase elegida no es valida")
+        else:
+          break
+      clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos)
 
     elif opcion == "5":   # Opción Dar de baja un alumno de una clase
-      ...  
+      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
+      clasesAsignadasDeAlumno = clasesMateriasModule.listarClasesDeAlumno(alumnoEncontrado, clases)
+      while True:
+        claseElegida = int(input("Ingrese la clase a dar de baja: "))
+        if claseElegida not in clasesAsignadasDeAlumno:
+            print("La clase elegida no es valida")
+        else:
+          break
+      clasesMateriasModule.desasignarClase(legajo, claseElegida, alumnos)
+
+    elif opcion == "6":   # Opción Listar Clases de Alumnos
+      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
+      clasesMateriasModule.listarClasesDeAlumno(alumnoEncontrado, clases)
 
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")
@@ -240,7 +261,7 @@ def mostrarMenu(alumnos, clases, facturas):
       menuGestionAlumnos(alumnos)
       ...
     elif opcion == "2":   # Opción 2
-      menuGestionClases(clases)
+      menuGestionClases(clases, alumnos)
       ...
     elif opcion == "3":   # Opción 3
       # menuGestionFacturas()

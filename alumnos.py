@@ -189,6 +189,29 @@ def pedirDniNuevoAlumno():
       else:
           return dni 
 
+def chequeaLegajo(alumnos):
+  '''
+  Pide el legajo y comprueba que sea valido, si no lo es o no corresponde a un alumno pide de vuelta, si lo es devuelve legajo y alumno
+  '''
+  while True:
+    legajo = int(input("Ingrese el legajo del alumno: "))
+
+    if 0 < legajo < 9999999:
+      alumno_encontrado = False
+      for alumno in alumnos:
+        if legajo == alumno["LU"]:
+          alumno_encontrado = alumno
+          break
+
+      if not alumno_encontrado:
+        print("El legajo no coincide con ningun alumno.")
+    else:
+      print("El legajo debe ser un número entre 1 y 9,999,999.")
+
+    if alumno_encontrado:
+      break
+  return alumno_encontrado, legajo          
+
 if __name__ == "__main__":
   print(len(alumnos))
   print(nuevoAlumno("Juan", "Pérez", 45222555, alumnos))

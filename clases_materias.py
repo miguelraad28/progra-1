@@ -130,7 +130,7 @@ def modificarClase(clases):
       if materia['id'] == claseEncontrada["materiaId"]:
         nombreMateria = materia['nombre']
         break
-    print(f"Clase encontrada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}") 
+    print(f"Clase encontrada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestre[claseEncontrada['cuatrimestre']]}") 
     while True:
         nuevoDia = input("Ingrese el nuevo día de la clase (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): ")
         if nuevoDia == "":  # Si se presiona Enter, no se cambia el día
@@ -149,7 +149,7 @@ def modificarClase(clases):
             break
         else:
             print("Opción inválida. Ingrese un turno válido (0: Mañana, 1: Tarde, 2: Noche).")
-    print(f"Clase actualizada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}")
+    print(f"Clase actualizada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestre[claseEncontrada['cuatrimestre']]}")
   else:
     print("No se encontró una clase con el ID ingresado.")
 
@@ -181,6 +181,109 @@ def desasignarClase(LU, clase, alumnos):
     if alumno["LU"] == LU:
       if "clases" in alumno:
         alumno["clases"].remove(clase)
+      return alumnos
+  return alumnos
+
+def listarClasesDisponibles(alumno, clases):
+  '''
+  Lista clases en las que un alumno se puede inscribir (en el caso de que pueda)
+  '''
+  dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+  turnos = ["Mañana", "Tarde", "Noche"]
+  cuatrimestres = ["Primero", "Segundo"]
+
+  if len(alumno["clases"]) <= 5:
+    print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando {len(alumno['clases'])} clases.")
+    print("Estas son las clases a las cuales se puede inscribir:")
+    print("")
+
+    materiasCursadas = []
+    diasCursados = []
+
+    for claseId in alumno["clases"]:
+      for clase in clases:
+        if clase["id"] == claseId:
+          materiasCursadas.append(clase["materiaId"])
+          diasCursados.append(clase["dia"])
+    
+    # clases disponibles para cursar
+    clasesDisponibles = []
+    for clase in clases:
+      if clase["id"] not in alumno["clases"]:
+        if clase["materiaId"] not in materiasCursadas and clase["dia"] not in diasCursados:
+          clasesDisponibles.append(clase["id"])
+          for materia in materias:
+            if materia["id"] == clase["materiaId"]:
+              nombreMateria = materia["nombre"]
+              break
+          
+          dia = dias[clase["dia"]]
+          turno = turnos[clase["turno"]]
+          cuatrimestre = cuatrimestres[clase["cuatrimestre"]]
+          
+          print(f"{clase['id']} - {nombreMateria} - Día: {dia} - Turno: {turno} - Año: {clase['anio']} - Cuatrimestre: {cuatrimestre}")
+          print("")
+  else:
+      print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando más de 5 materias y no se pueden listar más clases.")
+      print("")
+
+  return clasesDisponibles
+
+def listarClasesDeAlumno(alumno, clases):
+  '''
+  Lista clases en las que esta inscrito un alumno
+  '''
+  dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+  turnos = ["Mañana", "Tarde", "Noche"]
+  cuatrimestres = ["Primero", "Segundo"]
+
+  if len(alumno["clases"]) == 0:
+    print(f"El alumno {alumno['nombre']} {alumno['apellido']} no está cursando ninguna clase.")
+    print("")
+  else:
+    print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando las siguientes clases:")
+    print("")
+
+    for claseId in alumno["clases"]:
+      for clase in clases:
+        if clase["id"] == claseId:
+          nombreMateria = "Materia no encontrada"
+          for materia in materias:
+            if materia["id"] == clase["materiaId"]:
+              nombreMateria = materia["nombre"]
+              break
+          
+          dia = dias[clase["dia"]]
+          turno = turnos[clase["turno"]]
+          cuatrimestre = cuatrimestres[clase["cuatrimestre"]]
+          
+          print(f"{clase['id']} - {nombreMateria} - Día: {dia} - Turno: {turno} - Año: {clase['anio']} - Cuatrimestre: {cuatrimestre}")
+          print("")
+  return alumno["clases"]
+
+
+def asignarNuevaClase(LU, claseId, alumnos):
+  '''
+  Asigna una nueva clase a un alumno
+  '''
+  for alumno in alumnos:
+    if alumno["LU"] == LU:
+      alumno["clases"].append(claseId)
+      print("Clase asignada con exito")
+      print("")
+  return alumnos
+
+
+def desasignarClase(LU, clase, alumnos):
+  '''
+  Desasigna una clase de un alumno
+  '''
+  for alumno in alumnos:
+    if alumno["LU"] == LU:
+      if "clases" in alumno:
+        alumno["clases"].remove(clase)
+        print("Clase desasignada con exito")
+        print("")
       return alumnos
   return alumnos
 
