@@ -202,7 +202,7 @@ def menuGestionClases(clases):
     elif opcion == "4":   # Opción asignar alumno a clase
       ...    
 
-    elif opcion == "5":   # Opción Dar de baja un algumno de una clase
+    elif opcion == "5":   # Opción Dar de baja un alumno de una clase
       ...  
 
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
