@@ -118,7 +118,10 @@ def buscarClasePorId(clases, id):
   return None
 
 def numeroValido(entrada, rango):
-  # Verifica si la entrada es un número dentro del rango especificado
+  '''
+  Verifica si la entrada es un número dentro del rango especificado
+  retorna: bool
+  '''
   return re.match(r'^[0-9]+$', entrada) and (0 <= int(entrada) <= rango)
 
 def modificarClase(clases):
