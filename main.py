@@ -20,7 +20,11 @@ import json
 #----------------------------------------------------------------------------------------------
 # FUNCIONES
 #----------------------------------------------------------------------------------------------
-def menuGestionAlumnos(alumnos):
+def menuGestionAlumnos():
+  with open("./data/data_alumnos.json", "r", encoding='utf-8') as file:
+    alumnos = json.load(file)
+    file.close()
+
   while True:
     opciones = 8
     while True:
@@ -160,11 +164,19 @@ def menuGestionAlumnos(alumnos):
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")
 
-def menuGestionClases(clases, alumnos):
+def menuGestionClases():
   '''
   Menú de gestión de clases
   ARGS: clases - Lista de clases
   '''
+  with open("./data/data_alumnos.json", "r", encoding='utf-8') as file:
+    alumnos = json.load(file)
+    file.close()
+
+  with open("./data/data_clases.json", "r", encoding='utf-8') as file:
+    clases = json.load(file)
+    file.close()
+
   while True:
     opciones = 7
     while True:
@@ -233,7 +245,8 @@ def menuGestionClases(clases, alumnos):
 #----------------------------------------------------------------------------------------------
 # CUERPO PRINCIPAL
 #----------------------------------------------------------------------------------------------
-def mostrarMenu(alumnos, clases, facturas):
+def mostrarMenu():
+
   while True:
     opciones = 4
     while True:
@@ -259,10 +272,10 @@ def mostrarMenu(alumnos, clases, facturas):
       exit() # También puede ser sys.exit() para lo cual hay que importar el módulo sys
 
     elif opcion == "1":   # Opción 1
-      menuGestionAlumnos(alumnos)
+      menuGestionAlumnos()
       ...
     elif opcion == "2":   # Opción 2
-      menuGestionClases(clases, alumnos)
+      menuGestionClases()
       ...
     elif opcion == "3":   # Opción 3
       # menuGestionFacturas()
@@ -275,19 +288,10 @@ def main():
   #-------------------------------------------------
   # Inicialización de variables
   #----------------------------------------------------------------------------------------------
-  with open("./data/data_alumnos.json", "r", encoding='utf-8') as file:
-    alumnos = json.load(file)
-    file.close()
-
-  with open("./data/data_clases.json", "r", encoding='utf-8') as file:
-    clases = json.load(file)
-    file.close()
-
-  facturas = []
   #-------------------------------------------------
   # Bloque de menú
   #----------------------------------------------------------------------------------------------
-  mostrarMenu(alumnos, clases, facturas)
+  mostrarMenu()
 
 if __name__ == "__main__":
   main()
