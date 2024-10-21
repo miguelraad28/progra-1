@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1000,
+        "dia": 4,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 8,
+        "estado": "Activa"
+    },
+    {
+        "id": 1001,
+        "dia": 2,
+        "turno": 1,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 6,
+        "estado": "Activa"
+    },
+    {
+        "id": 1002,
+        "dia": 4,
+        "turno": 2,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 4,
+        "estado": "Activa"
+    },
+    {
+        "id": 1003,
+        "dia": 2,
+        "turno": 2,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 7,
+        "estado": "Activa"
+    },
+    {
+        "id": 1004,
+        "dia": 2,
+        "turno": 1,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 2,
+        "estado": "Activa"
+    },
+    {
+        "id": 1005,
+        "dia": 3,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 1,
+        "materiaId": 5,
+        "estado": "Activa"
+    },
+    {
+        "id": 1006,
+        "dia": 4,
+        "turno": 2,
+        "anio": "2024",
+        "cuatrimestre": 1,
+        "materiaId": 1,
+        "estado": "Activa"
+    },
+    {
+        "id": 1007,
+        "dia": 1,
+        "turno": 2,
+        "anio": "2024",
+        "cuatrimestre": 1,
+        "materiaId": 8,
+        "estado": "Activa"
+    },
+    {
+        "id": 1008,
+        "dia": 4,
+        "turno": 1,
+        "anio": "2024",
+        "cuatrimestre": 1,
+        "materiaId": 2,
+        "estado": "Activa"
+    },
+    {
+        "id": 1009,
+        "dia": 4,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 1,
+        "materiaId": 6,
+        "estado": "Activa"
+    },
+    {
+        "id": 1010,
+        "dia": 4,
+        "turno": 2,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 4,
+        "estado": "Activa"
+    },
+    {
+        "id": 1011,
+        "dia": 3,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 1,
+        "materiaId": 3,
+        "estado": "Activa"
+    },
+    {
+        "id": 1012,
+        "dia": 1,
+        "turno": 2,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 2,
+        "estado": "Activa"
+    },
+    {
+        "id": 1013,
+        "dia": 3,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 7,
+        "estado": "Activa"
+    },
+    {
+        "id": 1014,
+        "dia": 0,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 1,
+        "materiaId": 8,
+        "estado": "Activa"
+    },
+    {
+        "id": 1015,
+        "dia": 2,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 5,
+        "estado": "Activa"
+    },
+    {
+        "id": 1016,
+        "dia": 2,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 1,
+        "materiaId": 6,
+        "estado": "Activa"
+    },
+    {
+        "id": 1017,
+        "dia": 1,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 4,
+        "estado": "Activa"
+    },
+    {
+        "id": 1018,
+        "dia": 0,
+        "turno": 0,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 2,
+        "estado": "Activa"
+    },
+    {
+        "id": 1019,
+        "dia": 4,
+        "turno": 2,
+        "anio": "2024",
+        "cuatrimestre": 0,
+        "materiaId": 6,
+        "estado": "Activa"
+    }
+]

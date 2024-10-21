@@ -44,7 +44,8 @@ def generarAlumnos(cantidad):
     
     # Ya el legajo es único asi que por lo tanto el email también.
     mailGenerado = str(f"{nombre[0].lower()}{apellido.lower()}.{legajoGenerado}@edau.edu.ar")
-
+    print("**nombre")
+    print(nombre)
     alumno = {
       "nombre": nombre,
       "apellido": apellido,

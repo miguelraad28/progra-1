@@ -15,6 +15,8 @@ Pendientes: Listado de clases y su filtrado por turno, día y materia. Módulo d
 #----------------------------------------------------------------------------------------------
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
+import json
+import os
 
 #----------------------------------------------------------------------------------------------
 # FUNCIONES
@@ -274,8 +276,12 @@ def main():
   #-------------------------------------------------
   # Inicialización de variables
   #----------------------------------------------------------------------------------------------
-  alumnos = alumnosModule.generarAlumnos(125)
-  clases = clasesMateriasModule.generarClases(20)
+  with open(os.path.join(os.path.dirname(__file__), "data", "alumnos.json"), "r", encoding='utf-8') as file:
+    alumnos = json.load(file)
+  with open(os.path.join(os.path.dirname(__file__), "data", "clases.json"), "r", encoding='utf-8') as file:
+    clases = json.load(file)
+  # with open("clases.json", "w", encoding='utf-8') as file:
+  #   json.dump(clases, file, ensure_ascii=False, indent=4)
   facturas = []
   #-------------------------------------------------
   # Bloque de menú
