@@ -6,7 +6,7 @@ Autor: Miguel Raad, Roberto Saavedra, Felipe Di Liscia, Daniel Bilikin
 
 Descripción: Proyecto de gestión de alumnos, clases y facturación de una universidad, EDAU.
 
-Pendientes: ...
+Pendientes: Listado de clases y su filtrado por turno, día y materia. Módulo de facturas con listado, marcar como pagada y ver morosos
 -----------------------------------------------------------------------------------------------
 """
 
