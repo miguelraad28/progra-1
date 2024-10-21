@@ -166,12 +166,21 @@ def encontrarPorDni(dni):
   return alumnoEncontrado
 
 def borrarAlumnoLogico(LU, alumnos):
+    #RELACIONAR CON FACTURAS
+    encontrado = False
     for alumno in alumnos:
-        if alumno["LU"] == LU:
+        if alumno["LU"] == LU and alumno["estado"] == "Activo":
             alumno["estado"] = "Inactivo"
             print(f"El alumno con LU {LU} ha sido marcado como Inactivo.")
-            return alumnos
-    print(f"No se encontró un alumno con el LU {LU}.")
+            encontrado = True
+            alumno["clases"] = []
+            break
+        elif alumno["LU"] == LU and alumno["estado"] == "Inactivo":
+          print(f"El alumno con LU {LU} ya se encuentra inactivo.")
+          encontrado = True
+          break
+    if not encontrado:  
+          print(f"No se encontró un alumno con el LU {LU}.")
     return alumnos
 
 def pedirDniNuevoAlumno():
