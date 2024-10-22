@@ -160,7 +160,7 @@ def modificarClase(clases):
     print("No se encontró una clase con el ID ingresado.")
 
 def eliminarClase(clases, alumnos):
-  # RELACIONAR CON FACTURAS
+  # RELACIONAR CON FACTURAS CAMBIAR NOMBRE A ACTIVAR/DESACTIVAR
   id = int(input("Ingrese el ID de la clase que desea eliminar: "))
   claseEncontrada = buscarClasePorId(clases, id)
   if claseEncontrada:

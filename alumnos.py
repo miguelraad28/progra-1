@@ -166,7 +166,7 @@ def encontrarPorDni(dni):
   return alumnoEncontrado
 
 def borrarAlumnoLogico(LU, alumnos):
-    #RELACIONAR CON FACTURAS
+    #RELACIONAR CON FACTURAS CAMBIAR NOMBRE DE ACTIVAR Y DESACTIVAR. 
     encontrado = False
     for alumno in alumnos:
         if alumno["LU"] == LU and alumno["estado"] == "Activo":
