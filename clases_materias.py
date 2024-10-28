@@ -162,6 +162,14 @@ def modificarClase(clases):
     print("No se encontró una clase con el ID ingresado.")
 
 def eliminarClase(clases, alumnos):
+  '''
+  Elimina clase de la lista de clases, elimina la clase de el array clases de los alumnos. 
+  Args:
+    clases: List - lista de clases.
+    alumnos: List - lista de alumnos.
+  Returns:
+    None
+  '''
   # RELACIONAR CON FACTURAS CAMBIAR NOMBRE A ACTIVAR/DESACTIVAR
   id = int(input("Ingrese el ID de la clase que desea eliminar: "))
   claseEncontrada = buscarClasePorId(clases, id)
