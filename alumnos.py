@@ -1,6 +1,5 @@
 import random
 import re
-import re
 
 # Alumnos
 
@@ -13,6 +12,7 @@ apellidos = [
   "García", "Martínez", "Rodríguez", "López", "González", "Pérez", "Sánchez", 
   "Ramírez", "Torres", "Flores"]
 
+#Alumno que creamos para testing.
 alumnos = [{
       "nombre": "Miguel",
       "apellido": "Raad",
@@ -36,13 +36,13 @@ def generarAlumnos(cantidad):
     nombre = random.choice(nombres)
     apellido = random.choice(apellidos)
     
+    #Asigna un valor para DNI y se asegura que el mismo sea unico
     dniGenerado = random.randint(30000000, 45000000)
-    
     while dniGenerado in [alumno["DNI"] for alumno in alumnos]:
       dniGenerado = random.randint(300000, 45000000)
-      
+
+    #Asigna un valor de legajo y se asegura que el mismo sea unico  
     legajoGenerado = random.randint(800000, 1200000)
-    
     while legajoGenerado in [alumno["LU"] for alumno in alumnos]:
       legajoGenerado = random.randint(800000, 1200000)
     
@@ -90,6 +90,13 @@ def listarAlumnos(alumnos):
   return
 
 def listarAlumnosInactivos(alumnos):
+  '''
+  Devuelve la lista completa de alumnos inactivos en el sistema. 
+  Args:
+      alumnos: list - Lista de alumnos (activos e inactivos)
+  Returns:
+      None
+  '''
   encontradosInactivos = 0
   for alumno in alumnos:
     if alumno['estado'] == 'Inactivo':

@@ -3,6 +3,7 @@ import re
 
 # Materias & Clases
 
+# Lista de materias con identificadores únicos y nombres de las asignaturas disponibles en el sistema.
 materias = [
   {"id": 1, "nombre": "Matemática Discreta"},
   {"id": 2, "nombre": "Álgebra y Geometría Analítica"},
@@ -149,7 +150,7 @@ def modificarClase(clases):
 
     while True:
       nuevoTurno = input("Ingrese el nuevo turno de la clase (0: Mañana, 1: Tarde, 2: Noche): ")
-      if nuevoTurno == "":  # Si se presiona Enter, no se cambia el día
+      if nuevoTurno == "":  # Si se presiona Enter, no se cambia el turno
         break
       if numeroValido(nuevoTurno,2):
         claseEncontrada["turno"] = int(nuevoTurno)
