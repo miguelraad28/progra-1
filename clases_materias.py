@@ -159,7 +159,8 @@ def modificarClase(clases):
   else:
     print("No se encontró una clase con el ID ingresado.")
 
-def eliminarClase(clases):
+def eliminarClase(clases, alumnos):
+  # RELACIONAR CON FACTURAS CAMBIAR NOMBRE A ACTIVAR/DESACTIVAR
   id = int(input("Ingrese el ID de la clase que desea eliminar: "))
   claseEncontrada = buscarClasePorId(clases, id)
   if claseEncontrada:
@@ -171,6 +172,11 @@ def eliminarClase(clases):
   if  claseEncontrada["estado"] == "Activa":
       claseEncontrada["estado"] = "Inactiva"
       print(f"Clase eliminada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}")
+      # Eliminar el ID de clase del array 'clases' en cada alumno que la tenga asignada
+      for alumno in alumnos:
+        if id in alumno["clases"]:
+          alumno["clases"].remove(id)
+          print(f"El ID de la clase {id} ha sido eliminado de los alumnos inscriptos a la misma.")
   else:
       print("La clase ya está eliminada o no hay una clase con ese ID.")
   return
