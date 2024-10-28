@@ -60,6 +60,7 @@ def crearClase(clases):
   ARGS:
     clases: lista - Lista de clases a la que se le agregará la nueva clase.
     materias: list - Lista de materias disponibles para seleccionar la materia de la clase.
+  
   '''
   if len(clases) > 0:
       nuevoId = clases[-1]["id"] + 1 
@@ -182,6 +183,17 @@ def eliminarClase(clases, alumnos):
   return
 
 def asignarNuevaClase(LU, claseId, alumnos):
+  """
+  Asigna una nueva clase a un alumno específico en la lista de alumnos.
+  Args:
+    LU (int): El número de legajo universitario (LU) del alumno al que se le asignará la nueva clase.
+    claseId (int): El identificador de la clase que se va a asignar.
+    alumnos (list): Una lista de diccionarios, donde cada diccionario representa un alumno y contiene
+            al menos las claves "LU" y "clases". La clave "clases" es una lista de identificadores
+            de clases a las que el alumno está inscrito.
+  Returns:
+    list: La lista de alumnos actualizada con la nueva clase asignada al alumno correspondiente.
+  """
   for alumno in alumnos:
     if alumno["LU"] == LU:
       alumno["clases"].append(claseId)
@@ -189,16 +201,32 @@ def asignarNuevaClase(LU, claseId, alumnos):
 
 
 def desasignarClase(LU, clase, alumnos):
+  """
+  Desasigna una clase de un alumno específico basado en su LU (Legajo Universitario).
+  Args:
+    LU (str): El Legajo Universitario del alumno.
+    clase (str): El nombre de la clase a desasignar.
+    alumnos (list): Lista de diccionarios que representan a los alumnos. 
+            Cada diccionario debe contener las claves "LU" y "clases".
+  Returns:
+    list: La lista de alumnos actualizada después de desasignar la clase.
+  """
+  
   for alumno in alumnos:
     if alumno["LU"] == LU:
       if "clases" in alumno:
         alumno["clases"].remove(clase)
       return alumnos
+  # TODO: Relacionar con facturas/pagos de ser necesario
   return alumnos
 
 def listarClasesDisponibles(alumno, clases):
   '''
   Lista clases en las que un alumno se puede inscribir (en el caso de que pueda)
+  Args:
+    alumno: dict - Diccionario con la información del alumno.
+    clases: list - Lista de clases disponibles
+  return: list - Lista de clases en las que se puede inscribir el alumno
   '''
   dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
   turnos = ["Mañana", "Tarde", "Noche"]
@@ -244,6 +272,10 @@ def listarClasesDisponibles(alumno, clases):
 def listarClasesDeAlumno(alumno, clases):
   '''
   Lista clases en las que esta inscrito un alumno
+  Args:
+    alumno: dict - Diccionario con la información del alumno.
+    clases: list - Lista de clases disponibles
+  return: list - Lista de clases en las que esta inscrito el alumno
   '''
   dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
   turnos = ["Mañana", "Tarde", "Noche"]
@@ -277,6 +309,12 @@ def listarClasesDeAlumno(alumno, clases):
 def asignarNuevaClase(LU, claseId, alumnos):
   '''
   Asigna una nueva clase a un alumno
+  Args:
+    LU: int - Legajo del alumno
+    claseId: int - ID de la clase a asignar
+    alumnos: list - Lista de alumnos
+  Returns:
+    list - Lista de alumnos actualizada
   '''
   for alumno in alumnos:
     if alumno["LU"] == LU:
@@ -289,6 +327,12 @@ def asignarNuevaClase(LU, claseId, alumnos):
 def desasignarClase(LU, clase, alumnos):
   '''
   Desasigna una clase de un alumno
+  Args:
+    LU: int - Legajo del alumno
+    clase: int - ID de la clase a desasignar
+    alumnos: list - Lista de alumnos
+  Returns:
+    list - Lista de alumnos actualizada
   '''
   for alumno in alumnos:
     if alumno["LU"] == LU:

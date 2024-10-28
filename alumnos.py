@@ -26,6 +26,10 @@ alumnos = [{
 def generarAlumnos(cantidad):
   '''
   Genera una lista de alumnos con nombres, apellidos, DNI y legajos aleatorios para inicializar el programa con datos en memoria.
+  Args:
+    int - cantidad: Cantidad de alumnos a generar.
+  Returns:
+    list - Lista de diccionarios con los datos de los alumnos
   '''
   
   while len(alumnos) < cantidad:
@@ -62,6 +66,14 @@ def generarAlumnos(cantidad):
 # Uso dentro del programa
 
 def listarAlumnos(alumnos):
+  """
+  Lista los alumnos activos y muestra su información detallada.
+  Args:
+    alumnos (list): Una lista de diccionarios, donde cada diccionario representa un alumno
+  Returns:
+    None
+  """
+  
   numeroDeActivos = 0 
   for alumno in alumnos:
     if alumno['estado'] == 'Activo':
@@ -95,11 +107,13 @@ def listarAlumnosInactivos(alumnos):
 def nuevoAlumno(nombre, apellido, dni, alumnos):
   '''
   Crea un nuevo alumno y lo agrega a la lista de alumnos.
-  ARGS:
+  Args:
     nombre: str - Nombre del alumno.
     apellido: str - Apellido del alumno.
     dni: int - DNI del alumno.
     alumnos: list - Lista de alumnos a la que se le agregará el nuevo alumno.
+  Returns:
+    list - La lista de alumnos con el nuevo alumno agregado
   '''
   legajoGenerado = random.randint(800000, 1200000)
     
@@ -122,9 +136,15 @@ def nuevoAlumno(nombre, apellido, dni, alumnos):
   return alumnos
 
 def generarEmail(nombre, apellido, legajo):
-  '''
+  """
   Genera un email a partir del nombre, apellido y legajo del alumno utilizando expresiones regulares para evitar caracteres especiales.
-  '''
+  Args:
+    nombre (str): El nombre del alumno.
+    apellido (str): El apellido del alumno.
+    legajo (int): El número de legajo del alumno.
+  Returns:
+    str: El email generado en el formato 'napellido.legajo@edau.edu.ar'.
+  """
   nombreSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', nombre).lower()
   apellidoSinEspaciosYLimpio = re.sub(r'[^a-zA-Z]', '', apellido).lower()
   mail = f"{nombreSinEspaciosYLimpio[0]}{apellidoSinEspaciosYLimpio}.{legajo}@edau.edu.ar"
@@ -132,6 +152,20 @@ def generarEmail(nombre, apellido, legajo):
   return mail
 
 def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
+  """
+  Modifica una propiedad específica (nombre o apellido) de un alumno en una lista de alumnos, 
+  identificándolo por su LU (Legajo Universitario).
+  Args:
+    LU (int): El Legajo Universitario del alumno a modificar.
+    propiedad (str): La propiedad a modificar, debe ser "nombre" o "apellido".
+    nuevoValor (str): El nuevo valor para la propiedad especificada.
+    alumnos (list): Lista de diccionarios que representan a los alumnos, 
+            donde cada diccionario contiene las claves "LU", "nombre" y "apellido".
+  Returns:
+    list: La lista de alumnos con la modificación aplicada, si se encontró el alumno y la propiedad es válida.
+        Si no se encontró el alumno o la propiedad no es válida, se devuelve la lista original sin cambios.
+  """
+  
   if propiedad not in ["nombre", "apellido"]:
     print("Solo se permite modificar el nombre o apellido.")
     return alumnos
@@ -144,6 +178,17 @@ def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
   return alumnos
 
 def encontrarPorLegajo(alumnos):
+  """
+  Busca un alumno en la lista de alumnos por su legajo y estado activo.
+  Args:
+    alumnos (list): Lista de diccionarios que representan a los alumnos. 
+            Cada diccionario contienen las claves "LU" (legajo) y "estado".
+  Returns:
+    list: Una lista que contiene dos elementos:
+        - Un booleano que indica si el alumno fue encontrado.
+        - Un diccionario con los datos del alumno encontrado, o un diccionario vacío si no se encontró.
+  """
+  
   legajo = int(input("Ingrese el legajo del alumno: "))
   
   encontrado = False
@@ -158,6 +203,10 @@ def encontrarPorLegajo(alumnos):
 def encontrarPorDni(dni):
   '''
   Busca alumnos por DNI
+  Args: 
+    dni: int - DNI del alumno a buscar.
+  Returns:
+    dict - Diccionario con los datos del alumno encontrado, o None si no se encontró.
   '''
   alumnoEncontrado = None
   for alumno in alumnos:
@@ -185,7 +234,10 @@ def borrarAlumnoLogico(LU, alumnos):
 
 def pedirDniNuevoAlumno():
     '''
-    Controla que el DNI ingresado no haya sido utilizado por otro alumno
+    Solicita al usuario que ingrese un DNI para un nuevo alumno y valida que sea un número positivo,
+    que tenga entre 7 y 8 dígitos, y que no esté ya en uso.
+    Returns:
+      int: El DNI válido ingresado por el usuario.
     '''
     while True:
       dni = int(input("Ingrese el DNI del alumno: "))
@@ -204,7 +256,13 @@ def pedirDniNuevoAlumno():
 
 def chequeaLegajo(alumnos):
   '''
-  Pide el legajo y comprueba que sea valido, si no lo es o no corresponde a un alumno pide de vuelta, si lo es devuelve legajo y alumno
+  Pide el legajo y comprueba que sea valido, si no lo es o no corresponde a un alumno pide de vuelta,
+  si lo es devuelve legajo y alumno
+  Args:
+    alumnos: list - Lista de alumnos.
+  Returns:
+    dict - Diccionario con los datos del alumno.
+    int - Legajo del alumno.
   '''
   while True:
     legajo = int(input("Ingrese el legajo del alumno: "))
