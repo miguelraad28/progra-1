@@ -16,158 +16,172 @@ Pendientes: Listado de clases y su filtrado por turno, día y materia. Módulo d
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
 import json
+import os
 
 #----------------------------------------------------------------------------------------------
 # FUNCIONES
 #----------------------------------------------------------------------------------------------
 def menuGestionAlumnos():
-  with open("./data/data_alumnos.json", "r", encoding='utf-8') as file:
+  try:
+    file =  open(os.path.join(os.path.dirname(__file__), "data", "data_alumnos.json"), "r", encoding='utf-8')
     alumnos = json.load(file)
     file.close()
 
-  while True:
-    opciones = 8
     while True:
+      opciones = 8
+      while True:
+        print()
+        print("---------------------------")
+        print("GESTIÓN DE ALUMNOS        ")
+        print("---------------------------")
+        print("[1] Listar alumnos")
+        print("[2] Nuevo alumno")
+        print("[3] Modificar alumno")
+        print("[4] Eliminar alumno por legajo")
+        print("[5] Buscar alumno por legajo")
+        print("[6] Buscar alumno por DNI")
+        print("[7] Listar alumnos inactivos")
+        print("---------------------------")
+        print("[0] Volver al menú principal")
+        print()
+        
+        opcion = input("Seleccione una opción: ")
+        if opcion in [str(i) for i in range(0, opciones)]: # Sólo continua si se elije una opcion de menú válida
+          break
+        else:
+          input("Opción inválida. Presione ENTER para volver a seleccionar.")
       print()
-      print("---------------------------")
-      print("GESTIÓN DE ALUMNOS        ")
-      print("---------------------------")
-      print("[1] Listar alumnos")
-      print("[2] Nuevo alumno")
-      print("[3] Modificar alumno")
-      print("[4] Eliminar alumno por legajo")
-      print("[5] Buscar alumno por legajo")
-      print("[6] Buscar alumno por DNI")
-      print("[7] Listar alumnos inactivos")
-      print("---------------------------")
-      print("[0] Volver al menú principal")
-      print()
-      
-      opcion = input("Seleccione una opción: ")
-      if opcion in [str(i) for i in range(0, opciones)]: # Sólo continua si se elije una opcion de menú válida
+
+      if opcion == "0": # Opción volver al menú principal
         break
-      else:
-        input("Opción inválida. Presione ENTER para volver a seleccionar.")
-    print()
 
-    if opcion == "0": # Opción volver al menú principal
-      break
-
-    elif opcion == "1":   # Opción listar alumnos
-      alumnosModule.listarAlumnos(alumnos)
-      
-    elif opcion == "2":   # Opción nuevo alumno
-      nombre = input("Ingrese el nombre del alumno: ").capitalize()
-
-      while nombre == "" or len(nombre) < 3:
-        print("El nombre no puede estar vacío y debe tener minimo 3 letras.")
+      elif opcion == "1":   # Opción listar alumnos
+        alumnosModule.listarAlumnos(alumnos)
+        
+      elif opcion == "2":   # Opción nuevo alumno
         nombre = input("Ingrese el nombre del alumno: ").capitalize()
 
-      apellido = input("Ingrese el apellido del alumno: ").capitalize()
+        while nombre == "" or len(nombre) < 3:
+          print("El nombre no puede estar vacío y debe tener minimo 3 letras.")
+          nombre = input("Ingrese el nombre del alumno: ").capitalize()
 
-      while apellido == "" or len(apellido) < 3:
-        print("El apellido no puede estar vacío y debe tener minimo 3 letras.")
         apellido = input("Ingrese el apellido del alumno: ").capitalize()
 
-      dni = alumnosModule.pedirDniNuevoAlumno()
+        while apellido == "" or len(apellido) < 3:
+          print("El apellido no puede estar vacío y debe tener minimo 3 letras.")
+          apellido = input("Ingrese el apellido del alumno: ").capitalize()
 
-      alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
-      alumnoCreado = alumnos[-1]
-      
-      print("")
-      print(f"Nombre: {alumnoCreado["nombre"]}")
-      print(f"Apellido: {alumnoCreado["apellido"]}")
-      print(f"D.N.I: {alumnoCreado["DNI"]:,}")
-      print(f"L.U: {alumnoCreado["LU"]:,}")
-      print(f"Email: {alumnoCreado["email"]}")
-      print("_________________________")
-      print("")
-      
-    elif opcion == "3":   # Opción modificar alumno
-      while True:
-        [encontrado, alumno] = alumnosModule.encontrarPorLegajo(alumnos)
+        dni = alumnosModule.pedirDniNuevoAlumno()
 
-        if encontrado:
-          print(f"Nombre: {alumno["nombre"]}")
-          print(f"Apellido: {alumno["apellido"]}")
-          print(f"D.N.I: {alumno["DNI"]:,}")
-          print(f"L.U: {alumno["LU"]:,}")
-          print(f"Email: {alumno["email"]}")
-          print(f"Estado: {alumno["estado"]}")
-          print("_________________________")
-          break
-        else:
-          print("No se encontró un alumno con el legajo ingresado.")
-      
-      while True:
-        campo = input("Ingrese el campo a modificar (nombre, apellido): ")
-        if campo.lower() in ["nombre", "apellido"]:
-          break
-      
-      while True:
-        nuevoValor = input(f"Ingrese el nuevo valor para el campo {campo}: ")
-        if nuevoValor != "":
-          nuevoValor = nuevoValor.capitalize()
-          break
-        else:
-          print("El valor no puede estar vacío.")
-      alumnosModule.modificarAlumnoPorLU(alumno["LU"], campo.lower(), nuevoValor, alumnos)
-      
-    elif opcion == "4":   # Opción eliminar alumno
-      LU = int(input("Ingrese el Legajo a eliminar: "))
-      alumnosModule.borrarAlumnoLogico(LU, alumnos)
-      
-    elif opcion == "5":   # Opción buscar alumno por legajo
-        [encontrado, alumno] = alumnosModule.encontrarPorLegajo(alumnos)
-
-        if encontrado:
-          print(f"Nombre: {alumno["nombre"]}")
-          print(f"Apellido: {alumno["apellido"]}")
-          print(f"D.N.I: {alumno["DNI"]:,}")
-          print(f"L.U: {alumno["LU"]:,}")
-          print(f"Email: {alumno["email"]}")
-          print(f"Estado: {alumno["estado"]}")
-          print("_________________________")
-          break
-        else:
-          print("No se encontró un alumno con el legajo ingresado.")
-      
-
-    elif opcion == "6":   # Opción buscar alumno por DNI
-      while True:
-        dni = int(input("Ingrese el DNI del alumno: "))
-        if dni <= 0:
-            print("El DNI debe ser un número positivo.")
-            continue
-        if len(str(dni)) < 7 or len(str(dni)) > 8:
-            print("El DNI debe tener entre 7 y 8 dígitos.")
-            continue
-        break
-
-      alumnoEncontrado = alumnosModule.encontrarPorDni(dni)
-
-      if alumnoEncontrado:
-        print(f"Nombre: {alumnoEncontrado["nombre"]}")
-        print(f"Apellido: {alumnoEncontrado["apellido"]}")
-        print(f"D.N.I: {alumnoEncontrado["DNI"]:,}")
-        print(f"L.U: {alumnoEncontrado["LU"]:,}")
-        print(f"Email: {alumnoEncontrado["email"]}")
-        print(f"Estado: {alumnoEncontrado["estado"]}")
+        alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
+        alumnoCreado = alumnos[-1]
+        
+        file =  open(os.path.join(os.path.dirname(__file__), "data", "data_alumnos.json"), "w", encoding='utf-8')
+        json.dump(alumnos, file, ensure_ascii=False, ident=4)
+        file.close()
+        
+        print("")
+        print(f"Nombre: {alumnoCreado["nombre"]}")
+        print(f"Apellido: {alumnoCreado["apellido"]}")
+        print(f"D.N.I: {alumnoCreado["DNI"]:,}")
+        print(f"L.U: {alumnoCreado["LU"]:,}")
+        print(f"Email: {alumnoCreado["email"]}")
         print("_________________________")
         print("")
-      else:
-        print("No se encontró un alumno con el DNI ingresado.")
+        
+      elif opcion == "3":   # Opción modificar alumno
+        while True:
+          [encontrado, alumno] = alumnosModule.encontrarPorLegajo(alumnos)
 
-    elif opcion == "7":   # Opcion mostrar alumnos inactivos
-      alumnosModule.listarAlumnosInactivos(alumnos)
+          if encontrado:
+            print(f"Nombre: {alumno["nombre"]}")
+            print(f"Apellido: {alumno["apellido"]}")
+            print(f"D.N.I: {alumno["DNI"]:,}")
+            print(f"L.U: {alumno["LU"]:,}")
+            print(f"Email: {alumno["email"]}")
+            print(f"Estado: {alumno["estado"]}")
+            print("_________________________")
+            break
+          else:
+            print("No se encontró un alumno con el legajo ingresado.")
+        
+        while True:
+          campo = input("Ingrese el campo a modificar (nombre, apellido): ")
+          if campo.lower() in ["nombre", "apellido"]:
+            break
+        
+        while True:
+          nuevoValor = input(f"Ingrese el nuevo valor para el campo {campo}: ")
+          if nuevoValor != "":
+            nuevoValor = nuevoValor.capitalize()
+            break
+          else:
+            print("El valor no puede estar vacío.")
+        alumnosModule.modificarAlumnoPorLU(alumno["LU"], campo.lower(), nuevoValor, alumnos)
+        
+      elif opcion == "4":   # Opción eliminar alumno
+        LU = int(input("Ingrese el Legajo a eliminar: "))
+        alumnosModule.borrarAlumnoLogico(LU, alumnos)
+        
+      elif opcion == "5":   # Opción buscar alumno por legajo
+          [encontrado, alumno] = alumnosModule.encontrarPorLegajo(alumnos)
 
+          if encontrado:
+            print(f"Nombre: {alumno["nombre"]}")
+            print(f"Apellido: {alumno["apellido"]}")
+            print(f"D.N.I: {alumno["DNI"]:,}")
+            print(f"L.U: {alumno["LU"]:,}")
+            print(f"Email: {alumno["email"]}")
+            print(f"Estado: {alumno["estado"]}")
+            print("_________________________")
+            break
+          else:
+            print("No se encontró un alumno con el legajo ingresado.")
+        
+
+      elif opcion == "6":   # Opción buscar alumno por DNI
+        while True:
+          dni = int(input("Ingrese el DNI del alumno: "))
+          if dni <= 0:
+              print("El DNI debe ser un número positivo.")
+              continue
+          if len(str(dni)) < 7 or len(str(dni)) > 8:
+              print("El DNI debe tener entre 7 y 8 dígitos.")
+              continue
+          break
+
+        alumnoEncontrado = alumnosModule.encontrarPorDni(dni)
+
+        if alumnoEncontrado:
+          print(f"Nombre: {alumnoEncontrado["nombre"]}")
+          print(f"Apellido: {alumnoEncontrado["apellido"]}")
+          print(f"D.N.I: {alumnoEncontrado["DNI"]:,}")
+          print(f"L.U: {alumnoEncontrado["LU"]:,}")
+          print(f"Email: {alumnoEncontrado["email"]}")
+          print(f"Estado: {alumnoEncontrado["estado"]}")
+          print("_________________________")
+          print("")
+        else:
+          print("No se encontró un alumno con el DNI ingresado.")
+
+      elif opcion == "7":   # Opcion mostrar alumnos inactivos
+        alumnosModule.listarAlumnosInactivos(alumnos)
+
+      input("\nPresione ENTER para volver al menú de gestión de alumnos.")
+      print("\n\n")
+  except Exception as ex:
+    print(ex)
     input("\nPresione ENTER para volver al menú de gestión de alumnos.")
     print("\n\n")
+  finally:
+    try:
+      file.close()
+    except:
+      pass
 
 def menuGestionClases():
   '''
   Menú de gestión de clases
-  ARGS: clases - Lista de clases
   '''
   with open("./data/data_alumnos.json", "r", encoding='utf-8') as file:
     alumnos = json.load(file)
