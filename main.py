@@ -126,21 +126,13 @@ def menuGestionAlumnos():
         else:
           print("El valor no puede estar vacío.")
 
-      alumnos = alumnosModule.modificarAlumnoPorLU(alumno["LU"], campo.lower(), nuevoValor, alumnos)
-      success = alumnosModule.reescribirArchivoAlumnos(alumnos)
-      
-      if not success:
-        print('Error modificando el alumno')
+      alumnosModule.modificarAlumnoPorLU(alumno["LU"], campo.lower(), nuevoValor, alumnos)
       
     elif opcion == "4":   # Opción eliminar alumno
       legajoUnico = int(input("Ingrese el Legajo a eliminar: "))
 
-      alumnos = alumnosModule.borrarAlumnoLogico(legajoUnico, alumnos)
-      success = alumnosModule.reescribirArchivoAlumnos(alumnos)
-      
-      if not success:
-        print('Error guardando modificación del alumno.')
-      
+      alumnosModule.borrarAlumnoLogico(legajoUnico, alumnos)
+
     elif opcion == "5":   # Opción buscar alumno por legajo
         [encontrado, alumno] = alumnosModule.encontrarPorLegajo(alumnos)
 

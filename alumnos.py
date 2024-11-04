@@ -224,6 +224,11 @@ def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
   for alumno in alumnos:
     if alumno["LU"] == LU:
       alumno[propiedad] = nuevoValor
+      
+      success = reescribirArchivoAlumnos(alumnos)
+      if not success:
+        print("No se pudo guardar la modificación en el archivo.")
+      
       return alumnos
   print("No se encontró un alumno con el LU ingresado.")
   return alumnos
@@ -274,6 +279,11 @@ def borrarAlumnoLogico(LU, alumnos):
             print(f"El alumno con LU {LU} ha sido marcado como Inactivo.")
             encontrado = True
             alumno["clases"] = []
+            
+            success = reescribirArchivoAlumnos(alumnos)
+            if not success:
+                print("No se pudo guardar el cambio en el archivo.")
+            
             break
         elif alumno["LU"] == LU and alumno["estado"] == "Inactivo":
           print(f"El alumno con LU {LU} ya se encuentra inactivo.")
