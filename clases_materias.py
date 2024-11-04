@@ -1,5 +1,6 @@
 import random
 import re
+import json
 
 # Materias & Clases
 
@@ -54,6 +55,53 @@ def generarClases(cantidad):
     }
     clases.append(clase)
   return clases
+
+# Funciones de uso en el programa
+
+def abrirArchivoClases():
+  '''
+  Abre el archivo json de las clases
+  Returns:
+    list - Lista de diccionarios con las clases.
+  '''
+  success = True
+  
+  try:
+    file = open("data_clases.json", "r", encoding='utf-8')
+    clases = json.load(file)
+  except:
+    print("No se encontró el archivo de datos de clases.")
+    success = False
+    clases = []
+  finally:
+    try:
+      file.close()
+    except:
+      pass
+  return success, clases
+
+def reescribirArchivoClases(clases):
+  '''
+  Reescribe el archivo data_clases.json con las clases actualizados.
+  Args:
+    clases: list - Lista de clases.
+  Returns:
+    bool - True si se pudo guardar, False si no.
+  '''
+  success = True
+  try:
+    file =  open("data_clases.json", "w", encoding='utf-8')
+    json.dump(clases, file, ensure_ascii=False, ident=4)
+  except:
+    return False
+  finally:
+    try:
+      file.close()
+    except:
+      pass 
+
+  return success
+
 
 def crearClase(clases):
   '''

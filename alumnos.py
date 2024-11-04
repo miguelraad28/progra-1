@@ -1,5 +1,6 @@
 import random
 import re
+import json
 
 # Alumnos
 
@@ -64,6 +65,49 @@ def generarAlumnos(cantidad):
   return alumnos
 
 # Uso dentro del programa
+def abrirArchivoAlumnos():
+  '''
+  Abre el archivo de datos de alumnos
+  Returns:
+    list - Lista de diccionarios con los datos de los alumnos.
+  '''
+  success = True
+  
+  try:
+    file = open("data_alumnos.json", "r", encoding='utf-8')
+    alumnos = json.load(file)
+  except:
+    print("No se encontró el archivo de datos de alumnos.")
+    alumnos = []
+    success = False
+  finally:
+    try:
+      file.close()
+    except:
+      pass
+  return success, alumnos
+
+def reescribirArchivoAlumnos(alumnos):
+  '''
+  Reescribe el archivo data_alumnos.json con los alumnos actualizados.
+  Args:
+    alumnos: list - Lista de alumnos.
+  Returns:
+    bool - True si se pudo guardar, False si no.
+  '''
+  success = True
+  try:
+    file =  open("data_alumnos.json", "w", encoding='utf-8')
+    json.dump(alumnos, file, ensure_ascii=False, ident=4)
+  except:
+    return False
+  finally:
+    try:
+      file.close()
+    except:
+      pass 
+
+  return success
 
 def listarAlumnos(alumnos):
   """
@@ -139,7 +183,7 @@ def nuevoAlumno(nombre, apellido, dni, alumnos):
   }
 
   alumnos.append(alumno)
-  
+
   return alumnos
 
 def generarEmail(nombre, apellido, legajo):
