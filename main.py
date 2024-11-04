@@ -23,7 +23,7 @@ import os
 #----------------------------------------------------------------------------------------------
 def menuGestionAlumnos():
   try:
-    file =  open(os.path.join(os.path.dirname(__file__), "data", "data_alumnos.json"), "r", encoding='utf-8')
+    file =  open("data_alumnos.json", "r", encoding='utf-8')
     alumnos = json.load(file)
     file.close()
 
@@ -76,7 +76,7 @@ def menuGestionAlumnos():
         alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
         alumnoCreado = alumnos[-1]
         
-        file =  open(os.path.join(os.path.dirname(__file__), "data", "data_alumnos.json"), "w", encoding='utf-8')
+        file =  open("data_alumnos.json", "w", encoding='utf-8')
         json.dump(alumnos, file, ensure_ascii=False, ident=4)
         file.close()
         
@@ -183,13 +183,13 @@ def menuGestionClases():
   '''
   Menú de gestión de clases
   '''
-  with open("./data/data_alumnos.json", "r", encoding='utf-8') as file:
-    alumnos = json.load(file)
-    file.close()
+  file =  open("data_alumnos.json", "r", encoding='utf-8')
+  alumnos = json.load(file)
+  file.close()
 
-  with open("./data/data_clases.json", "r", encoding='utf-8') as file:
-    clases = json.load(file)
-    file.close()
+  file =  open("data_alumnos.json", "r", encoding='utf-8')
+  clases = json.load(file)
+  file.close()
 
   while True:
     opciones = 7

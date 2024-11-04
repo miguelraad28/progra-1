@@ -24,7 +24,7 @@ dias = {
   3: "Jueves",
   4: "Viernes" 
 }
-   
+
 turno = {
   0:"Mañana",
   1:"Tarde",
