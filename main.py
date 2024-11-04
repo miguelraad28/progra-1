@@ -22,17 +22,7 @@ import os
 # FUNCIONES
 #----------------------------------------------------------------------------------------------
 def menuGestionAlumnos():
-  try:
-    file =  open("data_alumnos.json", "r", encoding='utf-8')
-    alumnos = json.load(file)
-  except:
-    print('Ha ocurrido un error cargando los datos de los alumnos. Por favor intente nuevamente.')
-    return
-  finally:
-    try:
-      file.close()
-    except:
-      pass
+  alumnos = alumnosModule.abrirArchivoAlumnos()
 
   while True:
     opciones = 8
