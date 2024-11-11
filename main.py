@@ -22,7 +22,10 @@ import os
 # FUNCIONES
 #----------------------------------------------------------------------------------------------
 def menuGestionAlumnos():
-  alumnos = alumnosModule.abrirArchivoAlumnos()
+  success, alumnos = alumnosModule.abrirArchivoAlumnos()
+
+  if not success:
+    return print("Error obteniendo datos de alumnos")
 
   while True:
     opciones = 8
@@ -53,6 +56,7 @@ def menuGestionAlumnos():
       break
 
     elif opcion == "1":   # Opción listar alumnos
+      print(alumnos[0])
       alumnosModule.listarAlumnos(alumnos)
       
     elif opcion == "2":   # Opción nuevo alumno
@@ -68,7 +72,10 @@ def menuGestionAlumnos():
         print("El apellido no puede estar vacío y debe tener minimo 3 letras.")
         apellido = input("Ingrese el apellido del alumno: ").capitalize()
 
-      dni = alumnosModule.pedirDniNuevoAlumno()
+      success, dni = alumnosModule.pedirDniNuevoAlumno()
+      
+      if not success:
+        return
 
       alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
       alumnoCreado = alumnos[-1]
@@ -89,7 +96,7 @@ def menuGestionAlumnos():
       
     elif opcion == "3":   # Opción modificar alumno
       while True:
-        [encontrado, alumno] = alumnosModule.encontrarPorLegajo(alumnos)
+        encontrado, alumno = alumnosModule.encontrarPorLegajo(alumnos)
 
         if encontrado:
           print(f"Nombre: {alumno["nombre"]}")
@@ -99,9 +106,9 @@ def menuGestionAlumnos():
           print(f"Email: {alumno["email"]}")
           print(f"Estado: {alumno["estado"]}")
           print("_________________________")
-          break
         else:
           print("No se encontró un alumno con el legajo ingresado.")
+        break
       
       while True:
         campo = input("Ingrese el campo a modificar (nombre, apellido): ")
@@ -140,15 +147,19 @@ def menuGestionAlumnos():
       
 
     elif opcion == "6":   # Opción buscar alumno por DNI
-      while True:
-        dni = int(input("Ingrese el DNI del alumno: "))
-        if dni <= 0:
-            print("El DNI debe ser un número positivo.")
-            continue
-        if len(str(dni)) < 7 or len(str(dni)) > 8:
-            print("El DNI debe tener entre 7 y 8 dígitos.")
-            continue
-        break
+      try:
+        while True:
+          dni = int(input("Ingrese el DNI del alumno: "))
+          if dni <= 0:
+              print("El DNI debe ser un número positivo.")
+              continue
+          if len(str(dni)) < 7 or len(str(dni)) > 8:
+              print("El DNI debe tener entre 7 y 8 dígitos.")
+              continue
+          break
+      except Exception as ex:
+        print("Ocurrió un error al recibir el DNI, ", ex)
+        return
 
       alumnoEncontrado = alumnosModule.encontrarPorDni(dni)
 

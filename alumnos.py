@@ -97,7 +97,7 @@ def reescribirArchivoAlumnos(alumnos):
   '''
   success = True
   try:
-    file =  open("data_alumnos.json", "w", encoding='utf-8')
+    file = open("data_alumnos.json", "w", encoding='utf-8')
     json.dump(alumnos, file, ensure_ascii=False)
   except Exception as ex:
     print(ex)
@@ -118,7 +118,7 @@ def listarAlumnos(alumnos):
   Returns:
     None
   """
-  
+
   numeroDeActivos = 0 
   for alumno in alumnos:
     if alumno['estado'] == 'Activo':
@@ -245,17 +245,20 @@ def encontrarPorLegajo(alumnos):
         - Un booleano que indica si el alumno fue encontrado.
         - Un diccionario con los datos del alumno encontrado, o un diccionario vacío si no se encontró.
   """
-  
-  legajo = int(input("Ingrese el legajo del alumno: "))
-  
-  encontrado = False
-  alumnoEncontrado = {}
-  
-  for alumno in alumnos:
-    if alumno["LU"] == legajo and alumno['estado'] == 'Activo':
-      encontrado = True
-      alumnoEncontrado = alumno   
-  return [encontrado, alumnoEncontrado]
+  try:
+    legajo = int(input("Ingrese el legajo del alumno: "))
+    
+    encontrado = False
+    alumnoEncontrado = {}
+    
+    for alumno in alumnos:
+      if alumno["LU"] == legajo and alumno['estado'] == 'Activo':
+        encontrado = True
+        alumnoEncontrado = alumno   
+    return encontrado, alumnoEncontrado
+  except:
+    print("Error obteniendo alumno por legajo")
+  return False, {}
 
 def encontrarPorDni(dni):
   '''
@@ -277,7 +280,7 @@ def borrarAlumnoLogico(LU, alumnos):
     for alumno in alumnos:
         if alumno["LU"] == LU and alumno["estado"] == "Activo":
             alumno["estado"] = "Inactivo"
-            print(f"El alumno con LU {LU} ha sido marcado como Inactivo.")
+            print(f"El alumno con LU {LU} ({alumno["nombre"]} {alumno["apellido"]}) ha sido marcado como Inactivo.")
             encontrado = True
             alumno["clases"] = []
             
@@ -287,7 +290,7 @@ def borrarAlumnoLogico(LU, alumnos):
             
             break
         elif alumno["LU"] == LU and alumno["estado"] == "Inactivo":
-          print(f"El alumno con LU {LU} ya se encuentra inactivo.")
+          print(f"El alumno con LU {LU} ({alumno["nombre"]} {alumno["apellido"]}) ya se encuentra inactivo.")
           encontrado = True
           break
     if not encontrado:  
@@ -299,22 +302,27 @@ def pedirDniNuevoAlumno():
     Solicita al usuario que ingrese un DNI para un nuevo alumno y valida que sea un número positivo,
     que tenga entre 7 y 8 dígitos, y que no esté ya en uso.
     Returns:
+      bool: True si valida correctamente el DNI False si no 
       int: El DNI válido ingresado por el usuario.
     '''
-    while True:
-      dni = int(input("Ingrese el DNI del alumno: "))
-      if dni <= 0:
-          print("El DNI debe ser un número positivo.")
-          continue
-      if len(str(dni)) < 7 or len(str(dni)) > 8:
-          print("El DNI debe tener entre 7 y 8 dígitos.")
-          continue
+    try:
+      while True:
+        dni = int(input("Ingrese el DNI del alumno: "))
+        if dni <= 0:
+            print("El DNI debe ser un número positivo.")
+            continue
+        if len(str(dni)) < 7 or len(str(dni)) > 8:
+            print("El DNI debe tener entre 7 y 8 dígitos.")
+            continue
 
-      encontrado = encontrarPorDni(dni)
-      if encontrado: 
-        print("El dni ingresado ya está en uso")
-      else:
-          return dni 
+        encontrado = encontrarPorDni(dni)
+        if encontrado: 
+          print("El dni ingresado ya está en uso")
+        else:
+            return True, dni 
+    except Exception as ex: 
+      print("Ocurrió un error al recibir el DNI del nuevo alumno, ", ex)
+      return False, 0
 
 def chequeaLegajo(alumnos):
   '''
