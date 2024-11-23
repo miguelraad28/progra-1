@@ -5,51 +5,49 @@ import json
 # Materias & Clases
 
 # Lista de materias con identificadores únicos y nombres de las asignaturas disponibles en el sistema.
-materias = [
-  {"id": 1, "nombre": "Matemática Discreta"},
-  {"id": 2, "nombre": "Álgebra y Geometría Analítica"},
-  {"id": 3, "nombre": "Análisis Matemático I"},
-  {"id": 4, "nombre": "Algoritmos y Estructuras de Datos"},
-  {"id": 5, "nombre": "Arquitectura de Computadoras"},
-  {"id": 6, "nombre": "Introducción a la Programación"},
-  {"id": 7, "nombre": "Sistemas y Organizaciones"},
-  {"id": 8, "nombre": "Física I"},
-  {"id": 9, "nombre": "Química"},
-  {"id": 10, "nombre": "Inglés Técnico I"},
-]
 
-dias = {
-  0: "Lunes",
-  1: "Martes",
-  2: "Miércoles",
-  3: "Jueves",
-  4: "Viernes" 
-}
+dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+turnos = ["Mañana", "Tarde", "Noche"]
+cuatrimestres = ["Primero", "Segundo"]
 
-turno = {
-  0:"Mañana",
-  1:"Tarde",
-  2:"Noche"
-}
-
-cuatrimestre = {
-  0:"1er Cuatrimestre",
-  1:"2ndo Cuatrimestre",
-}
-
+def abrirArchivoDeMaterias():
+  '''
+  Abre el archivo json de las materias
+  Returns:
+    list - Lista de diccionarios con las materias.
+  '''
+  success = True
+  try:
+    file = open("data_materias.json", "r", encoding='utf-8')
+    materias = json.load(file)
+  except:
+    print("No se encontró el archivo de datos de materias.")
+    success = False
+    materias = []
+  finally:
+    try:
+      file.close()
+    except:
+      pass
+  return success, materias
 
 def generarClases(cantidad):
   '''
   Genera una lista de clases basado en las materias que tenemos al inicio del modulo de manera aleatoria para inicializar el programa con datos en memoria.
   '''
+  success, materias = abrirArchivoDeMaterias()
+  if not success:
+    print("No se encontraron materias.")
+    return
+  
   clases = []
   for i in range(cantidad):
     clase = {
       "id": 1000 + i,
-      "dia": random.choice(list(dias.keys())),
-      "turno": random.choice(list(turno.keys())),
+      "dia": random.choice(dias),
+      "turno": random.choice(turnos),
       "anio": "2024",
-      "cuatrimestre": random.choice(list(cuatrimestre.keys())),
+      "cuatrimestre": random.choice(cuatrimestres),
       "materiaId": random.choice(materias)["id"],
       "estado":"Activa"
     }
@@ -57,7 +55,6 @@ def generarClases(cantidad):
   return clases
 
 # Funciones de uso en el programa
-
 def abrirArchivoClases():
   '''
   Abre el archivo json de las clases
@@ -145,6 +142,13 @@ def crearClase(clases):
       print("")
       print("Listado materias: ")
       print("_____________________")
+
+      success, materias = abrirArchivoDeMaterias()
+      
+      if not success:
+        print("No se encontraron materias.")
+        return
+      
       for materia in materias:
           print(f"{materia['id']}: {materia['nombre']}")
       id = int(input("Ingrese el ID de la materia de la clase a crear: "))
@@ -169,7 +173,7 @@ def crearClase(clases):
     if materia['id'] == claseNueva["materiaId"]:
       materia_nombre = materia['nombre']
       break  
-  print(f"Clase creada satisfactoriamente: \nID materia: {nuevoId}, \nNombre materia: {materia_nombre}, \nDía: {dias[claseNueva['dia']]}, \nTurno: {turno[claseNueva['turno']]}")
+  print(f"Clase creada satisfactoriamente: \nID materia: {nuevoId}, \nNombre materia: {materia_nombre}, \nDía: {dias[claseNueva['dia']]}, \nTurno: {turnos[claseNueva['turno']]}")
   return claseNueva
 
 def buscarClasePorId(clases, id):
@@ -197,14 +201,20 @@ def modificarClase(clases):
     id = int(id_input)  # Convertir a entero si es válido
     break
   claseEncontrada = buscarClasePorId(clases, id)
-
+  
+  success, materias = abrirArchivoDeMaterias()
+  
+  if not success:
+    print("No se encontraron materias.")
+    return
+  
   if claseEncontrada:
     nombreMateria = "Desconocida"
     for materia in materias:
       if materia['id'] == claseEncontrada["materiaId"]:
         nombreMateria = materia['nombre']
         break
-    print(f"Clase encontrada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestre[claseEncontrada['cuatrimestre']]}") 
+    print(f"Clase encontrada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turnos[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestres[claseEncontrada['cuatrimestre']]}") 
 
     while True:
       nuevoDia = input("Ingrese el nuevo día de la clase (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): ")
@@ -225,7 +235,7 @@ def modificarClase(clases):
         break
       else:
         print("Opción inválida. Ingrese un turno válido (0: Mañana, 1: Tarde, 2: Noche).")
-    print(f"Clase actualizada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestre[claseEncontrada['cuatrimestre']]}")
+    print(f"Clase actualizada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turnos[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestres[claseEncontrada['cuatrimestre']]}")
   else:
     print("No se encontró una clase con el ID ingresado.")
 
@@ -250,6 +260,11 @@ def eliminarClase(clases, alumnos):
         break
 
     claseEncontrada = buscarClasePorId(clases, id)
+    success, materias = abrirArchivoDeMaterias()
+      
+    if not success:
+        print("No se encontraron materias.")
+        return
     if claseEncontrada:
         nombreMateria = "Desconocida"
         for materia in materias:
@@ -258,7 +273,7 @@ def eliminarClase(clases, alumnos):
                 break
         if claseEncontrada["estado"] == "Activa":
             claseEncontrada["estado"] = "Inactiva"
-            print(f"Clase eliminada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}")
+            print(f"Clase eliminada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turnos[claseEncontrada['turno']]}")
             # Eliminar el ID de clase del array 'clases' en cada alumno que la tenga asignada
             for alumno in alumnos:
                 if id in alumno["clases"]:
@@ -316,9 +331,11 @@ def listarClasesDisponibles(alumno, clases):
     clases: list - Lista de clases disponibles
   return: list - Lista de clases en las que se puede inscribir el alumno
   '''
-  dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
-  turnos = ["Mañana", "Tarde", "Noche"]
-  cuatrimestres = ["Primero", "Segundo"]
+  success, materias = abrirArchivoDeMaterias()
+  
+  if not success:
+    print("No se encontraron materias.")
+    return
 
   if len(alumno["clases"]) <= 5:
     print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando {len(alumno['clases'])} clases.")
@@ -365,9 +382,11 @@ def listarClasesDeAlumno(alumno, clases):
     clases: list - Lista de clases disponibles
   return: list - Lista de clases en las que esta inscrito el alumno
   '''
-  dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
-  turnos = ["Mañana", "Tarde", "Noche"]
-  cuatrimestres = ["Primero", "Segundo"]
+  success, materias = abrirArchivoDeMaterias()
+  
+  if not success:
+    print("No se encontraron materias.")
+    return
 
   if len(alumno["clases"]) == 0:
     print(f"El alumno {alumno['nombre']} {alumno['apellido']} no está cursando ninguna clase.")

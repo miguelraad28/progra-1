@@ -15,10 +15,15 @@ Pendientes: Listado de clases y su filtrado por turno, día y materia. Módulo d
 #----------------------------------------------------------------------------------------------
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
+import facturas as facturasModule
 
 #----------------------------------------------------------------------------------------------
 # FUNCIONES
 #----------------------------------------------------------------------------------------------
+dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+turnos = ["Mañana", "Tarde", "Noche"]
+cuatrimestres = ["Primero", "Segundo"]
+
 def menuGestionAlumnos():
   success, alumnos = alumnosModule.abrirArchivoAlumnos()
 
@@ -280,9 +285,80 @@ def menuGestionClases():
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
       clasesMateriasModule.listarClasesDeAlumno(alumnoEncontrado, clases)
 
-    input("\nPresione ENTER para volver al menú de gestión de alumnos.")
+    input("\nPresione ENTER para volver al menú de gestión de clases y materias.")
     print("\n\n")
 
+def menuGestionFacturas():
+  '''
+  Menú de gestión de facturas
+  '''
+  
+  success, alumnos = alumnosModule.abrirArchivoAlumnos()
+
+  success2, clases = clasesMateriasModule.abrirArchivoClases()
+
+  success3, facturas = facturasModule.abrirArchivoFacturas()
+  
+  if not success:
+    print('Ha ocurrido un error cargando los datos de los alumnos. Por favor intente nuevamente.')
+    return
+  
+  if not success2:
+    print('Ha ocurrido un error cargando los datos de las clases. Por favor intente nuevamente.')
+    return
+  
+  if not success3:
+    print('Ha ocurrido un error cargando los datos de las facturas. Por favor intente nuevamente.')
+    return
+
+  while True:
+    opciones = 3
+    while True:
+      print()
+      print("---------------------------")
+      print("GESTIÓN DE FACTURAS Y PAGOS   ")
+      print("---------------------------")
+      print("[1] Ver morosos")
+      print("[2] Ver última factura por LU")
+      print("[3] Marcar factura como pagada")
+      print("---------------------------")
+      print("[0] Volver al menú principal")
+      print()
+      
+      opcion = input("Seleccione una opción: ")
+      if opcion in [str(i) for i in range(0, opciones)]: # Sólo continua si se elije una opcion de menú válida
+        break
+      else:
+        input("Opción inválida. Presione ENTER para volver a seleccionar.")
+    print()
+
+    if opcion == "0": # Opción volver al menú principal
+      break
+
+    elif opcion == "1":   # Ver morosos
+      print("opcion 1")
+      morosos = facturasModule.obtenerMorosos(facturas, alumnos, clases)
+      print(morosos)
+      for moroso in morosos:
+        print("---------------------------")
+        print(f"{moroso["alumno"]["apellido"]}, {moroso["alumno"]["nombre"]}, LU: {moroso["alumno"]["LU"]:,}")
+        print(f"Deuda: ${moroso['factura']['monto']:,}")
+        print("Detalle:")
+        for clase in moroso["factura"]["clases"]:
+          print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
+      # TODO: Hacer lindo print del moroso con la factura que debe.
+      ...
+    elif opcion == "2":   # Ver última factura por LU
+      print("opcion 2")
+      ...
+    elif opcion == "3":   # Marcar factura como pagada
+      print("opcion 3")
+      # facturasModule.marcarComoPagada(facturas)
+      ...
+    input("\nPresione ENTER para volver al menú de gestión de facturas y pagos.")
+    print("\n\n")
+
+  
 #----------------------------------------------------------------------------------------------
 # CUERPO PRINCIPAL
 #----------------------------------------------------------------------------------------------
@@ -319,7 +395,7 @@ def mostrarMenu():
       menuGestionClases()
       ...
     elif opcion == "3":   # Opción 3
-      # menuGestionFacturas()
+      menuGestionFacturas()
       ...
 
     input("\nPresione ENTER para volver al menú.")
