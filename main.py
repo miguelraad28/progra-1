@@ -1,7 +1,7 @@
 """
 -----------------------------------------------------------------------------------------------
 Título: TPO
-Fecha: 14/10/2024
+Fecha: 25/11/2024
 Autor: Miguel Raad, Roberto Saavedra, Felipe Di Liscia, Daniel Bilikin
 
 Descripción: Proyecto de gestión de alumnos, clases y facturación de una universidad, EDAU.
@@ -15,8 +15,6 @@ Pendientes: Listado de clases y su filtrado por turno, día y materia. Módulo d
 #----------------------------------------------------------------------------------------------
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
-import json
-import os
 
 #----------------------------------------------------------------------------------------------
 # FUNCIONES
@@ -233,7 +231,7 @@ def menuGestionClases():
       clasesMateriasModule.modificarClase(clases)
       
     elif opcion == "3":   # Opción eliminar clase
-      clasesMateriasModule.eliminarClase(clases)
+      clasesMateriasModule.eliminarClase(clases, alumnos)
 
     elif opcion == "4":   # Opción asignar alumno a clase
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)

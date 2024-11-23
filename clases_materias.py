@@ -401,7 +401,5 @@ def desasignarClase(LU, clase, alumnos):
   return alumnos
 
 if __name__ == "__main__":
-  clases = generarClases(5)
+  clases = generarClases(30)
   print(clases)
-  print(asignarNuevaClase(800000, clases[0], [{"LU": 800000}]))
-  print(desasignarClase(800000, clases[0], [{"LU": 800000, "clases": [clases[0]]}]))
