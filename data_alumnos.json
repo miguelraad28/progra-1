@@ -1132,5 +1132,32 @@
         "email": "mraaad.884386@edau.edu.ar",
         "clases": [],
         "estado": "Inactivo"
+    },
+    {
+        "nombre": "Miguel raad",
+        "apellido": "Di liscia",
+        "DNI": 40675186,
+        "LU": 1051024,
+        "email": "mdiliscia.1051024@edau.edu.ar",
+        "clases": [],
+        "estado": "Activo"
+    },
+    {
+        "nombre": "Gustavo federico",
+        "apellido": "Di liscia",
+        "DNI": 40675186,
+        "LU": 1106612,
+        "email": "fdiliscia.1106612@edau.edu.ar",
+        "clases": [],
+        "estado": "Activo"
+    },
+    {
+        "nombre": "Felipe",
+        "apellido": "Di liscia",
+        "DNI": 40675186,
+        "LU": 1034139,
+        "email": "fdiliscia.1034139@edau.edu.ar",
+        "clases": [],
+        "estado": "Activo"
     }
 ]

@@ -104,9 +104,9 @@ def menuGestionAlumnos():
           print(f"Email: {alumno["email"]}")
           print(f"Estado: {alumno["estado"]}")
           print("_________________________")
+          break
         else:
           print("No se encontró un alumno con el legajo ingresado.")
-        break
       
       while True:
         campo = input("Ingrese el campo a modificar (nombre, apellido): ")
@@ -123,9 +123,19 @@ def menuGestionAlumnos():
 
       alumnosModule.modificarAlumnoPorLU(alumno["LU"], campo.lower(), nuevoValor, alumnos)
       
-    elif opcion == "4":   # Opción eliminar alumno
-      legajoUnico = int(input("Ingrese el Legajo a eliminar: "))
-
+    elif opcion == "4":  # Opción eliminar alumno
+      while True:
+        legajoUnicoStr = input("Ingrese el Legajo a eliminar (o '0' para volver al menú): ").strip()
+        
+        if legajoUnicoStr == "0":  # Permitir regresar al menú ingresando "0"
+            return
+        
+        if legajoUnicoStr.isdigit():  # Validar que sea un número
+            legajoUnico = int(legajoUnicoStr)
+            break  # Salir del bucle si es válido
+        
+        print("El legajo debe ser un número entero. Intente nuevamente.")
+      
       alumnosModule.borrarAlumnoLogico(legajoUnico, alumnos)
 
     elif opcion == "5":   # Opción buscar alumno por legajo
@@ -147,11 +157,13 @@ def menuGestionAlumnos():
     elif opcion == "6":   # Opción buscar alumno por DNI
       try:
         while True:
-          dni = int(input("Ingrese el DNI del alumno: "))
-          if dni <= 0:
+          dni = int((input("Ingrese el DNI del alumno o '0' para volver al menu: ")))
+          if dni == 0:
+            return
+          elif dni < 0:
               print("El DNI debe ser un número positivo.")
               continue
-          if len(str(dni)) < 7 or len(str(dni)) > 8:
+          elif len(str(dni)) < 7 or len(str(dni)) > 8:
               print("El DNI debe tener entre 7 y 8 dígitos.")
               continue
           break
@@ -236,12 +248,21 @@ def menuGestionClases():
     elif opcion == "4":   # Opción asignar alumno a clase
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
       clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontrado, clases)
+
       while True:
-        claseElegida = int(input("Ingrese la clase a la que deseas inscribir al alumno: "))
-        if claseElegida not in clasesDisponibles:
-            print("La clase elegida no es valida")
+        claseInput = input("Ingrese la clase a la que deseas inscribir al alumno: ").strip()
+        if not claseInput:  # Validar si está vacío
+            print("El campo no puede estar vacío. Por favor, ingrese un valor válido.")
+            continue
+        if not claseInput.isdigit():  # Validar si no es un número
+            print("La clase debe ser un número entero. Por favor, intente nuevamente.")
+            continue
+        claseElegida = int(claseInput)
+        if claseElegida not in clasesDisponibles:  # Validar si la clase está disponible
+            print("La clase elegida no es válida. Por favor, elija una clase de la lista disponible.")
         else:
-          break
+            break  # Salir del bucle si el valor es válido
+
       clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos)
 
     elif opcion == "5":   # Opción Dar de baja un alumno de una clase

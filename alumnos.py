@@ -246,7 +246,7 @@ def encontrarPorLegajo(alumnos):
         - Un diccionario con los datos del alumno encontrado, o un diccionario vacío si no se encontró.
   """
   try:
-    legajo = int(input("Ingrese el legajo del alumno: "))
+    legajo = int(input("Ingrese el legajo del alumno (Numero sin comas): "))
     
     encontrado = False
     alumnoEncontrado = {}
@@ -325,33 +325,40 @@ def pedirDniNuevoAlumno():
       return False, 0
 
 def chequeaLegajo(alumnos):
-  '''
-  Pide el legajo y comprueba que sea valido, si no lo es o no corresponde a un alumno pide de vuelta,
-  si lo es devuelve legajo y alumno
-  Args:
-    alumnos: list - Lista de alumnos.
-  Returns:
-    dict - Diccionario con los datos del alumno.
-    int - Legajo del alumno.
-  '''
-  while True:
-    legajo = int(input("Ingrese el legajo del alumno: "))
+    '''
+    Pide el legajo y comprueba que sea válido, si no lo es o no corresponde a un alumno, pide de vuelta.
+    Si lo es, devuelve el legajo y el alumno.
+    Args:
+        alumnos: list - Lista de alumnos.
+    Returns:
+        dict - Diccionario con los datos del alumno.
+        int - Legajo del alumno.
+    '''
+    while True:
+        legajo_input = input("Ingrese el legajo del alumno: ").strip()
+        
+        if not legajo_input:  # Validar si está vacío
+            print("El campo no puede estar vacío. Por favor, ingrese un legajo válido.")
+            continue
+        if not legajo_input.isdigit():  # Validar si no es un número
+            print("El legajo debe ser un número entero. Por favor, intente nuevamente.")
+            continue
+        
+        legajo = int(legajo_input)  # Convertir a entero si es válido
 
-    if 0 < legajo < 9999999:
-      alumno_encontrado = False
-      for alumno in alumnos:
-        if legajo == alumno["LU"]:
-          alumno_encontrado = alumno
-          break
+        if 0 < legajo < 9999999:
+            alumno_encontrado = None
+            for alumno in alumnos:
+                if legajo == alumno["LU"]:
+                    alumno_encontrado = alumno
+                    break
 
-      if not alumno_encontrado:
-        print("El legajo no coincide con ningun alumno.")
-    else:
-      print("El legajo debe ser un número entre 1 y 9,999,999.")
-
-    if alumno_encontrado:
-      break
-  return alumno_encontrado, legajo          
+            if alumno_encontrado:
+                return alumno_encontrado, legajo
+            else:
+                print("El legajo no coincide con ningún alumno.")
+        else:
+            print("El legajo debe ser un número entre 1 y 9,999,999.")          
 
 if __name__ == "__main__":
   print(len(alumnos))

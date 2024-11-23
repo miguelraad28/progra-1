@@ -112,24 +112,35 @@ def crearClase(clases):
   
   '''
   if len(clases) > 0:
-      nuevoId = clases[-1]["id"] + 1 
+    nuevoId = clases[-1]["id"] + 1
   else:
-      nuevoId = 1000 
+    nuevoId = 1000
 
+    # Validar día de dictado
   while True:
-      diaInput = int(input("Ingrese el dia de dictado de la clase (0: Lunes, 1: Martes, 2: Miercoles, 3: Jueves, 4: Viernes): "))
-      if 0 <= diaInput <= 4:
-          break
-      else:
-          print("Opcion invalida, por favor ingrese una opcion correcta (0: Lunes, 1: Martes, 2: Miercoles, 3: Jueves, 4: Viernes)")
-  
+    diaInput = input("Ingrese el día de dictado de la clase (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): ").strip()
+    if not diaInput:
+      print("El campo no puede estar vacío. Por favor, ingrese un valor válido.")
+      continue
+    if diaInput.isdigit() and 0 <= int(diaInput) <= 4:
+      diaInput = int(diaInput)
+      break
+    else:
+      print("Opción inválida. Por favor, ingrese un valor entre 0 y 4.")
+
+  # Validar turno
   while True:
-      turnoInput = int(input("Ingrese el turno de la clase (0: Mañana, 1: Tarde, 2: Noche): "))
-      if 0 <= turnoInput <= 2:
-          break
-      else:
-          print("Opcion invalida, por favor ingrese una opcion correcta (0: Mañana, 1: Tarde, 2: Noche)")
-  
+    turnoInput = input("Ingrese el turno de la clase (0: Mañana, 1: Tarde, 2: Noche): ").strip()
+    if not turnoInput:
+      print("El campo no puede estar vacío. Por favor, ingrese un valor válido.")
+      continue
+    if turnoInput.isdigit() and 0 <= int(turnoInput) <= 2:
+      turnoInput = int(turnoInput)
+      break
+    else:
+      print("Opción inválida. Por favor, ingrese un valor entre 0 y 2.")
+
+  # Validar ID de la materia
   while True:
       print("")
       print("Listado materias: ")
@@ -175,7 +186,16 @@ def numeroValido(entrada, rango):
   return re.match(r'^[0-9]+$', entrada) and (0 <= int(entrada) <= rango)
 
 def modificarClase(clases):
-  id = int(input("Ingrese el ID de la clase que desea modificar: "))
+  while True:
+    id_input = input("Ingrese el ID de la clase que desea modificar: ").strip()
+    if not id_input:  # Validar si está vacío
+      print("El ID no puede estar vacío. Por favor, ingrese un valor válido.")
+      continue
+    if not id_input.isdigit():  # Validar si no es un número
+      print("El ID debe ser un número entero. Por favor, intente nuevamente.")
+      continue
+    id = int(id_input)  # Convertir a entero si es válido
+    break
   claseEncontrada = buscarClasePorId(clases, id)
 
   if claseEncontrada:
@@ -210,34 +230,45 @@ def modificarClase(clases):
     print("No se encontró una clase con el ID ingresado.")
 
 def eliminarClase(clases, alumnos):
-  '''
-  Elimina clase de la lista de clases, elimina la clase de el array clases de los alumnos. 
-  Args:
-    clases: List - lista de clases.
-    alumnos: List - lista de alumnos.
-  Returns:
-    None
-  '''
-  # RELACIONAR CON FACTURAS CAMBIAR NOMBRE A ACTIVAR/DESACTIVAR
-  id = int(input("Ingrese el ID de la clase que desea eliminar: "))
-  claseEncontrada = buscarClasePorId(clases, id)
-  if claseEncontrada:
-    nombreMateria = "Desconocida"
-    for materia in materias:
-      if materia['id'] == claseEncontrada["materiaId"]:
-        nombreMateria = materia['nombre']
+    '''
+    Elimina clase de la lista de clases, elimina la clase del array clases de los alumnos. 
+    Args:
+        clases: List - lista de clases.
+        alumnos: List - lista de alumnos.
+    Returns:
+        None
+    '''
+    while True:
+        id_input = input("Ingrese el ID de la clase que desea eliminar: ").strip()
+        if not id_input:  # Validar si está vacío
+            print("El ID no puede estar vacío. Por favor, ingrese un valor válido.")
+            continue
+        if not id_input.isdigit():  # Validar si no es un número
+            print("El ID debe ser un número entero. Por favor, intente nuevamente.")
+            continue
+        id = int(id_input)  # Convertir a entero si es válido
         break
-  if  claseEncontrada["estado"] == "Activa":
-      claseEncontrada["estado"] = "Inactiva"
-      print(f"Clase eliminada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}")
-      # Eliminar el ID de clase del array 'clases' en cada alumno que la tenga asignada
-      for alumno in alumnos:
-        if id in alumno["clases"]:
-          alumno["clases"].remove(id)
-          print(f"El ID de la clase {id} ha sido eliminado de los alumnos inscriptos a la misma.")
-  else:
-      print("La clase ya está eliminada o no hay una clase con ese ID.")
-  return
+
+    claseEncontrada = buscarClasePorId(clases, id)
+    if claseEncontrada:
+        nombreMateria = "Desconocida"
+        for materia in materias:
+            if materia['id'] == claseEncontrada["materiaId"]:
+                nombreMateria = materia['nombre']
+                break
+        if claseEncontrada["estado"] == "Activa":
+            claseEncontrada["estado"] = "Inactiva"
+            print(f"Clase eliminada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}")
+            # Eliminar el ID de clase del array 'clases' en cada alumno que la tenga asignada
+            for alumno in alumnos:
+                if id in alumno["clases"]:
+                    alumno["clases"].remove(id)
+                    print(f"El ID de la clase {id} ha sido eliminado de los alumnos inscriptos a la misma.")
+        else:
+            print("La clase ya está eliminada o no está activa.")
+    else:
+        print("No se encontró una clase con el ID ingresado.")
+    return
 
 def asignarNuevaClase(LU, claseId, alumnos):
   """
