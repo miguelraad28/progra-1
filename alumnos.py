@@ -241,7 +241,7 @@ def encontrarPorLegajo(alumnos):
     alumnos (list): Lista de diccionarios que representan a los alumnos. 
             Cada diccionario contienen las claves "LU" (legajo) y "estado".
   Returns:
-    list: Una lista que contiene dos elementos:
+    tuple: Una lista que contiene dos elementos:
         - Un booleano que indica si el alumno fue encontrado.
         - Un diccionario con los datos del alumno encontrado, o un diccionario vacío si no se encontró.
   """

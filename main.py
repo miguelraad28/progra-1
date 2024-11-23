@@ -338,9 +338,8 @@ def menuGestionFacturas():
       break
 
     elif opcion == "1":   # Ver morosos
-      print("opcion 1")
       morosos = facturasModule.obtenerMorosos(facturas, alumnos, clases)
-      print(morosos)
+
       for moroso in morosos:
         print("---------------------------")
         print(f"{moroso["alumno"]["apellido"]}, {moroso["alumno"]["nombre"]}, LU: {moroso["alumno"]["LU"]:,}")
@@ -348,10 +347,25 @@ def menuGestionFacturas():
         print("Detalle:")
         for clase in moroso["factura"]["clases"]:
           print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
-      # TODO: Hacer lindo print del moroso con la factura que debe.
       ...
     elif opcion == "2":   # Ver última factura por LU
       print("opcion 2")
+      success, alumnoEncontrado = alumnosModule.encontrarPorLegajo(alumnos)
+      if not success:
+        print("No se encontró el alumno.")
+        return
+      
+      factura = facturasModule.verUltimaFacturaPorLU(facturas, alumnoEncontrado["LU"], clases)
+      if not factura:
+        print("No se encontró factura para el alumno.")
+        return
+      else:
+        print("---------------------------")
+        print(f"{alumnoEncontrado["apellido"]}, {alumnoEncontrado["nombre"]}, LU: {alumnoEncontrado["LU"]:,}")
+        print(f"Deuda: ${factura['monto']:,}")
+        print("Detalle:")
+        for clase in factura["clases"]:
+          print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
       ...
     elif opcion == "3":   # Marcar factura como pagada
       print("opcion 3")

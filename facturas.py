@@ -85,23 +85,50 @@ def obtenerMorosos(facturas, alumnos, clases):
   morosos = []
   for factura in facturas:
     if not factura["pagada"]:
-      print("No pagada")
       for alumno in alumnos:
         if factura["alumnoLU"] == alumno["LU"]:
-          print("Es del alumno ", alumno["nombre"])
-          for i in range(0, len(factura["clases"])):
-            for clase in clases:
-              ...
-              if clase["id"] == factura["clases"][i]:
-                for materia in materias:
-                  if materia["id"] == clase["materiaId"]:
-                    clase["materia"] = materia['nombre']
-                    break
-                factura["clases"][i] = clase
+          factura = expandirDatosFactura(factura, clases, materias)
+          
       factura["monto"] = len(factura["clases"]) * costo_por_clase
       morosos.append({"alumno": alumno, "factura": factura})
   return morosos
 
+def expandirDatosFactura(factura, clases, materias):
+  for i in range(0, len(factura["clases"])):
+    for clase in clases:
+      ...
+      if clase["id"] == factura["clases"][i]:
+        for materia in materias:
+          if materia["id"] == clase["materiaId"]:
+            clase["materia"] = materia['nombre']
+            break
+        factura["clases"][i] = clase
+        
+  return factura
+
+def verUltimaFacturaPorLU(facturas, lu, clases):
+  '''
+  Muestra la última factura de un alumno.
+  Args:
+    facturas: list - Lista de facturas.
+    lu: int - LU del alumno.
+  Returns:
+    dict - Diccionario con la última factura del alumno.
+  '''
+  success, materias = clasesMateriasModule.abrirArchivoDeMaterias()
+  
+  if not success:
+    print("No se pudo abrir el archivo de materias.")
+    return
+  
+  ultimaFactura = None
+
+  for factura in facturas:
+    if factura["alumnoLU"] == lu:
+      ultimaFactura = expandirDatosFactura(factura, clases, materias)
+      ultimaFactura["monto"] = len(ultimaFactura["clases"]) * costo_por_clase
+
+  return ultimaFactura
 '''
 {
   alumnoLU: 123,
