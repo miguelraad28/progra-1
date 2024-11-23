@@ -98,7 +98,7 @@ def reescribirArchivoAlumnos(alumnos):
   success = True
   try:
     file = open("data_alumnos.json", "w", encoding='utf-8')
-    json.dump(alumnos, file, ensure_ascii=False)
+    json.dump(alumnos, file, ensure_ascii=False, indent=4)
   except Exception as ex:
     print(ex)
     return False

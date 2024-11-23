@@ -91,7 +91,7 @@ def reescribirArchivoClases(clases):
   success = True
   try:
     file =  open("data_clases.json", "w", encoding='utf-8')
-    json.dump(clases, file, ensure_ascii=False)
+    json.dump(clases, file, ensure_ascii=False, indent=4)
   except:
     return False
   finally:
