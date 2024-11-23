@@ -44,10 +44,10 @@ def generarClases(cantidad):
   for i in range(cantidad):
     clase = {
       "id": 1000 + i,
-      "dia": random.choice(list(dias.keys())),
-      "turno": random.choice(list(turno.keys())),
+      "dia": random.choice(dias),
+      "turno": random.choice(turnos),
       "anio": "2024",
-      "cuatrimestre": random.choice(list(cuatrimestre.keys())),
+      "cuatrimestre": random.choice(cuatrimestres),
       "materiaId": random.choice(materias)["id"],
       "estado":"Activa"
     }
@@ -162,7 +162,7 @@ def crearClase(clases):
     if materia['id'] == claseNueva["materiaId"]:
       materia_nombre = materia['nombre']
       break  
-  print(f"Clase creada satisfactoriamente: \nID materia: {nuevoId}, \nNombre materia: {materia_nombre}, \nDía: {dias[claseNueva['dia']]}, \nTurno: {turno[claseNueva['turno']]}")
+  print(f"Clase creada satisfactoriamente: \nID materia: {nuevoId}, \nNombre materia: {materia_nombre}, \nDía: {dias[claseNueva['dia']]}, \nTurno: {turnos[claseNueva['turno']]}")
   return claseNueva
 
 def buscarClasePorId(clases, id):
@@ -194,7 +194,7 @@ def modificarClase(clases):
       if materia['id'] == claseEncontrada["materiaId"]:
         nombreMateria = materia['nombre']
         break
-    print(f"Clase encontrada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestre[claseEncontrada['cuatrimestre']]}") 
+    print(f"Clase encontrada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turnos[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestres[claseEncontrada['cuatrimestre']]}") 
 
     while True:
       nuevoDia = input("Ingrese el nuevo día de la clase (0: Lunes, 1: Martes, 2: Miércoles, 3: Jueves, 4: Viernes): ")
@@ -215,7 +215,7 @@ def modificarClase(clases):
         break
       else:
         print("Opción inválida. Ingrese un turno válido (0: Mañana, 1: Tarde, 2: Noche).")
-    print(f"Clase actualizada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestre[claseEncontrada['cuatrimestre']]}")
+    print(f"Clase actualizada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turnos[claseEncontrada['turno']]}, \nCuatrimestre: {cuatrimestres[claseEncontrada['cuatrimestre']]}")
   else:
     print("No se encontró una clase con el ID ingresado.")
 
@@ -246,7 +246,7 @@ def eliminarClase(clases, alumnos):
         break
   if  claseEncontrada["estado"] == "Activa":
       claseEncontrada["estado"] = "Inactiva"
-      print(f"Clase eliminada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turno[claseEncontrada['turno']]}")
+      print(f"Clase eliminada: \nID materia: {claseEncontrada['id']}, \nNombre materia: {nombreMateria}, \nDía: {dias[claseEncontrada['dia']]}, \nTurno: {turnos[claseEncontrada['turno']]}")
       # Eliminar el ID de clase del array 'clases' en cada alumno que la tenga asignada
       for alumno in alumnos:
         if id in alumno["clases"]:
