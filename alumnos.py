@@ -241,24 +241,21 @@ def encontrarPorLegajo(alumnos):
     alumnos (list): Lista de diccionarios que representan a los alumnos. 
             Cada diccionario contienen las claves "LU" (legajo) y "estado".
   Returns:
-    tuple: Una lista que contiene dos elementos:
-        - Un booleano que indica si el alumno fue encontrado.
-        - Un diccionario con los datos del alumno encontrado, o un diccionario vacío si no se encontró.
+    dict: Diccionario con los datos del alumno encontrado, o None si no se encontró.
   """
   try:
     legajo = int(input("Ingrese el legajo del alumno (Numero sin comas): "))
     
-    encontrado = False
-    alumnoEncontrado = {}
+    alumnoEncontrado = None
     
     for alumno in alumnos:
       if alumno["LU"] == legajo and alumno['estado'] == 'Activo':
-        encontrado = True
         alumnoEncontrado = alumno   
-    return encontrado, alumnoEncontrado
-  except:
-    print("Error obteniendo alumno por legajo")
-  return False, {}
+    return alumnoEncontrado
+    ...
+  except Exception as ex:
+    print("Error obteniendo alumno por legajo. Error: ", ex)
+  return alumnoEncontrado
 
 def encontrarPorDni(dni):
   '''

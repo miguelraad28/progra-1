@@ -99,9 +99,9 @@ def menuGestionAlumnos():
       
     elif opcion == "3":   # Opción modificar alumno
       while True:
-        encontrado, alumno = alumnosModule.encontrarPorLegajo(alumnos)
+        alumno = alumnosModule.encontrarPorLegajo(alumnos)
 
-        if encontrado:
+        if alumno:
           print(f"Nombre: {alumno["nombre"]}")
           print(f"Apellido: {alumno["apellido"]}")
           print(f"D.N.I: {alumno["DNI"]:,}")
@@ -110,9 +110,7 @@ def menuGestionAlumnos():
           print(f"Estado: {alumno["estado"]}")
           print("_________________________")
           break
-        else:
-          print("No se encontró un alumno con el legajo ingresado.")
-      
+
       while True:
         campo = input("Ingrese el campo a modificar (nombre, apellido): ")
         if campo.lower() in ["nombre", "apellido"]:
@@ -144,9 +142,9 @@ def menuGestionAlumnos():
       alumnosModule.borrarAlumnoLogico(legajoUnico, alumnos)
 
     elif opcion == "5":   # Opción buscar alumno por legajo
-        [encontrado, alumno] = alumnosModule.encontrarPorLegajo(alumnos)
+        alumno = alumnosModule.encontrarPorLegajo(alumnos)
 
-        if encontrado:
+        if alumno:
           print(f"Nombre: {alumno["nombre"]}")
           print(f"Apellido: {alumno["apellido"]}")
           print(f"D.N.I: {alumno["DNI"]:,}")
@@ -155,9 +153,6 @@ def menuGestionAlumnos():
           print(f"Estado: {alumno["estado"]}")
           print("_________________________")
           break
-        else:
-          print("No se encontró un alumno con el legajo ingresado.")
-      
 
     elif opcion == "6":   # Opción buscar alumno por DNI
       try:
@@ -349,23 +344,20 @@ def menuGestionFacturas():
           print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
       ...
     elif opcion == "2":   # Ver última factura por LU
-      print("opcion 2")
-      success, alumnoEncontrado = alumnosModule.encontrarPorLegajo(alumnos)
-      if not success:
-        print("No se encontró el alumno.")
-        return
+      alumno = alumnosModule.encontrarPorLegajo(alumnos)
       
-      factura = facturasModule.verUltimaFacturaPorLU(facturas, alumnoEncontrado["LU"], clases)
-      if not factura:
-        print("No se encontró factura para el alumno.")
-        return
-      else:
+      factura = facturasModule.verUltimaFacturaPorLU(facturas, alumno["LU"], clases)
+      
+      if factura:
         print("---------------------------")
-        print(f"{alumnoEncontrado["apellido"]}, {alumnoEncontrado["nombre"]}, LU: {alumnoEncontrado["LU"]:,}")
+        print(f"{alumno["apellido"]}, {alumno["nombre"]}, LU: {alumno["LU"]:,}")
         print(f"Deuda: ${factura['monto']:,}")
         print("Detalle:")
         for clase in factura["clases"]:
           print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
+      else: 
+        print("No se encontraron facturas para el alumno.")
+      return
       ...
     elif opcion == "3":   # Marcar factura como pagada
       print("opcion 3")
