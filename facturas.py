@@ -84,3 +84,11 @@ def listarMorosos(facturas, alumnos):
     if deuda > 0:
       morosos.append({"LU": alumno["LU"], "nombre": alumno["nombre"],"apellido": alumno["apellido"], "deuda": deuda})
   return morosos
+
+'''
+{
+  alumnoLU: 123,
+  clases: [1, 2, 3],
+  pagada: False
+}
+'''
