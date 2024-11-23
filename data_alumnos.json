@@ -5,7 +5,9 @@
         "DNI": 95656210,
         "LU": 1200447,
         "email": "miguelraad2020@gmail.com",
-        "clases": [],
+        "clases": [1000,
+        1001,
+        1002],
         "estado": "Activo"
     },
     {

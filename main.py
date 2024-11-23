@@ -20,6 +20,10 @@ import facturas as facturasModule
 #----------------------------------------------------------------------------------------------
 # FUNCIONES
 #----------------------------------------------------------------------------------------------
+dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+turnos = ["Mañana", "Tarde", "Noche"]
+cuatrimestres = ["Primero", "Segundo"]
+
 def menuGestionAlumnos():
   success, alumnos = alumnosModule.abrirArchivoAlumnos()
 
@@ -294,7 +298,8 @@ def menuGestionFacturas():
       print("GESTIÓN DE FACTURAS Y PAGOS   ")
       print("---------------------------")
       print("[1] Ver morosos")
-      print("[2] Marcar factura como pagada")
+      print("[2] Ver última factura por LU")
+      print("[3] Marcar factura como pagada")
       print("---------------------------")
       print("[0] Volver al menú principal")
       print()
@@ -311,13 +316,25 @@ def menuGestionFacturas():
 
     elif opcion == "1":   # Ver morosos
       print("opcion 1")
-      # facturasModule.listarMorosos(facturas, alumnos)
+      morosos = facturasModule.obtenerMorosos(facturas, alumnos, clases)
+      print(morosos)
+      for moroso in morosos:
+        print("---------------------------")
+        print(f"{moroso["alumno"]["apellido"]}, {moroso["alumno"]["nombre"]}, LU: {moroso["alumno"]["LU"]:,}")
+        print(f"Deuda: ${moroso['factura']['monto']:,}")
+        print("Detalle:")
+        for clase in moroso["factura"]["clases"]:
+          print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
+      # TODO: Hacer lindo print del moroso con la factura que debe.
       ...
-    elif opcion == "2":   # Marcar factura como pagada
+    elif opcion == "2":   # Ver última factura por LU
       print("opcion 2")
+      ...
+    elif opcion == "3":   # Marcar factura como pagada
+      print("opcion 3")
       # facturasModule.marcarComoPagada(facturas)
       ...
-    input("\nPresione ENTER para volver al menú de gestión de favturas y pagos.")
+    input("\nPresione ENTER para volver al menú de gestión de facturas y pagos.")
     print("\n\n")
 
   

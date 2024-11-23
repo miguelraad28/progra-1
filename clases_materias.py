@@ -5,43 +5,41 @@ import json
 # Materias & Clases
 
 # Lista de materias con identificadores únicos y nombres de las asignaturas disponibles en el sistema.
-materias = [
-  {"id": 1, "nombre": "Matemática Discreta"},
-  {"id": 2, "nombre": "Álgebra y Geometría Analítica"},
-  {"id": 3, "nombre": "Análisis Matemático I"},
-  {"id": 4, "nombre": "Algoritmos y Estructuras de Datos"},
-  {"id": 5, "nombre": "Arquitectura de Computadoras"},
-  {"id": 6, "nombre": "Introducción a la Programación"},
-  {"id": 7, "nombre": "Sistemas y Organizaciones"},
-  {"id": 8, "nombre": "Física I"},
-  {"id": 9, "nombre": "Química"},
-  {"id": 10, "nombre": "Inglés Técnico I"},
-]
 
-dias = {
-  0: "Lunes",
-  1: "Martes",
-  2: "Miércoles",
-  3: "Jueves",
-  4: "Viernes" 
-}
+dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+turnos = ["Mañana", "Tarde", "Noche"]
+cuatrimestres = ["Primero", "Segundo"]
 
-turno = {
-  0:"Mañana",
-  1:"Tarde",
-  2:"Noche"
-}
-
-cuatrimestre = {
-  0:"1er Cuatrimestre",
-  1:"2ndo Cuatrimestre",
-}
-
+def abrirArchivoDeMaterias():
+  '''
+  Abre el archivo json de las materias
+  Returns:
+    list - Lista de diccionarios con las materias.
+  '''
+  success = True
+  try:
+    file = open("data_materias.json", "r", encoding='utf-8')
+    materias = json.load(file)
+  except:
+    print("No se encontró el archivo de datos de materias.")
+    success = False
+    materias = []
+  finally:
+    try:
+      file.close()
+    except:
+      pass
+  return success, materias
 
 def generarClases(cantidad):
   '''
   Genera una lista de clases basado en las materias que tenemos al inicio del modulo de manera aleatoria para inicializar el programa con datos en memoria.
   '''
+  success, materias = abrirArchivoDeMaterias()
+  if not success:
+    print("No se encontraron materias.")
+    return
+  
   clases = []
   for i in range(cantidad):
     clase = {
@@ -57,7 +55,6 @@ def generarClases(cantidad):
   return clases
 
 # Funciones de uso en el programa
-
 def abrirArchivoClases():
   '''
   Abre el archivo json de las clases
@@ -134,6 +131,13 @@ def crearClase(clases):
       print("")
       print("Listado materias: ")
       print("_____________________")
+
+      success, materias = abrirArchivoDeMaterias()
+      
+      if not success:
+        print("No se encontraron materias.")
+        return
+      
       for materia in materias:
           print(f"{materia['id']}: {materia['nombre']}")
       id = int(input("Ingrese el ID de la materia de la clase a crear: "))
@@ -177,7 +181,13 @@ def numeroValido(entrada, rango):
 def modificarClase(clases):
   id = int(input("Ingrese el ID de la clase que desea modificar: "))
   claseEncontrada = buscarClasePorId(clases, id)
-
+  
+  success, materias = abrirArchivoDeMaterias()
+  
+  if not success:
+    print("No se encontraron materias.")
+    return
+  
   if claseEncontrada:
     nombreMateria = "Desconocida"
     for materia in materias:
@@ -221,6 +231,13 @@ def eliminarClase(clases, alumnos):
   # RELACIONAR CON FACTURAS CAMBIAR NOMBRE A ACTIVAR/DESACTIVAR
   id = int(input("Ingrese el ID de la clase que desea eliminar: "))
   claseEncontrada = buscarClasePorId(clases, id)
+  
+  success, materias = abrirArchivoDeMaterias()
+  
+  if not success:
+    print("No se encontraron materias.")
+    return
+  
   if claseEncontrada:
     nombreMateria = "Desconocida"
     for materia in materias:
@@ -285,9 +302,11 @@ def listarClasesDisponibles(alumno, clases):
     clases: list - Lista de clases disponibles
   return: list - Lista de clases en las que se puede inscribir el alumno
   '''
-  dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
-  turnos = ["Mañana", "Tarde", "Noche"]
-  cuatrimestres = ["Primero", "Segundo"]
+  success, materias = abrirArchivoDeMaterias()
+  
+  if not success:
+    print("No se encontraron materias.")
+    return
 
   if len(alumno["clases"]) <= 5:
     print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando {len(alumno['clases'])} clases.")
@@ -334,9 +353,11 @@ def listarClasesDeAlumno(alumno, clases):
     clases: list - Lista de clases disponibles
   return: list - Lista de clases en las que esta inscrito el alumno
   '''
-  dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
-  turnos = ["Mañana", "Tarde", "Noche"]
-  cuatrimestres = ["Primero", "Segundo"]
+  success, materias = abrirArchivoDeMaterias()
+  
+  if not success:
+    print("No se encontraron materias.")
+    return
 
   if len(alumno["clases"]) == 0:
     print(f"El alumno {alumno['nombre']} {alumno['apellido']} no está cursando ninguna clase.")

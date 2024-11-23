@@ -1,0 +1,12 @@
+[
+    {"id": 1, "nombre": "Matemática Discreta"},
+    {"id": 2, "nombre": "Álgebra y Geometría Analítica"},
+    {"id": 3, "nombre": "Análisis Matemático I"},
+    {"id": 4, "nombre": "Algoritmos y Estructuras de Datos"},
+    {"id": 5, "nombre": "Arquitectura de Computadoras"},
+    {"id": 6, "nombre": "Introducción a la Programación"},
+    {"id": 7, "nombre": "Sistemas y Organizaciones"},
+    {"id": 8, "nombre": "Física I"},
+    {"id": 9, "nombre": "Química"},
+    {"id": 10, "nombre": "Inglés Técnico I"}
+]
