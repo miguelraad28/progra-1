@@ -335,26 +335,26 @@ def chequeaLegajo(alumnos):
         int - Legajo del alumno.
     '''
     while True:
-        legajo_input = input("Ingrese el legajo del alumno: ").strip()
+        legajoInput = input("Ingrese el legajo del alumno: ").strip()
         
-        if not legajo_input:  # Validar si está vacío
+        if not legajoInput:  # Validar si está vacío
             print("El campo no puede estar vacío. Por favor, ingrese un legajo válido.")
             continue
-        if not legajo_input.isdigit():  # Validar si no es un número
+        if not legajoInput.isdigit():  # Validar si no es un número
             print("El legajo debe ser un número entero. Por favor, intente nuevamente.")
             continue
         
-        legajo = int(legajo_input)  # Convertir a entero si es válido
+        legajo = int(legajoInput)  # Convertir a entero si es válido
 
         if 0 < legajo < 9999999:
-            alumno_encontrado = None
+            alumnoEncontrado = None
             for alumno in alumnos:
                 if legajo == alumno["LU"]:
-                    alumno_encontrado = alumno
+                    alumnoEncontrado = alumno
                     break
 
-            if alumno_encontrado:
-                return alumno_encontrado, legajo
+            if alumnoEncontrado:
+                return alumnoEncontrado, legajo
             else:
                 print("El legajo no coincide con ningún alumno.")
         else:
