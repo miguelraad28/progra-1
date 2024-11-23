@@ -252,23 +252,25 @@ def menuGestionClases():
 
     elif opcion == "4":   # Opción asignar alumno a clase
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
-      clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontrado, clases)
+      print(alumnoEncontrado)
+      
+      # clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontrado, clases)
 
-      while True:
-        claseInput = input("Ingrese la clase a la que deseas inscribir al alumno: ").strip()
-        if not claseInput:  # Validar si está vacío
-            print("El campo no puede estar vacío. Por favor, ingrese un valor válido.")
-            continue
-        if not claseInput.isdigit():  # Validar si no es un número
-            print("La clase debe ser un número entero. Por favor, intente nuevamente.")
-            continue
-        claseElegida = int(claseInput)
-        if claseElegida not in clasesDisponibles:  # Validar si la clase está disponible
-            print("La clase elegida no es válida. Por favor, elija una clase de la lista disponible.")
-        else:
-            break  # Salir del bucle si el valor es válido
+      # while True:
+      #   claseInput = input("Ingrese la clase a la que deseas inscribir al alumno: ").strip()
+      #   if not claseInput:  # Validar si está vacío
+      #       print("El campo no puede estar vacío. Por favor, ingrese un valor válido.")
+      #       continue
+      #   if not claseInput.isdigit():  # Validar si no es un número
+      #       print("La clase debe ser un número entero. Por favor, intente nuevamente.")
+      #       continue
+      #   claseElegida = int(claseInput)
+      #   if claseElegida not in clasesDisponibles:  # Validar si la clase está disponible
+      #       print("La clase elegida no es válida. Por favor, elija una clase de la lista disponible.")
+      #   else:
+      #       break  # Salir del bucle si el valor es válido
 
-      clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos)
+      # clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos)
 
     elif opcion == "5":   # Opción Dar de baja un alumno de una clase
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)

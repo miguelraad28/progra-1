@@ -317,11 +317,11 @@ def pedirDniNuevoAlumno():
 
         encontrado = encontrarPorDni(dni)
         if encontrado: 
-          print("El dni ingresado ya está en uso")
+          print("\nEl dni ingresado ya está en uso\n")
         else:
             return True, dni 
     except Exception as ex: 
-      print("Ocurrió un error al recibir el DNI del nuevo alumno, ", ex)
+      print("\nOcurrió un error al recibir el DNI del nuevo alumno, ", ex)
       return False, 0
 
 def chequeaLegajo(alumnos):
@@ -354,7 +354,10 @@ def chequeaLegajo(alumnos):
                     break
 
             if alumnoEncontrado:
-                return alumnoEncontrado, legajo
+                if alumnoEncontrado["estado"] == 'Inactivo':
+                    print("\nEl alumno se encuentra inactivo.\n")
+                else:
+                  return alumnoEncontrado, legajo
             else:
                 print("El legajo no coincide con ningún alumno.")
         else:
