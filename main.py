@@ -249,23 +249,23 @@ def menuGestionClases():
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
       print(alumnoEncontrado)
       
-      # clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontrado, clases)
+      clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontrado, clases)
 
-      # while True:
-      #   claseInput = input("Ingrese la clase a la que deseas inscribir al alumno: ").strip()
-      #   if not claseInput:  # Validar si está vacío
-      #       print("El campo no puede estar vacío. Por favor, ingrese un valor válido.")
-      #       continue
-      #   if not claseInput.isdigit():  # Validar si no es un número
-      #       print("La clase debe ser un número entero. Por favor, intente nuevamente.")
-      #       continue
-      #   claseElegida = int(claseInput)
-      #   if claseElegida not in clasesDisponibles:  # Validar si la clase está disponible
-      #       print("La clase elegida no es válida. Por favor, elija una clase de la lista disponible.")
-      #   else:
-      #       break  # Salir del bucle si el valor es válido
+      while True:
+        claseInput = input("Ingrese la clase a la que deseas inscribir al alumno: ").strip()
+        if not claseInput:  # Validar si está vacío
+            print("El campo no puede estar vacío. Por favor, ingrese un valor válido.")
+            continue
+        if not claseInput.isdigit():  # Validar si no es un número
+            print("La clase debe ser un número entero. Por favor, intente nuevamente.")
+            continue
+        claseElegida = int(claseInput)
+        if claseElegida not in clasesDisponibles:  # Validar si la clase está disponible
+            print("La clase elegida no es válida. Por favor, elija una clase de la lista disponible.")
+        else:
+            break  # Salir del bucle si el valor es válido
 
-      # clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos)
+      clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos)
 
     elif opcion == "5":   # Opción Dar de baja un alumno de una clase
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
@@ -342,6 +342,7 @@ def menuGestionFacturas():
         print("Detalle:")
         for clase in moroso["factura"]["clases"]:
           print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
+        print("---------------------------")
       ...
     elif opcion == "2":   # Ver última factura por LU
       alumno = alumnosModule.encontrarPorLegajo(alumnos)
@@ -355,6 +356,15 @@ def menuGestionFacturas():
         print("Detalle:")
         for clase in factura["clases"]:
           print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
+        print("---------------------------")
+        
+        if not factura["pagada"]:
+          opcion = input("Desea marcarla como pagada? (s/n): ")
+          if opcion.lower() == "s":
+            factura = facturasModule.marcarComoPagada(facturas, alumno["LU"])
+            print("Factura marcada como pagada.")
+          else:
+            return
       else: 
         print("No se encontraron facturas para el alumno.")
       return

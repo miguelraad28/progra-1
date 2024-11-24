@@ -48,11 +48,11 @@ def reescribirArchivoFacturas(facturas):
   return success
 
 
-def marcarComoPagada(factura):
+def marcarComoPagada(alumnoLU):
   '''
   Marca una factura como pagada.
   Args:
-    factura: dict - Diccionario con los datos de la factura.
+    alumnoLU: number - LU del alumno para marcar su factura como pagada.
   Returns:
     bool - True si se pudo marcar, False si no.
   '''
@@ -60,12 +60,20 @@ def marcarComoPagada(factura):
   if not success:
     return False
 
+  facturaPagada = None
+
   for f in facturas:
-    if f["id"] == factura["id"]:
-      f["pagada"] = True
+    if f["alumnoLU"] == alumnoLU:
+      facturaPagada = f
+      if f["pagada"] == True:
+        print('La factura ya está pagada.')
+      else:
+        f["pagada"] = True
       break
 
-  return reescribirArchivoFacturas(facturas)
+  reescribirArchivoFacturas(facturas)
+
+  return facturaPagada
 
 def obtenerMorosos(facturas, alumnos, clases):
   '''
