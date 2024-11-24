@@ -259,7 +259,7 @@ def encontrarPorLegajo(alumnos):
     print("Error obteniendo alumno por legajo. Error: ", ex)
   return alumnoEncontrado
 
-def encontrarPorDni(dni):
+def encontrarPorDni(alumnos, dni):
   '''
   Busca alumnos por DNI
   Args: 
@@ -314,7 +314,7 @@ def pedirDniNuevoAlumno():
             print("El DNI debe tener entre 7 y 8 dígitos.")
             continue
 
-        encontrado = encontrarPorDni(dni)
+        encontrado = encontrarPorDni(alumnos, dni)
         if encontrado: 
           print("\nEl dni ingresado ya está en uso\n")
         else:

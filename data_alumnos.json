@@ -5,10 +5,7 @@
         "DNI": 95656210,
         "LU": 1200447,
         "email": "miguelraad2020@gmail.com",
-        "clases": [
-            1028,
-            1007
-        ],
+        "clases": [1000,1002],
         "estado": "Activo"
     },
     {
@@ -1708,7 +1705,7 @@
         "clases": [
             1012
         ],
-        "estado": "Inactivo"
+        "estado": "Activo"
     },
     {
         "nombre": "Juan",
@@ -1723,7 +1720,7 @@
             1024,
             1014
         ],
-        "estado": "Inactivo"
+        "estado": "Activo"
     },
     {
         "nombre": "Felipe",
@@ -1735,6 +1732,6 @@
             1027,
             1019
         ],
-        "estado": "Inactivo"
+        "estado": "Activo"
     }
 ]

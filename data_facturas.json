@@ -1,1 +1,1236 @@
-[]
+[
+    {
+        "alumnoLU": 1200447,
+        "clases": [
+            1028,
+            1007
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 899885,
+        "clases": [
+            1004,
+            1022,
+            1014,
+            1024,
+            1005
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1026729,
+        "clases": [
+            1026,
+            1015,
+            1027,
+            1019,
+            1011
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 893760,
+        "clases": [
+            1016,
+            1012,
+            1001,
+            1028
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 879757,
+        "clases": [
+            1014
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 886557,
+        "clases": [
+            1000,
+            1011,
+            1021,
+            1003,
+            1027
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1032208,
+        "clases": [
+            1007,
+            1013,
+            1006,
+            1028
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1103398,
+        "clases": [
+            1014,
+            1004
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1132747,
+        "clases": [
+            1010,
+            1015,
+            1026,
+            1027
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 896184,
+        "clases": [
+            1001,
+            1028,
+            1006,
+            1029
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1164219,
+        "clases": [
+            1004,
+            1022,
+            1005,
+            1024,
+            1014
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1008168,
+        "clases": [
+            1026,
+            1017,
+            1027,
+            1015,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 952828,
+        "clases": [
+            1006
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1089946,
+        "clases": [
+            1004,
+            1022,
+            1014,
+            1005,
+            1020
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1122992,
+        "clases": [
+            1026,
+            1017,
+            1015,
+            1011,
+            1027
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 960506,
+        "clases": [
+            1025,
+            1007,
+            1006,
+            1002,
+            1028
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 803031,
+        "clases": [
+            1009,
+            1008
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 955608,
+        "clases": [
+            1015,
+            1019,
+            1027,
+            1003
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 842193,
+        "clases": [
+            1013,
+            1012,
+            1016,
+            1028
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1171023,
+        "clases": [
+            1023,
+            1020,
+            1009,
+            1005,
+            1022
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 918221,
+        "clases": [
+            1019,
+            1003,
+            1027,
+            1011,
+            1000
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 813597,
+        "clases": [
+            1002,
+            1028,
+            1025
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 888630,
+        "clases": [
+            1020,
+            1004,
+            1005
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 926130,
+        "clases": [
+            1027,
+            1000,
+            1010,
+            1026
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1136299,
+        "clases": [
+            1006,
+            1007,
+            1002,
+            1028,
+            1025
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1121827,
+        "clases": [
+            1009,
+            1008,
+            1005,
+            1020
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1006079,
+        "clases": [
+            1026,
+            1011,
+            1015,
+            1021,
+            1027
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1179577,
+        "clases": [
+            1025,
+            1007,
+            1012,
+            1002,
+            1028
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 816671,
+        "clases": [
+            1023,
+            1009,
+            1024
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 842129,
+        "clases": [
+            1027,
+            1000
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 901580,
+        "clases": [
+            1006,
+            1018,
+            1002,
+            1028,
+            1029
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 836173,
+        "clases": [
+            1024
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 846700,
+        "clases": [
+            1021
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1169088,
+        "clases": [
+            1012,
+            1002
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 964050,
+        "clases": [
+            1020,
+            1022,
+            1004,
+            1014,
+            1005
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 984717,
+        "clases": [
+            1026,
+            1000
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 839129,
+        "clases": [
+            1016,
+            1001
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 825238,
+        "clases": [
+            1023,
+            1022
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 893528,
+        "clases": [
+            1010,
+            1000,
+            1026,
+            1027
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1080943,
+        "clases": [
+            1007,
+            1013,
+            1012,
+            1028
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1077474,
+        "clases": [
+            1008,
+            1020,
+            1014,
+            1022,
+            1005
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 851698,
+        "clases": [
+            1027,
+            1015,
+            1021,
+            1011,
+            1003
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 923340,
+        "clases": [
+            1006,
+            1018,
+            1028,
+            1007,
+            1002
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1142730,
+        "clases": [
+            1024,
+            1022,
+            1009,
+            1023,
+            1005
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1164516,
+        "clases": [
+            1011,
+            1027
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1142715,
+        "clases": [
+            1028,
+            1012,
+            1001,
+            1007
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 917078,
+        "clases": [
+            1004,
+            1005,
+            1024,
+            1014,
+            1022
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 915832,
+        "clases": [
+            1017,
+            1026,
+            1027,
+            1011,
+            1000
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 926240,
+        "clases": [
+            1006
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 903386,
+        "clases": [
+            1020,
+            1009,
+            1022,
+            1008,
+            1005
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 910831,
+        "clases": [
+            1000,
+            1017,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 836422,
+        "clases": [
+            1016,
+            1001,
+            1006
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1174494,
+        "clases": [
+            1004,
+            1024,
+            1014,
+            1005,
+            1022
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1083146,
+        "clases": [
+            1019,
+            1027,
+            1003,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 893614,
+        "clases": [
+            1001,
+            1016,
+            1012,
+            1028
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 883089,
+        "clases": [
+            1004,
+            1024,
+            1005
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 931288,
+        "clases": [
+            1027,
+            1019,
+            1000,
+            1011,
+            1003
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1121981,
+        "clases": [
+            1012,
+            1007,
+            1025,
+            1028,
+            1002
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 857059,
+        "clases": [
+            1023,
+            1022,
+            1005,
+            1014
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 826257,
+        "clases": [
+            1011,
+            1015
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1087225,
+        "clases": [
+            1018,
+            1002,
+            1007
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 951004,
+        "clases": [
+            1009,
+            1020,
+            1005,
+            1023,
+            1022
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 910067,
+        "clases": [
+            1000,
+            1021,
+            1011,
+            1003
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 823506,
+        "clases": [
+            1025,
+            1006,
+            1028,
+            1016
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1172258,
+        "clases": [
+            1008,
+            1005,
+            1020,
+            1014,
+            1022
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 846055,
+        "clases": [
+            1019,
+            1015,
+            1011,
+            1026,
+            1027
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1185548,
+        "clases": [
+            1028
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1123428,
+        "clases": [
+            1008,
+            1014,
+            1022,
+            1020,
+            1005
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1047214,
+        "clases": [
+            1003,
+            1000,
+            1017,
+            1027,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 824216,
+        "clases": [
+            1025,
+            1029,
+            1012,
+            1028
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1049385,
+        "clases": [
+            1024,
+            1014,
+            1022
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 885306,
+        "clases": [
+            1003,
+            1027,
+            1000,
+            1017,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1018182,
+        "clases": [
+            1016,
+            1001,
+            1028
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1106723,
+        "clases": [
+            1022
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 847573,
+        "clases": [
+            1017,
+            1027,
+            1026,
+            1000,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 816282,
+        "clases": [
+            1013
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1010894,
+        "clases": [
+            1005,
+            1020,
+            1009,
+            1022,
+            1023
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 806828,
+        "clases": [
+            1021,
+            1027
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 837285,
+        "clases": [
+            1025,
+            1016,
+            1028,
+            1002,
+            1006
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1095105,
+        "clases": [
+            1009,
+            1023,
+            1024,
+            1005,
+            1022
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1113135,
+        "clases": [
+            1021,
+            1027,
+            1015,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1109360,
+        "clases": [
+            1001,
+            1012,
+            1007
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1027389,
+        "clases": [
+            1008,
+            1020,
+            1009
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 991605,
+        "clases": [
+            1010
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 860687,
+        "clases": [
+            1029,
+            1002
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1060346,
+        "clases": [
+            1009,
+            1023,
+            1020,
+            1005,
+            1022
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 869348,
+        "clases": [
+            1015,
+            1027
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 871476,
+        "clases": [
+            1018,
+            1029
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 965780,
+        "clases": [
+            1004,
+            1005,
+            1022,
+            1014,
+            1024
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1185400,
+        "clases": [
+            1026,
+            1015,
+            1011,
+            1019,
+            1027
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1109540,
+        "clases": [
+            1001,
+            1012
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 968316,
+        "clases": [
+            1020,
+            1009,
+            1005,
+            1022,
+            1023
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 914556,
+        "clases": [
+            1003,
+            1015,
+            1027,
+            1010
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1037747,
+        "clases": [
+            1002,
+            1029,
+            1006
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1052666,
+        "clases": [
+            1005,
+            1008,
+            1009
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 903057,
+        "clases": [
+            1021,
+            1011,
+            1003
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1046373,
+        "clases": [
+            1001,
+            1029,
+            1012,
+            1028
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1060108,
+        "clases": [
+            1004,
+            1020,
+            1022,
+            1005,
+            1014
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1155935,
+        "clases": [
+            1027,
+            1019,
+            1015,
+            1003,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 990154,
+        "clases": [
+            1029,
+            1002,
+            1028,
+            1006,
+            1025
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 868583,
+        "clases": [
+            1020,
+            1005,
+            1009
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 817305,
+        "clases": [
+            1010,
+            1003,
+            1000,
+            1027
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1097341,
+        "clases": [
+            1006,
+            1028,
+            1016,
+            1001
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 830290,
+        "clases": [
+            1022,
+            1009,
+            1023,
+            1024,
+            1005
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1094166,
+        "clases": [
+            1017,
+            1026,
+            1000,
+            1011,
+            1027
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1013321,
+        "clases": [
+            1016,
+            1006,
+            1025,
+            1028,
+            1002
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1023754,
+        "clases": [
+            1024,
+            1022,
+            1004,
+            1005,
+            1014
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 955456,
+        "clases": [
+            1015,
+            1027,
+            1019,
+            1003,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1052776,
+        "clases": [
+            1016,
+            1018,
+            1002,
+            1028,
+            1006
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1005846,
+        "clases": [
+            1023,
+            1024,
+            1009,
+            1022,
+            1005
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1083168,
+        "clases": [
+            1019,
+            1015
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 860963,
+        "clases": [
+            1002,
+            1016,
+            1028,
+            1006,
+            1025
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 847449,
+        "clases": [
+            1004,
+            1014,
+            1024,
+            1022,
+            1005
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1148094,
+        "clases": [
+            1003,
+            1015,
+            1027,
+            1019,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 878743,
+        "clases": [
+            1012,
+            1016,
+            1028,
+            1002
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 978269,
+        "clases": [
+            1009,
+            1023
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 991433,
+        "clases": [
+            1011,
+            1026,
+            1021,
+            1000
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 847867,
+        "clases": [
+            1012,
+            1028,
+            1013
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 980536,
+        "clases": [
+            1005,
+            1009,
+            1008,
+            1022,
+            1020
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 1095221,
+        "clases": [
+            1000,
+            1019,
+            1003,
+            1027,
+            1011
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 892089,
+        "clases": [
+            1012,
+            1028,
+            1007,
+            1002,
+            1025
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1115963,
+        "clases": [
+            1024,
+            1014,
+            1004
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 993695,
+        "clases": [
+            1011,
+            1000,
+            1021,
+            1026,
+            1027
+        ],
+        "pagada": false
+    },
+    {
+        "alumnoLU": 973551,
+        "clases": [
+            1012
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1121597,
+        "clases": [
+            1022,
+            1023,
+            1005,
+            1024,
+            1014
+        ],
+        "pagada": true
+    },
+    {
+        "alumnoLU": 1195458,
+        "clases": [
+            1027,
+            1019
+        ],
+        "pagada": true
+    }
+]

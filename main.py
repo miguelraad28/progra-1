@@ -16,7 +16,7 @@ Pendientes: Listado de clases y su filtrado por turno, día y materia. Módulo d
 import alumnos as alumnosModule
 import clases_materias as clasesMateriasModule
 import facturas as facturasModule
-from variables import dias, turnos
+from variables import dias, turnos, costo_por_clase
 
 #----------------------------------------------------------------------------------------------
 # FUNCIONES
@@ -117,6 +117,8 @@ def menuGestionAlumnos():
           print(f"Estado: {alumno["estado"]}")
           print("_________________________")
           break
+        else:
+          print("No se encontró un alumno con el legajo ingresado.")
 
       while True:
         campo = input("Ingrese el campo a modificar (nombre, apellido): ")
@@ -137,23 +139,19 @@ def menuGestionAlumnos():
       
       print(f"El campo '{campo}' ha sido modificado correctamente.")
     elif opcion == "4":  # Opción eliminar alumno
-      while True:
-        legajoUnicoStr = input("Ingrese el Legajo a eliminar (o '0' para volver al menú): ").strip()
-        
-        if legajoUnicoStr == "0":  # Permitir regresar al menú ingresando "0"
-            return
-        
-        if legajoUnicoStr.isdigit():  # Validar que sea un número
-            legajoUnico = int(legajoUnicoStr)
-            break  # Salir del bucle si es válido
-        
-        print("El legajo debe ser un número entero. Intente nuevamente.")
+      alumno = alumnosModule.encontrarPorLegajo(alumnos)
       
-      alumnosModule.borrarAlumnoLogico(legajoUnico, alumnos)
+      if alumno:
+        alumnosModule.borrarAlumnoLogico(alumno["LU"], alumnos)
+      else:
+        print("No se encontró un alumno con el legajo ingresado.")
+      return
 
     elif opcion == "5":   # Opción buscar alumno por legajo
-        alumno = alumnosModule.encontrarPorLegajo(alumnos)
+      alumno = alumnosModule.encontrarPorLegajo(alumnos)
 
+      if alumno:
+        # Le asignamos al array de id de clases, la clase con el nombre de la materia
         for i in range(len(alumno["clases"])):
           for clase in clases:
             if clase["id"] == alumno["clases"][i]:
@@ -161,20 +159,21 @@ def menuGestionAlumnos():
               for materia in materias:
                 if materia["id"] == clase["materiaId"]:
                   clase["materia"] = materia["nombre"]
-
-        if alumno:
-          print("_________________________")
-          print(f"Nombre: {alumno["nombre"]}")
-          print(f"Apellido: {alumno["apellido"]}")
-          print(f"D.N.I: {alumno["DNI"]:,}")
-          print(f"L.U: {alumno["LU"]:,}")
-          print(f"Email: {alumno["email"]}")
-          print(f"Estado: {alumno["estado"]}")
-          print("\nClases:")
-          for clase in alumno["clases"]:
-            print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
-          print("_________________________")
-
+        #############################################
+        print("_________________________")
+        print(f"Nombre: {alumno["nombre"]}")
+        print(f"Apellido: {alumno["apellido"]}")
+        print(f"D.N.I: {alumno["DNI"]:,}")
+        print(f"L.U: {alumno["LU"]:,}")
+        print(f"Email: {alumno["email"]}")
+        print(f"Estado: {alumno["estado"]}")
+        print("\nClases:")
+        for clase in alumno["clases"]:
+          print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
+        print("_________________________")
+      else:
+        print("No se encontró un alumno con el legajo ingresado.")
+      return
     elif opcion == "6":   # Opción buscar alumno por DNI
       try:
         while True:
@@ -192,24 +191,27 @@ def menuGestionAlumnos():
         print("Ocurrió un error al recibir el DNI, ", ex)
         return
 
-      alumnoEncontrado = alumnosModule.encontrarPorDni(dni)
+      alumno = alumnosModule.encontrarPorDni(alumnos, dni)
 
-      for i in range(len(alumno["clases"])):
-        for clase in clases:
-          if clase["id"] == alumno["clases"][i]:
-            alumno["clases"][i] = clase
-            for materia in materias:
-              if materia["id"] == clase["materiaId"]:
-                clase["materia"] = materia["nombre"]
 
-      if alumnoEncontrado:
+      if alumno:
+        # Le asignamos al array de id de clases, la clase con el nombre de la materia
+        for i in range(len(alumno["clases"])):
+          for clase in clases:
+            if clase["id"] == alumno["clases"][i]:
+              alumno["clases"][i] = clase
+              for materia in materias:
+                if materia["id"] == clase["materiaId"]:
+                  clase["materia"] = materia["nombre"]
+        #############################################
+        print(alumno)
         print("_________________________")
-        print(f"Nombre: {alumnoEncontrado["nombre"]}")
-        print(f"Apellido: {alumnoEncontrado["apellido"]}")
-        print(f"D.N.I: {alumnoEncontrado["DNI"]:,}")
-        print(f"L.U: {alumnoEncontrado["LU"]:,}")
-        print(f"Email: {alumnoEncontrado["email"]}")
-        print(f"Estado: {alumnoEncontrado["estado"]}")
+        print(f"Nombre: {alumno["nombre"]}")
+        print(f"Apellido: {alumno["apellido"]}")
+        print(f"D.N.I: {alumno["DNI"]:,}")
+        print(f"L.U: {alumno["LU"]:,}")
+        print(f"Email: {alumno["email"]}")
+        print(f"Estado: {alumno["estado"]}")
         print("\nClases:")
         for clase in alumno["clases"]:
           print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
@@ -342,7 +344,7 @@ def menuGestionFacturas():
     return
 
   while True:
-    opciones = 3
+    opciones = 4
     while True:
       print()
       print("---------------------------")
@@ -370,43 +372,56 @@ def menuGestionFacturas():
       # print("*morosos")
       # print(morosos)
       for moroso in morosos:
-        print("---------------------------")
-        print(f"{moroso["alumno"]["apellido"]}, {moroso["alumno"]["nombre"]} - LU: {moroso["alumno"]["LU"]:,}")
+        print(f"\n{moroso["alumno"]["apellido"]}, {moroso["alumno"]["nombre"]} - LU: {moroso["alumno"]["LU"]:,}")
         print(f"Deuda: ${moroso['factura']['monto']:,}")
         print("\nDetalle:")
         for clase in moroso["factura"]["clases"]:
           print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
-        print("---------------------------")
+        print("____________________________________")
       ...
+      
+      moraTotal = len([clase for moroso in morosos for clase in moroso["factura"]["clases"]]) * costo_por_clase
+      print(f"\nMora total: ${moraTotal:,}")
     elif opcion == "2":   # Ver última factura por LU
       alumno = alumnosModule.encontrarPorLegajo(alumnos)
-      
-      factura = facturasModule.verUltimaFacturaPorLU(facturas, alumno["LU"], clases)
-      
-      if factura:
-        print("---------------------------")
-        print(f"{alumno["apellido"]}, {alumno["nombre"]}, LU: {alumno["LU"]:,}")
-        print(f"Monto: ${factura['monto']:,}")
-        print("Pagada: ", "Sí" if factura["pagada"] else "No")
-        print("Detalle:")
-        for clase in factura["clases"]:
-          print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
-        print("---------------------------")
+
+      if alumno:
+        factura = facturasModule.verUltimaFacturaPorLU(facturas, alumno["LU"], clases)
         
-        if not factura["pagada"]:
-          opcion = input("Desea marcarla como pagada? (s/n): ")
-          if opcion.lower() == "s":
-            factura = facturasModule.marcarComoPagada(alumno["LU"])
-            print("Factura marcada como pagada.")
-          else:
-            return
-      else: 
-        print("No se encontraron facturas para el alumno.")
+        if factura:
+          print("---------------------------")
+          print(f"{alumno["apellido"]}, {alumno["nombre"]}, LU: {alumno["LU"]:,}")
+          print(f"Monto: ${factura['monto']:,}")
+          print("Pagada: ", "Sí" if factura["pagada"] else "No")
+          print("Detalle:")
+          for clase in factura["clases"]:
+            print(f"   {clase["materia"]} - {dias[clase["dia"]]} {turnos[clase["turno"]]}")
+          print("---------------------------")
+          
+          if not factura["pagada"]:
+            opcion = input("Desea marcarla como pagada? (s/n): ")
+            if opcion.lower() == "s":
+              factura = facturasModule.marcarComoPagada(alumno["LU"])
+              print("Factura marcada como pagada.")
+            else:
+              return
+        else: 
+          print("No se encontraron facturas para el alumno.")
+        return
+      else:
+        print("No se encontró un alumno con el legajo ingresado.")
       return
       ...
     elif opcion == "3":   # Marcar factura como pagada
-      print("opcion 3")
-      # facturasModule.marcarComoPagada(facturas)
+      print("\nMarcar como paga la factura un alumno por Legajo Único")
+      alumno = alumnosModule.encontrarPorLegajo(alumnos)
+
+      if alumno:
+        factura = facturasModule.marcarComoPagada(alumno["LU"])
+        print("Factura marcada como pagada.")
+      else:
+        print("No se encontró un alumno con el legajo ingresado.")
+      return
       ...
     input("\nPresione ENTER para volver al menú de gestión de facturas y pagos.")
     print("\n\n")
