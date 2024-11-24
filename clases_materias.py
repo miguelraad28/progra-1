@@ -1,15 +1,11 @@
 import random
 import re
 import json
+from variables import dias, turnos, cuatrimestres, archivo_clases, archivo_materias
 
 # Materias & Clases
 
 # Lista de materias con identificadores únicos y nombres de las asignaturas disponibles en el sistema.
-
-dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
-turnos = ["Mañana", "Tarde", "Noche"]
-cuatrimestres = ["Primero", "Segundo"]
-
 def abrirArchivoDeMaterias():
   '''
   Abre el archivo json de las materias
@@ -18,7 +14,7 @@ def abrirArchivoDeMaterias():
   '''
   success = True
   try:
-    file = open("data_materias.json", "r", encoding='utf-8')
+    file = open(archivo_materias, "r", encoding='utf-8')
     materias = json.load(file)
   except:
     print("No se encontró el archivo de datos de materias.")
@@ -64,7 +60,7 @@ def abrirArchivoClases():
   success = True
   
   try:
-    file = open("data_clases.json", "r", encoding='utf-8')
+    file = open(archivo_clases, "r", encoding='utf-8')
     clases = json.load(file)
   except:
     print("No se encontró el archivo de datos de clases.")
@@ -87,7 +83,7 @@ def reescribirArchivoClases(clases):
   '''
   success = True
   try:
-    file =  open("data_clases.json", "w", encoding='utf-8')
+    file =  open(archivo_clases, "w", encoding='utf-8')
     json.dump(clases, file, ensure_ascii=False, indent=4)
   except:
     return False

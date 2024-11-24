@@ -1,6 +1,7 @@
 import random
 import re
 import json
+from variables import archivo_alumnos
 
 # Alumnos
 
@@ -74,7 +75,7 @@ def abrirArchivoAlumnos():
   success = True
   
   try:
-    file = open("data_alumnos.json", "r", encoding='utf-8')
+    file = open(archivo_alumnos, "r", encoding='utf-8')
     alumnos = json.load(file)
   except:
     print("No se encontró el archivo de datos de alumnos.")
@@ -97,7 +98,7 @@ def reescribirArchivoAlumnos(alumnos):
   '''
   success = True
   try:
-    file = open("data_alumnos.json", "w", encoding='utf-8')
+    file = open(archivo_alumnos, "w", encoding='utf-8')
     json.dump(alumnos, file, ensure_ascii=False, indent=4)
   except Exception as ex:
     print(ex)
@@ -232,7 +233,8 @@ def modificarAlumnoPorLU(LU, propiedad, nuevoValor, alumnos):
       
       return alumnos
   print("No se encontró un alumno con el LU ingresado.")
-  return alumnos
+
+  return
 
 def encontrarPorLegajo(alumnos):
   """

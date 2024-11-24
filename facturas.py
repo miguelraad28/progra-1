@@ -1,7 +1,6 @@
 import json
 import clases_materias as clasesMateriasModule
-
-costo_por_clase = 50000
+from variables import costo_por_clase, archivo_facturas
 
 def abrirArchivoFacturas():
   '''
@@ -12,7 +11,7 @@ def abrirArchivoFacturas():
   success = True
   
   try:
-    file = open("data_facturas.json", "r", encoding='utf-8')
+    file = open(archivo_facturas, "r", encoding='utf-8')
     facturas = json.load(file)
   except:
     print("No se encontró el archivo de datos de facturas.")
@@ -35,7 +34,7 @@ def reescribirArchivoFacturas(facturas):
   '''
   success = True
   try:
-    file =  open("data_facturas.json", "w", encoding='utf-8')
+    file =  open(archivo_facturas, "w", encoding='utf-8')
     json.dump(facturas, file, ensure_ascii=False, indent=4)
   except:
     return False
@@ -93,12 +92,21 @@ def obtenerMorosos(facturas, alumnos, clases):
   morosos = []
   for factura in facturas:
     if not factura["pagada"]:
+      
+      alumnoConFacturaImpaga = None
+      
       for alumno in alumnos:
         if factura["alumnoLU"] == alumno["LU"]:
+          # print('* * factura["alumnoLU"]')
+          # print(factura["alumnoLU"])
+          # print("* * *alumno")
+          # print(alumno)
           factura = expandirDatosFactura(factura, clases, materias)
           
+          alumnoConFacturaImpaga = alumno
+          
       factura["monto"] = len(factura["clases"]) * costo_por_clase
-      morosos.append({"alumno": alumno, "factura": factura})
+      morosos.append({"alumno": alumnoConFacturaImpaga, "factura": factura})
   return morosos
 
 def expandirDatosFactura(factura, clases, materias):

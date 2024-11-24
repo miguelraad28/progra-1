@@ -1,7 +1,10 @@
 [
-  {
-    "alumnoLU":1200447,
-    "pagada": false,
-    "clases":[1000,1001,1002]
-  }
+    {
+        "alumnoLU": 1200447,
+        "pagada": true,
+        "clases": [
+            1000,
+            1001
+        ]
+    }
 ]
