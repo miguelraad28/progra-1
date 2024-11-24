@@ -1,6 +1,6 @@
-dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
-turnos = ["Mañana", "Tarde", "Noche"]
-cuatrimestres = ["Primero", "Segundo"]
+dias = ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes")
+turnos = ("Mañana", "Tarde", "Noche")
+cuatrimestres = ("Primero", "Segundo")
 
 costo_por_clase = 50000
 
