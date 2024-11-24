@@ -5,7 +5,7 @@
         "DNI": 95656210,
         "LU": 1200447,
         "email": "miguelraad2020@gmail.com",
-        "clases": [1000,1001,1002],
+        "clases": [1000,1002],
         "estado": "Activo"
     },
     {
@@ -14,7 +14,13 @@
         "DNI": 35353119,
         "LU": 899885,
         "email": "lmartínez.899885@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1022,
+            1014,
+            1024,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -23,7 +29,13 @@
         "DNI": 37101099,
         "LU": 1026729,
         "email": "mflores.1026729@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1026,
+            1015,
+            1027,
+            1019,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -32,7 +44,12 @@
         "DNI": 31580641,
         "LU": 893760,
         "email": "aramírez.893760@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1016,
+            1012,
+            1001,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -41,7 +58,9 @@
         "DNI": 35197270,
         "LU": 879757,
         "email": "mrodríguez.879757@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1014
+        ],
         "estado": "Activo"
     },
     {
@@ -50,7 +69,13 @@
         "DNI": 40724099,
         "LU": 886557,
         "email": "mtorres.886557@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1000,
+            1011,
+            1021,
+            1003,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -59,7 +84,12 @@
         "DNI": 32808691,
         "LU": 1032208,
         "email": "mgarcía.1032208@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1007,
+            1013,
+            1006,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -68,7 +98,10 @@
         "DNI": 39107228,
         "LU": 1103398,
         "email": "cpérez.1103398@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1014,
+            1004
+        ],
         "estado": "Activo"
     },
     {
@@ -77,7 +110,12 @@
         "DNI": 35055867,
         "LU": 1132747,
         "email": "mmartínez.1132747@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1010,
+            1015,
+            1026,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -86,7 +124,12 @@
         "DNI": 42169214,
         "LU": 896184,
         "email": "mflores.896184@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1001,
+            1028,
+            1006,
+            1029
+        ],
         "estado": "Activo"
     },
     {
@@ -95,7 +138,13 @@
         "DNI": 31787175,
         "LU": 1164219,
         "email": "lflores.1164219@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1022,
+            1005,
+            1024,
+            1014
+        ],
         "estado": "Activo"
     },
     {
@@ -104,7 +153,13 @@
         "DNI": 35624557,
         "LU": 1008168,
         "email": "lrodríguez.1008168@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1026,
+            1017,
+            1027,
+            1015,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -113,7 +168,9 @@
         "DNI": 40268921,
         "LU": 952828,
         "email": "jsánchez.952828@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1006
+        ],
         "estado": "Activo"
     },
     {
@@ -122,7 +179,13 @@
         "DNI": 37906125,
         "LU": 1089946,
         "email": "agonzález.1089946@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1022,
+            1014,
+            1005,
+            1020
+        ],
         "estado": "Activo"
     },
     {
@@ -131,7 +194,13 @@
         "DNI": 32637166,
         "LU": 1122992,
         "email": "aflores.1122992@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1026,
+            1017,
+            1015,
+            1011,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -140,7 +209,13 @@
         "DNI": 34659960,
         "LU": 960506,
         "email": "lflores.960506@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1025,
+            1007,
+            1006,
+            1002,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -149,7 +224,10 @@
         "DNI": 36139283,
         "LU": 803031,
         "email": "prodríguez.803031@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1009,
+            1008
+        ],
         "estado": "Activo"
     },
     {
@@ -158,7 +236,12 @@
         "DNI": 40166081,
         "LU": 955608,
         "email": "pgonzález.955608@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1015,
+            1019,
+            1027,
+            1003
+        ],
         "estado": "Activo"
     },
     {
@@ -167,7 +250,12 @@
         "DNI": 31161183,
         "LU": 842193,
         "email": "mlópez.842193@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1013,
+            1012,
+            1016,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -176,7 +264,13 @@
         "DNI": 42186867,
         "LU": 1171023,
         "email": "jrodríguez.1171023@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1023,
+            1020,
+            1009,
+            1005,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -185,7 +279,13 @@
         "DNI": 38953238,
         "LU": 918221,
         "email": "aramírez.918221@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1019,
+            1003,
+            1027,
+            1011,
+            1000
+        ],
         "estado": "Activo"
     },
     {
@@ -194,7 +294,11 @@
         "DNI": 32735773,
         "LU": 813597,
         "email": "lrodríguez.813597@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1002,
+            1028,
+            1025
+        ],
         "estado": "Activo"
     },
     {
@@ -203,7 +307,11 @@
         "DNI": 36018249,
         "LU": 888630,
         "email": "pmartínez.888630@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1020,
+            1004,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -212,7 +320,12 @@
         "DNI": 38905843,
         "LU": 926130,
         "email": "cramírez.926130@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1027,
+            1000,
+            1010,
+            1026
+        ],
         "estado": "Activo"
     },
     {
@@ -221,7 +334,13 @@
         "DNI": 40605596,
         "LU": 1136299,
         "email": "cpérez.1136299@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1006,
+            1007,
+            1002,
+            1028,
+            1025
+        ],
         "estado": "Activo"
     },
     {
@@ -230,7 +349,12 @@
         "DNI": 41025283,
         "LU": 1121827,
         "email": "plópez.1121827@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1009,
+            1008,
+            1005,
+            1020
+        ],
         "estado": "Activo"
     },
     {
@@ -239,7 +363,13 @@
         "DNI": 40473043,
         "LU": 1006079,
         "email": "lrodríguez.1006079@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1026,
+            1011,
+            1015,
+            1021,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -248,7 +378,13 @@
         "DNI": 38763714,
         "LU": 1179577,
         "email": "asánchez.1179577@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1025,
+            1007,
+            1012,
+            1002,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -257,7 +393,11 @@
         "DNI": 42560086,
         "LU": 816671,
         "email": "lrodríguez.816671@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1023,
+            1009,
+            1024
+        ],
         "estado": "Activo"
     },
     {
@@ -266,7 +406,10 @@
         "DNI": 39675755,
         "LU": 842129,
         "email": "mgonzález.842129@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1027,
+            1000
+        ],
         "estado": "Activo"
     },
     {
@@ -275,7 +418,13 @@
         "DNI": 41044260,
         "LU": 901580,
         "email": "jlópez.901580@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1006,
+            1018,
+            1002,
+            1028,
+            1029
+        ],
         "estado": "Activo"
     },
     {
@@ -284,7 +433,9 @@
         "DNI": 36429565,
         "LU": 836173,
         "email": "lflores.836173@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1024
+        ],
         "estado": "Activo"
     },
     {
@@ -293,7 +444,9 @@
         "DNI": 37036014,
         "LU": 846700,
         "email": "lramírez.846700@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1021
+        ],
         "estado": "Activo"
     },
     {
@@ -302,7 +455,10 @@
         "DNI": 31015295,
         "LU": 1169088,
         "email": "lsánchez.1169088@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1012,
+            1002
+        ],
         "estado": "Activo"
     },
     {
@@ -311,7 +467,13 @@
         "DNI": 30368468,
         "LU": 964050,
         "email": "jramírez.964050@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1020,
+            1022,
+            1004,
+            1014,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -320,7 +482,10 @@
         "DNI": 30003266,
         "LU": 984717,
         "email": "lmartínez.984717@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1026,
+            1000
+        ],
         "estado": "Activo"
     },
     {
@@ -329,7 +494,10 @@
         "DNI": 31505342,
         "LU": 839129,
         "email": "ctorres.839129@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1016,
+            1001
+        ],
         "estado": "Activo"
     },
     {
@@ -338,7 +506,10 @@
         "DNI": 41962629,
         "LU": 825238,
         "email": "lgarcía.825238@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1023,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -347,7 +518,12 @@
         "DNI": 41354914,
         "LU": 893528,
         "email": "lmartínez.893528@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1010,
+            1000,
+            1026,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -356,7 +532,12 @@
         "DNI": 43573437,
         "LU": 1080943,
         "email": "mflores.1080943@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1007,
+            1013,
+            1012,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -365,7 +546,13 @@
         "DNI": 34143943,
         "LU": 1077474,
         "email": "llópez.1077474@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1008,
+            1020,
+            1014,
+            1022,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -374,7 +561,13 @@
         "DNI": 34780727,
         "LU": 851698,
         "email": "lmartínez.851698@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1027,
+            1015,
+            1021,
+            1011,
+            1003
+        ],
         "estado": "Activo"
     },
     {
@@ -383,7 +576,13 @@
         "DNI": 43843367,
         "LU": 923340,
         "email": "ptorres.923340@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1006,
+            1018,
+            1028,
+            1007,
+            1002
+        ],
         "estado": "Activo"
     },
     {
@@ -392,7 +591,13 @@
         "DNI": 44597352,
         "LU": 1142730,
         "email": "lgarcía.1142730@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1024,
+            1022,
+            1009,
+            1023,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -401,7 +606,10 @@
         "DNI": 36103333,
         "LU": 1164516,
         "email": "jmartínez.1164516@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1011,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -410,7 +618,12 @@
         "DNI": 35848858,
         "LU": 1142715,
         "email": "mflores.1142715@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1028,
+            1012,
+            1001,
+            1007
+        ],
         "estado": "Activo"
     },
     {
@@ -419,7 +632,13 @@
         "DNI": 38225232,
         "LU": 917078,
         "email": "jgonzález.917078@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1005,
+            1024,
+            1014,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -428,7 +647,13 @@
         "DNI": 44752064,
         "LU": 915832,
         "email": "jgonzález.915832@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1017,
+            1026,
+            1027,
+            1011,
+            1000
+        ],
         "estado": "Activo"
     },
     {
@@ -437,7 +662,9 @@
         "DNI": 36921373,
         "LU": 926240,
         "email": "lrodríguez.926240@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1006
+        ],
         "estado": "Activo"
     },
     {
@@ -446,7 +673,13 @@
         "DNI": 32949645,
         "LU": 903386,
         "email": "mrodríguez.903386@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1020,
+            1009,
+            1022,
+            1008,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -455,7 +688,11 @@
         "DNI": 30881778,
         "LU": 910831,
         "email": "lflores.910831@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1000,
+            1017,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -464,7 +701,11 @@
         "DNI": 30733971,
         "LU": 836422,
         "email": "agonzález.836422@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1016,
+            1001,
+            1006
+        ],
         "estado": "Activo"
     },
     {
@@ -473,7 +714,13 @@
         "DNI": 33728734,
         "LU": 1174494,
         "email": "jgarcía.1174494@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1024,
+            1014,
+            1005,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -482,7 +729,12 @@
         "DNI": 38133912,
         "LU": 1083146,
         "email": "lgonzález.1083146@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1019,
+            1027,
+            1003,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -491,7 +743,12 @@
         "DNI": 35548332,
         "LU": 893614,
         "email": "jgarcía.893614@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1001,
+            1016,
+            1012,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -500,7 +757,11 @@
         "DNI": 43796268,
         "LU": 883089,
         "email": "lramírez.883089@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1024,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -509,7 +770,13 @@
         "DNI": 42218040,
         "LU": 931288,
         "email": "jrodríguez.931288@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1027,
+            1019,
+            1000,
+            1011,
+            1003
+        ],
         "estado": "Activo"
     },
     {
@@ -518,7 +785,13 @@
         "DNI": 38611195,
         "LU": 1121981,
         "email": "lgarcía.1121981@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1012,
+            1007,
+            1025,
+            1028,
+            1002
+        ],
         "estado": "Activo"
     },
     {
@@ -527,7 +800,12 @@
         "DNI": 38463738,
         "LU": 857059,
         "email": "jgarcía.857059@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1023,
+            1022,
+            1005,
+            1014
+        ],
         "estado": "Activo"
     },
     {
@@ -536,7 +814,10 @@
         "DNI": 31148832,
         "LU": 826257,
         "email": "mmartínez.826257@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1011,
+            1015
+        ],
         "estado": "Activo"
     },
     {
@@ -545,7 +826,11 @@
         "DNI": 34759249,
         "LU": 1087225,
         "email": "lpérez.1087225@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1018,
+            1002,
+            1007
+        ],
         "estado": "Activo"
     },
     {
@@ -554,7 +839,13 @@
         "DNI": 36693213,
         "LU": 951004,
         "email": "alópez.951004@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1009,
+            1020,
+            1005,
+            1023,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -563,7 +854,12 @@
         "DNI": 42403848,
         "LU": 910067,
         "email": "lflores.910067@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1000,
+            1021,
+            1011,
+            1003
+        ],
         "estado": "Activo"
     },
     {
@@ -572,7 +868,12 @@
         "DNI": 31507640,
         "LU": 823506,
         "email": "lmartínez.823506@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1025,
+            1006,
+            1028,
+            1016
+        ],
         "estado": "Activo"
     },
     {
@@ -581,7 +882,13 @@
         "DNI": 40858803,
         "LU": 1172258,
         "email": "mlópez.1172258@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1008,
+            1005,
+            1020,
+            1014,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -590,7 +897,13 @@
         "DNI": 38623689,
         "LU": 846055,
         "email": "llópez.846055@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1019,
+            1015,
+            1011,
+            1026,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -599,7 +912,9 @@
         "DNI": 44639701,
         "LU": 1185548,
         "email": "lmartínez.1185548@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -608,7 +923,13 @@
         "DNI": 40739857,
         "LU": 1123428,
         "email": "agonzález.1123428@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1008,
+            1014,
+            1022,
+            1020,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -617,7 +938,13 @@
         "DNI": 43209412,
         "LU": 1047214,
         "email": "mgarcía.1047214@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1003,
+            1000,
+            1017,
+            1027,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -626,7 +953,12 @@
         "DNI": 31846463,
         "LU": 824216,
         "email": "lflores.824216@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1025,
+            1029,
+            1012,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -635,7 +967,11 @@
         "DNI": 32803964,
         "LU": 1049385,
         "email": "atorres.1049385@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1024,
+            1014,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -644,7 +980,13 @@
         "DNI": 42277274,
         "LU": 885306,
         "email": "lmartínez.885306@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1003,
+            1027,
+            1000,
+            1017,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -653,7 +995,11 @@
         "DNI": 30355023,
         "LU": 1018182,
         "email": "jtorres.1018182@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1016,
+            1001,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -662,7 +1008,9 @@
         "DNI": 44135716,
         "LU": 1106723,
         "email": "lramírez.1106723@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -671,7 +1019,13 @@
         "DNI": 41668456,
         "LU": 847573,
         "email": "jlópez.847573@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1017,
+            1027,
+            1026,
+            1000,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -680,7 +1034,9 @@
         "DNI": 43760119,
         "LU": 816282,
         "email": "apérez.816282@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1013
+        ],
         "estado": "Activo"
     },
     {
@@ -689,7 +1045,13 @@
         "DNI": 40231010,
         "LU": 1010894,
         "email": "pmartínez.1010894@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1005,
+            1020,
+            1009,
+            1022,
+            1023
+        ],
         "estado": "Activo"
     },
     {
@@ -698,7 +1060,10 @@
         "DNI": 32255355,
         "LU": 806828,
         "email": "mgonzález.806828@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1021,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -707,7 +1072,13 @@
         "DNI": 43756573,
         "LU": 837285,
         "email": "ltorres.837285@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1025,
+            1016,
+            1028,
+            1002,
+            1006
+        ],
         "estado": "Activo"
     },
     {
@@ -716,7 +1087,13 @@
         "DNI": 41900839,
         "LU": 1095105,
         "email": "lsánchez.1095105@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1009,
+            1023,
+            1024,
+            1005,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -725,7 +1102,12 @@
         "DNI": 43401948,
         "LU": 1113135,
         "email": "jmartínez.1113135@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1021,
+            1027,
+            1015,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -734,7 +1116,11 @@
         "DNI": 37945992,
         "LU": 1109360,
         "email": "lsánchez.1109360@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1001,
+            1012,
+            1007
+        ],
         "estado": "Activo"
     },
     {
@@ -743,7 +1129,11 @@
         "DNI": 41914271,
         "LU": 1027389,
         "email": "lflores.1027389@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1008,
+            1020,
+            1009
+        ],
         "estado": "Activo"
     },
     {
@@ -752,7 +1142,9 @@
         "DNI": 36098227,
         "LU": 991605,
         "email": "psánchez.991605@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1010
+        ],
         "estado": "Activo"
     },
     {
@@ -761,7 +1153,10 @@
         "DNI": 40177050,
         "LU": 860687,
         "email": "ltorres.860687@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1029,
+            1002
+        ],
         "estado": "Activo"
     },
     {
@@ -770,7 +1165,13 @@
         "DNI": 39525932,
         "LU": 1060346,
         "email": "cgarcía.1060346@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1009,
+            1023,
+            1020,
+            1005,
+            1022
+        ],
         "estado": "Activo"
     },
     {
@@ -779,7 +1180,10 @@
         "DNI": 41796247,
         "LU": 869348,
         "email": "lramírez.869348@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1015,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -788,7 +1192,10 @@
         "DNI": 32537021,
         "LU": 871476,
         "email": "jgonzález.871476@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1018,
+            1029
+        ],
         "estado": "Activo"
     },
     {
@@ -797,7 +1204,13 @@
         "DNI": 43999524,
         "LU": 965780,
         "email": "mflores.965780@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1005,
+            1022,
+            1014,
+            1024
+        ],
         "estado": "Activo"
     },
     {
@@ -806,7 +1219,13 @@
         "DNI": 34143287,
         "LU": 1185400,
         "email": "lsánchez.1185400@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1026,
+            1015,
+            1011,
+            1019,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -815,7 +1234,10 @@
         "DNI": 43976734,
         "LU": 1109540,
         "email": "aflores.1109540@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1001,
+            1012
+        ],
         "estado": "Activo"
     },
     {
@@ -824,7 +1246,13 @@
         "DNI": 36114100,
         "LU": 968316,
         "email": "mflores.968316@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1020,
+            1009,
+            1005,
+            1022,
+            1023
+        ],
         "estado": "Activo"
     },
     {
@@ -833,7 +1261,12 @@
         "DNI": 31915119,
         "LU": 914556,
         "email": "lpérez.914556@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1003,
+            1015,
+            1027,
+            1010
+        ],
         "estado": "Activo"
     },
     {
@@ -842,7 +1275,11 @@
         "DNI": 31050149,
         "LU": 1037747,
         "email": "jgonzález.1037747@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1002,
+            1029,
+            1006
+        ],
         "estado": "Activo"
     },
     {
@@ -851,7 +1288,11 @@
         "DNI": 40110255,
         "LU": 1052666,
         "email": "ltorres.1052666@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1005,
+            1008,
+            1009
+        ],
         "estado": "Activo"
     },
     {
@@ -860,7 +1301,11 @@
         "DNI": 35077679,
         "LU": 903057,
         "email": "mgarcía.903057@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1021,
+            1011,
+            1003
+        ],
         "estado": "Activo"
     },
     {
@@ -869,7 +1314,12 @@
         "DNI": 31891301,
         "LU": 1046373,
         "email": "asánchez.1046373@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1001,
+            1029,
+            1012,
+            1028
+        ],
         "estado": "Activo"
     },
     {
@@ -878,7 +1328,13 @@
         "DNI": 39491786,
         "LU": 1060108,
         "email": "jgonzález.1060108@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1020,
+            1022,
+            1005,
+            1014
+        ],
         "estado": "Activo"
     },
     {
@@ -887,7 +1343,13 @@
         "DNI": 42067085,
         "LU": 1155935,
         "email": "ltorres.1155935@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1027,
+            1019,
+            1015,
+            1003,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -896,7 +1358,13 @@
         "DNI": 31629426,
         "LU": 990154,
         "email": "crodríguez.990154@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1029,
+            1002,
+            1028,
+            1006,
+            1025
+        ],
         "estado": "Activo"
     },
     {
@@ -905,7 +1373,11 @@
         "DNI": 35342281,
         "LU": 868583,
         "email": "jramírez.868583@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1020,
+            1005,
+            1009
+        ],
         "estado": "Activo"
     },
     {
@@ -914,7 +1386,12 @@
         "DNI": 43632302,
         "LU": 817305,
         "email": "jtorres.817305@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1010,
+            1003,
+            1000,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -923,7 +1400,12 @@
         "DNI": 30714642,
         "LU": 1097341,
         "email": "jpérez.1097341@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1006,
+            1028,
+            1016,
+            1001
+        ],
         "estado": "Activo"
     },
     {
@@ -932,7 +1414,13 @@
         "DNI": 42499809,
         "LU": 830290,
         "email": "crodríguez.830290@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1022,
+            1009,
+            1023,
+            1024,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -941,7 +1429,13 @@
         "DNI": 35075871,
         "LU": 1094166,
         "email": "lrodríguez.1094166@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1017,
+            1026,
+            1000,
+            1011,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -950,7 +1444,13 @@
         "DNI": 39386064,
         "LU": 1013321,
         "email": "mtorres.1013321@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1016,
+            1006,
+            1025,
+            1028,
+            1002
+        ],
         "estado": "Activo"
     },
     {
@@ -959,7 +1459,13 @@
         "DNI": 34063045,
         "LU": 1023754,
         "email": "lgarcía.1023754@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1024,
+            1022,
+            1004,
+            1005,
+            1014
+        ],
         "estado": "Activo"
     },
     {
@@ -968,7 +1474,13 @@
         "DNI": 36283498,
         "LU": 955456,
         "email": "asánchez.955456@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1015,
+            1027,
+            1019,
+            1003,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -977,7 +1489,13 @@
         "DNI": 33353807,
         "LU": 1052776,
         "email": "jramírez.1052776@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1016,
+            1018,
+            1002,
+            1028,
+            1006
+        ],
         "estado": "Activo"
     },
     {
@@ -986,7 +1504,13 @@
         "DNI": 37518998,
         "LU": 1005846,
         "email": "lmartínez.1005846@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1023,
+            1024,
+            1009,
+            1022,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -995,7 +1519,10 @@
         "DNI": 38267922,
         "LU": 1083168,
         "email": "jgonzález.1083168@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1019,
+            1015
+        ],
         "estado": "Activo"
     },
     {
@@ -1004,7 +1531,13 @@
         "DNI": 43951349,
         "LU": 860963,
         "email": "cpérez.860963@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1002,
+            1016,
+            1028,
+            1006,
+            1025
+        ],
         "estado": "Activo"
     },
     {
@@ -1013,7 +1546,13 @@
         "DNI": 37869211,
         "LU": 847449,
         "email": "jlópez.847449@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1004,
+            1014,
+            1024,
+            1022,
+            1005
+        ],
         "estado": "Activo"
     },
     {
@@ -1022,7 +1561,13 @@
         "DNI": 39643620,
         "LU": 1148094,
         "email": "lrodríguez.1148094@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1003,
+            1015,
+            1027,
+            1019,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -1031,7 +1576,12 @@
         "DNI": 31841573,
         "LU": 878743,
         "email": "aramírez.878743@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1012,
+            1016,
+            1028,
+            1002
+        ],
         "estado": "Activo"
     },
     {
@@ -1040,7 +1590,10 @@
         "DNI": 41036314,
         "LU": 978269,
         "email": "jrodríguez.978269@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1009,
+            1023
+        ],
         "estado": "Activo"
     },
     {
@@ -1049,7 +1602,12 @@
         "DNI": 34869172,
         "LU": 991433,
         "email": "ctorres.991433@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1011,
+            1026,
+            1021,
+            1000
+        ],
         "estado": "Activo"
     },
     {
@@ -1058,7 +1616,11 @@
         "DNI": 42031026,
         "LU": 847867,
         "email": "crodríguez.847867@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1012,
+            1028,
+            1013
+        ],
         "estado": "Activo"
     },
     {
@@ -1067,7 +1629,13 @@
         "DNI": 44551690,
         "LU": 980536,
         "email": "lmartínez.980536@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1005,
+            1009,
+            1008,
+            1022,
+            1020
+        ],
         "estado": "Activo"
     },
     {
@@ -1076,7 +1644,13 @@
         "DNI": 40338834,
         "LU": 1095221,
         "email": "lsánchez.1095221@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1000,
+            1019,
+            1003,
+            1027,
+            1011
+        ],
         "estado": "Activo"
     },
     {
@@ -1085,7 +1659,13 @@
         "DNI": 41722744,
         "LU": 892089,
         "email": "mramírez.892089@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1012,
+            1028,
+            1007,
+            1002,
+            1025
+        ],
         "estado": "Activo"
     },
     {
@@ -1094,7 +1674,11 @@
         "DNI": 30065552,
         "LU": 1115963,
         "email": "pmartínez.1115963@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1024,
+            1014,
+            1004
+        ],
         "estado": "Activo"
     },
     {
@@ -1103,7 +1687,13 @@
         "DNI": 40240614,
         "LU": 993695,
         "email": "llópez.993695@edau.edu.ar",
-        "clases": [],
+        "clases": [
+            1011,
+            1000,
+            1021,
+            1026,
+            1027
+        ],
         "estado": "Activo"
     },
     {
@@ -1112,8 +1702,10 @@
         "DNI": 30682927,
         "LU": 973551,
         "email": "jflores.973551@edau.edu.ar",
-        "clases": [],
-        "estado": "Inactivo"
+        "clases": [
+            1012
+        ],
+        "estado": "Activo"
     },
     {
         "nombre": "Juan",
@@ -1121,8 +1713,14 @@
         "DNI": 32547382,
         "LU": 1121597,
         "email": "jtorres.1121597@edau.edu.ar",
-        "clases": [],
-        "estado": "Inactivo"
+        "clases": [
+            1022,
+            1023,
+            1005,
+            1024,
+            1014
+        ],
+        "estado": "Activo"
     },
     {
         "nombre": "Felipe",
@@ -1130,7 +1728,10 @@
         "DNI": 40675186,
         "LU": 1195458,
         "email": "fdiliscia.1195458@edau.edu.ar",
-        "clases": [],
-        "estado": "Inactivo"
+        "clases": [
+            1027,
+            1019
+        ],
+        "estado": "Activo"
     }
 ]
