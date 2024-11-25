@@ -275,21 +275,24 @@ def menuGestionClases():
       break
 
     elif opcion == "1":   # Opción nueva clase
-      clasesMateriasModule.crearClase(clases)
+      clasesMateriasModule.crearClase(clases[:])
       
     elif opcion == "2":   # Opción modificar clase
-      clasesMateriasModule.modificarClase(clases)
+      clasesMateriasModule.modificarClase(clases[:])
       
     elif opcion == "3":   # Opción eliminar clase
-      clasesMateriasModule.eliminarClase(clases, alumnos)
+      clasesMateriasModule.eliminarClase(clases[:], alumnos[:])
 
     elif opcion == "4":   # Opción asignar alumno a clase
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos[:])
 
-      alumnoEncontradoCopia = alumnoEncontrado.copy()
-      clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontradoCopia, clases, materias)
-      print("AFTER alumnoEncontrado")
-      print(alumnoEncontrado)
+      alumnoEncontradoCopia = {
+        "clases": alumnoEncontrado["clases"][:],
+        "nombre": alumnoEncontrado["nombre"],
+        "apellido": alumnoEncontrado["apellido"],
+      }
+      
+      clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontradoCopia, clases[:], materias[:])
 
       while True:
         claseInput = input("Ingrese la clase a la que deseas inscribir al alumno: ").strip()
@@ -303,26 +306,24 @@ def menuGestionClases():
         if claseElegida not in clasesDisponibles:  # Validar si la clase está disponible
             print("La clase elegida no es válida. Por favor, elija una clase de la lista disponible.")
         else:
-          print(" *** alumnos[0]")
-          print(alumnos[0])
           clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos[:])
           break  # Salir del bucle si el valor es válido
 
 
     elif opcion == "5":   # Opción Dar de baja un alumno de una clase
-      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
-      clasesAsignadasDeAlumno = clasesMateriasModule.listarClasesDeAlumno(alumnoEncontrado, clases)
+      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos[:])
+      clasesAsignadasDeAlumno = clasesMateriasModule.listarClasesDeAlumno(alumnoEncontrado, clases[:])
       while True:
         claseElegida = int(input("Ingrese la clase a dar de baja: "))
         if claseElegida not in clasesAsignadasDeAlumno:
             print("La clase elegida no es valida")
         else:
           break
-      clasesMateriasModule.desasignarClase(legajo, claseElegida, alumnos)
+      clasesMateriasModule.desasignarClase(legajo, claseElegida, alumnos[:])
 
     elif opcion == "6":   # Opción Listar Clases de Alumnos
-      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
-      clasesMateriasModule.listarClasesDeAlumno(alumnoEncontrado, clases)
+      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos[:])
+      clasesMateriasModule.listarClasesDeAlumno(alumnoEncontrado, clases[:])
 
     input("\nPresione ENTER para volver al menú de gestión de clases y materias.")
     print("\n\n")
@@ -375,7 +376,7 @@ def menuGestionFacturas():
       break
 
     elif opcion == "1":   # Ver morosos
-      morosos = facturasModule.obtenerMorosos(facturas, alumnos, clases)
+      morosos = facturasModule.obtenerMorosos(facturas[:], alumnos[:], clases[:])
       # print("*morosos")
       # print(morosos)
       for moroso in morosos:
@@ -390,7 +391,7 @@ def menuGestionFacturas():
       moraTotal = len([clase for moroso in morosos for clase in moroso["factura"]["clases"]]) * costo_por_clase
       print(f"\nMora total: ${moraTotal:,}")
     elif opcion == "2":   # Ver última factura por LU
-      alumno = alumnosModule.encontrarPorLegajo(alumnos)
+      alumno = alumnosModule.encontrarPorLegajo(alumnos[:])
 
       if alumno:
         factura = facturasModule.verUltimaFacturaPorLU(facturas, alumno["LU"], clases)
@@ -421,7 +422,7 @@ def menuGestionFacturas():
       ...
     elif opcion == "3":   # Marcar factura como pagada
       print("\nMarcar como paga la factura un alumno por Legajo Único")
-      alumno = alumnosModule.encontrarPorLegajo(alumnos)
+      alumno = alumnosModule.encontrarPorLegajo(alumnos[:])
 
       if alumno:
         factura = facturasModule.marcarComoPagada(alumno["LU"])
