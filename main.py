@@ -71,15 +71,13 @@ def menuGestionAlumnos():
       
     elif opcion == "2":   # Opción nuevo alumno
       nombre = input("Ingrese el nombre del alumno: ").capitalize()
-
       while nombre == "" or len(nombre) < 3:
-        print("El nombre no puede estar vacío y debe tener minimo 3 letras.")
+        print("El nombre no puede estar vacío y debe tener mínimo 3 letras.")
         nombre = input("Ingrese el nombre del alumno: ").capitalize()
 
       apellido = input("Ingrese el apellido del alumno: ").capitalize()
-
       while apellido == "" or len(apellido) < 3:
-        print("El apellido no puede estar vacío y debe tener minimo 3 letras.")
+        print("El apellido no puede estar vacío y debe tener mínimo 3 letras.")
         apellido = input("Ingrese el apellido del alumno: ").capitalize()
 
       success, dni = alumnosModule.pedirDniNuevoAlumno(alumnos)

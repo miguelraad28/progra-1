@@ -1724,17 +1724,5 @@
             1014
         ],
         "estado": "Activo"
-    },
-    {
-        "nombre": "Felipe",
-        "apellido": "Di Liscia",
-        "DNI": 40675186,
-        "LU": 1195458,
-        "email": "fdiliscia.1195458@edau.edu.ar",
-        "clases": [
-            1027,
-            1019
-        ],
-        "estado": "Activo"
     }
 ]
