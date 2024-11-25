@@ -97,10 +97,6 @@ def obtenerMorosos(facturas, alumnos, clases):
       
       for alumno in alumnos:
         if factura["alumnoLU"] == alumno["LU"]:
-          # print('* * factura["alumnoLU"]')
-          # print(factura["alumnoLU"])
-          # print("* * *alumno")
-          # print(alumno)
           factura = expandirDatosFactura(factura, clases, materias)
           
           alumnoConFacturaImpaga = alumno
@@ -110,6 +106,15 @@ def obtenerMorosos(facturas, alumnos, clases):
   return morosos
 
 def expandirDatosFactura(factura, clases, materias):
+  '''
+  Expande los datos de una factura agregando información detallada de las clases y materias.
+  ARGS:
+    factura (dict): Diccionario que contiene la información de la factura, incluyendo una lista de IDs de clases.
+    clases (list): Lista de diccionarios con información de las clases, cada uno con un ID y un ID de materia.
+    materias (list): Lista de diccionarios con información de las materias, cada uno con un ID y un nombre.
+  Retorna:
+    dict: La factura actualizada con información detallada de las clases y materias.
+  '''
   for i in range(0, len(factura["clases"])):
     for clase in clases:
       ...
