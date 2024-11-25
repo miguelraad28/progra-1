@@ -233,10 +233,10 @@ def encontrarPorLegajo(alumnos):
   Returns:
     dict: Diccionario con los datos del alumno encontrado, o None si no se encontró.
   """
+  alumnoEncontrado = None
   try:
     legajo = int(input("Ingrese el legajo del alumno (Numero sin comas): "))
     
-    alumnoEncontrado = None
     
     for alumno in alumnos:
       if alumno["LU"] == legajo and alumno['estado'] == 'Activo':

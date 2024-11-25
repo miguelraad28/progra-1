@@ -1,4 +1,5 @@
 import random
+import alumnos as alumnosModule
 import re
 import json
 from variables import dias, turnos, cuatrimestres, archivo_clases, archivo_materias
@@ -297,9 +298,13 @@ def asignarNuevaClase(LU, claseId, alumnos):
   Returns:
     list: La lista de alumnos actualizada con la nueva clase asignada al alumno correspondiente.
   """
+  alumnos[0]
   for alumno in alumnos:
     if alumno["LU"] == LU:
       alumno["clases"].append(claseId)
+  
+  alumnos = alumnosModule.reescribirArchivoAlumnos(alumnos[:])
+
   return alumnos
 
 
@@ -323,7 +328,7 @@ def desasignarClase(LU, clase, alumnos):
   # TODO: Relacionar con facturas/pagos de ser necesario
   return alumnos
 
-def listarClasesDisponibles(alumno, clases):
+def listarClasesDisponibles(alumno, clases, materias):
   '''
   Lista clases en las que un alumno se puede inscribir (en el caso de que pueda)
   Args:
@@ -331,50 +336,47 @@ def listarClasesDisponibles(alumno, clases):
     clases: list - Lista de clases disponibles
   return: list - Lista de clases en las que se puede inscribir el alumno
   '''
-  success, materias = abrirArchivoDeMaterias()
-  
-  if not success:
-    print("No se encontraron materias.")
-    return
+  clasesIdDisponibles = []
 
-  if len(alumno["clases"]) <= 5:
+  if len(alumno["clases"]) < 5:
     print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando {len(alumno['clases'])} clases.")
-    print("Estas son las clases a las cuales se puede inscribir:")
-    print("")
+    print("Estas son las clases a las cuales se puede inscribir:\n")
 
-    materiasCursadas = []
-    diasCursados = []
+    noEstaCursando = []
 
-    for claseId in alumno["clases"]:
-      for clase in clases:
-        if clase["id"] == claseId:
-          materiasCursadas.append(clase["materiaId"])
-          diasCursados.append(clase["dia"])
-    
-    # clases disponibles para cursar
-    clasesDisponibles = []
+    # Primero filtramos las que NO está cursando el alumno
     for clase in clases:
       if clase["id"] not in alumno["clases"]:
-        if clase["materiaId"] not in materiasCursadas and clase["dia"] not in diasCursados:
-          clasesDisponibles.append(clase["id"])
+        noEstaCursando.append(clase)
+    
+    for i in range(len(alumno["clases"])):
+      for clase in clases:
+        if clase["id"] == alumno["clases"][i]:
+          alumno["clases"][i] = clase
           for materia in materias:
             if materia["id"] == clase["materiaId"]:
-              nombreMateria = materia["nombre"]
-              break
-          
-          dia = dias[clase["dia"]]
-          turno = turnos[clase["turno"]]
-          cuatrimestre = cuatrimestres[clase["cuatrimestre"]]
-          
-          print(f"{clase['id']} - {nombreMateria} - Día: {dia} - Turno: {turno} - Año: {clase['anio']} - Cuatrimestre: {cuatrimestre}")
-          print("")
+              clase["materia"] = materia["nombre"]
+    
+    opcionesDeInscripcion = []
+    
+    for noClase in noEstaCursando:
+      for clase in alumno["clases"]:
+        if (clase["dia"] != noClase["dia"] or clase["turno"] != noClase["turno"]) and noClase["cuatrimestre"] == 1 and noClase["materiaId"] not in [claseAlumn["materiaId"] for claseAlumn in alumno["clases"]]:
+          opcionesDeInscripcion.append(noClase)
+          break
+
+    clasesIdDisponibles = [clase["id"] for clase in opcionesDeInscripcion]
+    
+    # clases disponibles para cursar
+    for clase in opcionesDeInscripcion:
+      print(f"{clase['id']} - {materias[clase["materiaId"] - 1]["nombre"]} - Día: {dias[clase["dia"]]} - Turno: {turnos[clase["turno"]]}")
   else:
     print(f"El alumno {alumno['nombre']} {alumno['apellido']} está cursando más de 5 materias y no se pueden listar más clases.")
-    print("")
 
-  return clasesDisponibles
+  return clasesIdDisponibles
 
 def listarClasesDeAlumno(alumno, clases):
+  
   '''
   Lista clases en las que esta inscrito un alumno
   Args:
@@ -411,24 +413,6 @@ def listarClasesDeAlumno(alumno, clases):
           print(f"{clase['id']} - {nombreMateria} - Día: {dia} - Turno: {turno} - Año: {clase['anio']} - Cuatrimestre: {cuatrimestre}")
           print("")
   return alumno["clases"]
-
-
-def asignarNuevaClase(LU, claseId, alumnos):
-  '''
-  Asigna una nueva clase a un alumno
-  Args:
-    LU: int - Legajo del alumno
-    claseId: int - ID de la clase a asignar
-    alumnos: list - Lista de alumnos
-  Returns:
-    list - Lista de alumnos actualizada
-  '''
-  for alumno in alumnos:
-    if alumno["LU"] == LU:
-      alumno["clases"].append(claseId)
-      print("Clase asignada con exito")
-      print("")
-  return alumnos
 
 
 def desasignarClase(LU, clase, alumnos):

@@ -6,7 +6,7 @@ Autor: Miguel Raad, Roberto Saavedra, Felipe Di Liscia, Daniel Bilikin
 
 Descripción: Proyecto de gestión de alumnos, clases y facturación de una universidad, EDAU.
 
-Pendientes: Listado de clases y su filtrado por turno, día y materia. Módulo de facturas con listado, marcar como pagada y ver morosos
+Pendientes: Relacionar las modificaciones de clases de los alumnos con la entidad de facturas. CUando al alumno se le asigna, desasigna una materia o se Inactiva el alumno, es necesario awctualizar la entidad de facturas
 -----------------------------------------------------------------------------------------------
 """
 
@@ -233,11 +233,17 @@ def menuGestionClases():
 
   success2, clases = clasesMateriasModule.abrirArchivoClases()
   
+  success3, materias = clasesMateriasModule.abrirArchivoDeMaterias()
+  
   if not success:
     print('Ha ocurrido un error cargando los datos de los alumnos. Por favor intente nuevamente.')
     return
   
   if not success2:
+    print('Ha ocurrido un error cargando los datos de las clases. Por favor intente nuevamente.')
+    return
+  
+  if not success3:
     print('Ha ocurrido un error cargando los datos de las clases. Por favor intente nuevamente.')
     return
 
@@ -278,10 +284,12 @@ def menuGestionClases():
       clasesMateriasModule.eliminarClase(clases, alumnos)
 
     elif opcion == "4":   # Opción asignar alumno a clase
-      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
+      alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos[:])
+
+      alumnoEncontradoCopia = alumnoEncontrado.copy()
+      clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontradoCopia, clases, materias)
+      print("AFTER alumnoEncontrado")
       print(alumnoEncontrado)
-      
-      clasesDisponibles = clasesMateriasModule.listarClasesDisponibles(alumnoEncontrado, clases)
 
       while True:
         claseInput = input("Ingrese la clase a la que deseas inscribir al alumno: ").strip()
@@ -295,9 +303,11 @@ def menuGestionClases():
         if claseElegida not in clasesDisponibles:  # Validar si la clase está disponible
             print("La clase elegida no es válida. Por favor, elija una clase de la lista disponible.")
         else:
-            break  # Salir del bucle si el valor es válido
+          print(" *** alumnos[0]")
+          print(alumnos[0])
+          clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos[:])
+          break  # Salir del bucle si el valor es válido
 
-      clasesMateriasModule.asignarNuevaClase(legajo, claseElegida, alumnos)
 
     elif opcion == "5":   # Opción Dar de baja un alumno de una clase
       alumnoEncontrado, legajo = alumnosModule.chequeaLegajo(alumnos)
