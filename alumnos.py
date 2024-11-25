@@ -296,32 +296,35 @@ def borrarAlumnoLogico(LU, alumnos):
           print(f"No se encontró un alumno con el LU {LU}.")
     return alumnos
 
-def pedirDniNuevoAlumno():
+def pedirDniNuevoAlumno(alumnos):
     '''
     Solicita al usuario que ingrese un DNI para un nuevo alumno y valida que sea un número positivo,
     que tenga entre 7 y 8 dígitos, y que no esté ya en uso.
+    Args:
+        alumnos (list): Lista de alumnos para validar el DNI.
     Returns:
-      bool: True si valida correctamente el DNI False si no 
-      int: El DNI válido ingresado por el usuario.
+        bool: True si valida correctamente el DNI, False si no.
+        int: El DNI válido ingresado por el usuario.
     '''
     try:
-      while True:
-        dni = int(input("Ingrese el DNI del alumno: "))
-        if dni <= 0:
-            print("El DNI debe ser un número positivo.")
-            continue
-        if len(str(dni)) < 7 or len(str(dni)) > 8:
-            print("El DNI debe tener entre 7 y 8 dígitos.")
-            continue
+        while True:
+            dni = int(input("Ingrese el DNI del alumno: "))
+            if dni <= 0:
+                print("El DNI debe ser un número positivo.")
+                continue
+            if len(str(dni)) < 7 or len(str(dni)) > 8:
+                print("El DNI debe tener entre 7 y 8 dígitos.")
+                continue
 
-        encontrado = encontrarPorDni(alumnos, dni)
-        if encontrado: 
-          print("\nEl dni ingresado ya está en uso\n")
-        else:
-            return True, dni 
-    except Exception as ex: 
-      print("\nOcurrió un error al recibir el DNI del nuevo alumno, ", ex)
-      return False, 0
+            # Validar que el DNI no esté ya en uso
+            encontrado = next((alumno for alumno in alumnos if alumno["DNI"] == dni and alumno["estado"] == "Activo"), None)
+            if encontrado:
+                print("\nEl DNI ingresado ya está en uso.\n")
+            else:
+                return True, dni
+    except Exception as ex:
+        print("\nOcurrió un error al recibir el DNI del nuevo alumno, ", ex)
+        return False, 0
 
 def chequeaLegajo(alumnos):
     '''
