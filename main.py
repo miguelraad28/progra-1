@@ -82,15 +82,15 @@ def menuGestionAlumnos():
         print("El apellido no puede estar vacío y debe tener minimo 3 letras.")
         apellido = input("Ingrese el apellido del alumno: ").capitalize()
 
-      success, dni = alumnosModule.pedirDniNuevoAlumno()
+      success, dni = alumnosModule.pedirDniNuevoAlumno(alumnos)
       
       if not success:
         return
 
-      alumnos = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
-      alumnoCreado = alumnos[-1]
+      alumnosActualizado = alumnosModule.nuevoAlumno(nombre, apellido, dni, alumnos)
+      alumnoCreado = alumnosActualizado[-1]
       
-      success = alumnosModule.reescribirArchivoAlumnos(alumnos)
+      success = alumnosModule.reescribirArchivoAlumnos(alumnosActualizado)
       
       if success:
         print("")
@@ -478,5 +478,4 @@ def main():
   #----------------------------------------------------------------------------------------------
   mostrarMenu()
 
-if __name__ == "__main__":
-  main()
+main()

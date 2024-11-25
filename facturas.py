@@ -145,10 +145,3 @@ def verUltimaFacturaPorLU(facturas, lu, clases):
       ultimaFactura["monto"] = len(ultimaFactura["clases"]) * costo_por_clase
 
   return ultimaFactura
-'''
-{
-  alumnoLU: 123,
-  clases: [1, 2, 3],
-  pagada: False
-}
-'''

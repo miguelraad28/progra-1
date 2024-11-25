@@ -5,25 +5,6 @@ from variables import archivo_alumnos
 
 # Alumnos
 
-nombres = [
-  "Juan", "María", "Pedro", "Ana", "Luis", "Laura", "Carlos", "Marta", 
-  "José", "Lucía"
-]
-
-apellidos = [
-  "García", "Martínez", "Rodríguez", "López", "González", "Pérez", "Sánchez", 
-  "Ramírez", "Torres", "Flores"]
-
-#Alumno que creamos para testing.
-alumnos = [{
-      "nombre": "Miguel",
-      "apellido": "Raad",
-      "DNI": 95656210,
-      "LU": 1200447,
-      "email": "miguelraad2020@gmail.com",
-      "clases": [],
-      "estado": 'Activo',
-    }]
 
 def generarAlumnos(cantidad):
   '''
@@ -33,7 +14,16 @@ def generarAlumnos(cantidad):
   Returns:
     list - Lista de diccionarios con los datos de los alumnos
   '''
-  
+  nombres = [
+    "Juan", "María", "Pedro", "Ana", "Luis", "Laura", "Carlos", "Marta", 
+    "José", "Lucía"
+  ]
+
+  apellidos = [
+    "García", "Martínez", "Rodríguez", "López", "González", "Pérez", "Sánchez", 
+    "Ramírez", "Torres", "Flores"]
+  alumnos = []
+
   while len(alumnos) < cantidad:
     nombre = random.choice(nombres)
     apellido = random.choice(apellidos)
@@ -296,7 +286,7 @@ def borrarAlumnoLogico(LU, alumnos):
           print(f"No se encontró un alumno con el LU {LU}.")
     return alumnos
 
-def pedirDniNuevoAlumno():
+def pedirDniNuevoAlumno(alumnos):
     '''
     Solicita al usuario que ingrese un DNI para un nuevo alumno y valida que sea un número positivo,
     que tenga entre 7 y 8 dígitos, y que no esté ya en uso.
@@ -361,8 +351,3 @@ def chequeaLegajo(alumnos):
                 print("El legajo no coincide con ningún alumno.")
         else:
             print("El legajo debe ser un número entre 1 y 9,999,999.")          
-
-if __name__ == "__main__":
-  print(len(alumnos))
-  print(nuevoAlumno("Juan", "Pérez", 45222555, alumnos))
-  print(modificarAlumnoPorLU(800000, "nombre", "Juan Pablo", alumnos))

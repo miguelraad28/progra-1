@@ -445,7 +445,3 @@ def desasignarClase(LU, clase, alumnos):
         print("")
       return alumnos
   return alumnos
-
-if __name__ == "__main__":
-  clases = generarClases(30)
-  print(clases)
