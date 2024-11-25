@@ -204,7 +204,6 @@ def menuGestionAlumnos():
                 if materia["id"] == clase["materiaId"]:
                   clase["materia"] = materia["nombre"]
         #############################################
-        print(alumno)
         print("_________________________")
         print(f"Nombre: {alumno["nombre"]}")
         print(f"Apellido: {alumno["apellido"]}")
