@@ -147,11 +147,15 @@ def crearClase(clases):
       
       for materia in materias:
           print(f"{materia['id']}: {materia['nombre']}")
-      id = int(input("Ingrese el ID de la materia de la clase a crear: "))
-      if 1 <= id <= 10: # Acá forzamos un poco la validación del id de la materia basada en las que tenemos preescritas en el código.
-          break
-      else:
-          print("ID invalido, por favor ingrese un ID correcto (entre 1 y 10)")
+      try:
+        id = int(input("Ingrese el ID de la materia de la clase a crear: "))
+        if 1 <= id <= 10: # Acá forzamos un poco la validación del id de la materia basada en las que tenemos preescritas en el código.
+            break
+        else:
+            print("ID invalido, por favor ingrese un ID correcto (entre 1 y 10)")
+      except Exception as ex: 
+        print(f"Error al ingresar el ID de la materia: {ex}")
+        
 
   claseNueva = {
     "id": nuevoId,
