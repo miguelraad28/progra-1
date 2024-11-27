@@ -61,13 +61,16 @@ def abrirArchivoAlumnos():
     list - Lista de diccionarios con los datos de los alumnos.
   '''
   success = True
+  alumnos = []
   
   try:
     file = open(archivo_alumnos, "r", encoding='utf-8')
     alumnos = json.load(file)
-  except:
+  except FileNotFoundError:
     print("No se encontró el archivo de datos de alumnos.")
-    alumnos = []
+    success = False
+  except json.JSONDecodeError as e:
+    print(f"Error al cargar el JSON: {e}")
     success = False
   finally:
     try:
@@ -233,10 +236,10 @@ def encontrarPorLegajo(alumnos):
   Returns:
     dict: Diccionario con los datos del alumno encontrado, o None si no se encontró.
   """
+  alumnoEncontrado = None
   try:
     legajo = int(input("Ingrese el legajo del alumno (Numero sin comas): "))
     
-    alumnoEncontrado = None
     
     for alumno in alumnos:
       if alumno["LU"] == legajo and alumno['estado'] == 'Activo':
@@ -262,27 +265,34 @@ def encontrarPorDni(alumnos, dni):
   return alumnoEncontrado
 
 def borrarAlumnoLogico(LU, alumnos):
-    #RELACIONAR CON FACTURAS CAMBIAR NOMBRE DE ACTIVAR Y DESACTIVAR. 
-    encontrado = False
-    for alumno in alumnos:
-        if alumno["LU"] == LU and alumno["estado"] == "Activo":
-            alumno["estado"] = "Inactivo"
-            print(f"El alumno con LU {LU} ({alumno["nombre"]} {alumno["apellido"]}) ha sido marcado como Inactivo.")
-            encontrado = True
-            alumno["clases"] = []
-            
-            success = reescribirArchivoAlumnos(alumnos)
-            if not success:
-                print("No se pudo guardar el cambio en el archivo.")
-            
-            break
-        elif alumno["LU"] == LU and alumno["estado"] == "Inactivo":
-          print(f"El alumno con LU {LU} ({alumno["nombre"]} {alumno["apellido"]}) ya se encuentra inactivo.")
-          encontrado = True
-          break
-    if not encontrado:  
-          print(f"No se encontró un alumno con el LU {LU}.")
-    return alumnos
+  '''
+  Marca un alumno como inactivo en la lista de alumnos.
+  Args:
+    LU: int
+    alumnos: list - Lista de alumnos.
+  Returns:
+    list - Lista de alumnos actualizada
+  '''
+  encontrado = False
+  for alumno in alumnos:
+    if alumno["LU"] == LU and alumno["estado"] == "Activo":
+      alumno["estado"] = "Inactivo"
+      print(f"El alumno con LU {LU} ({alumno["nombre"]} {alumno["apellido"]}) ha sido marcado como Inactivo.")
+      encontrado = True
+      alumno["clases"] = []
+      
+      success = reescribirArchivoAlumnos(alumnos)
+      if not success:
+          print("No se pudo guardar el cambio en el archivo.")
+      
+      break
+    elif alumno["LU"] == LU and alumno["estado"] == "Inactivo":
+      print(f"El alumno con LU {LU} ({alumno["nombre"]} {alumno["apellido"]}) ya se encuentra inactivo.")
+      encontrado = True
+      break
+  if not encontrado:  
+    print(f"No se encontró un alumno con el LU {LU}.")
+  return alumnos
 
 def pedirDniNuevoAlumno(alumnos):
     '''

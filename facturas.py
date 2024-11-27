@@ -9,14 +9,19 @@ def abrirArchivoFacturas():
     list - Lista de diccionarios con las facturas.
   '''
   success = True
+  facturas = []
   
   try:
     file = open(archivo_facturas, "r", encoding='utf-8')
     facturas = json.load(file)
-  except:
+  except FileNotFoundError:
     print("No se encontró el archivo de datos de facturas.")
     success = False
-    facturas = []
+  except json.JSONDecodeError as e:
+    print(f"Error al cargar el JSON: {e}")
+    success = False
+  except Exception as e:
+    print(f"Ocurrió un error inesperado: {e}")
   finally:
     try:
       file.close()
