@@ -243,6 +243,10 @@ def menuGestionClases():
   
   if not success3:
     return
+  
+  if not success3:
+    print('Ha ocurrido un error cargando los datos de las clases. Por favor intente nuevamente.')
+    return
 
   while True:
     opciones = 7
